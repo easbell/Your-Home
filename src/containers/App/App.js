@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import NewProject from '../NewProject/NewProject';
+import SideDrawer from '../SideDrawer/SideDrawer';
 
 class App extends Component {
 
@@ -7,6 +8,7 @@ class App extends Component {
     return (
       <div className="App" id='App'>
         <header className="App-header">
+          <SideDrawer />
           <h1>YourHome</h1>
           <NewProject />
         </header>

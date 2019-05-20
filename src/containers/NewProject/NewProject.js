@@ -44,16 +44,16 @@ class NewProject extends React.Component {
   };
 
   handleCreate = () => {
-    const form = this.formRef.props.form;
-    form.validateFields((err, values) => {
-      if (err) {
-        return;
-      }
+    // const form = this.formRef.props.form;
+    // form.validateFields((err, values) => {
+    //   if (err) {
+    //     return;
+    //   }
 
-      console.log('Received values of form: ', values);
-      form.resetFields();
-      this.setState({ visible: false });
-    });
+    //   console.log('Received values of form: ', values);
+    //   form.resetFields();
+    // });
+    this.setState({ visible: false });
   };
 
   saveFormRef = formRef => {
