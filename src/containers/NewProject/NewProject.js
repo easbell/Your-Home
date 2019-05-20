@@ -1,6 +1,5 @@
 import React from 'react';
 import { Button, Modal, Form, Input } from 'antd';
-import './NewProject.css';
 
 const ProjectForm = Form.create({ name: 'form_in_modal' })(
   class extends React.Component {
