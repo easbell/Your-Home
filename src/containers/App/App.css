@@ -1,0 +1,7 @@
+@import '~antd/dist/antd.css';
+
+h1 {
+  font-family: 'Open Sans Condensed', sans-serif;
+  font-size: 48px;
+  text-align: center;
+}
