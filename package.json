@@ -9,7 +9,8 @@
     "collectCoverageFrom": [
       "src/**/*.{js,jsx}",
       "!src/index.js",
-      "!src/reducers/index.js"
+      "!src/reducers/index.js",
+      "!src/mockProject.js"
     ]
   },
   "dependencies": {
