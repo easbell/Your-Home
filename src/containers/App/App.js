@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import './App.css';
 import NewProject from '../NewProject/NewProject';
 import SideDrawer from '../SideDrawer/SideDrawer';
 
