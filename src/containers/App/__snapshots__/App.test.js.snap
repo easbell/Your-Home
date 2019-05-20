@@ -8,6 +8,7 @@ exports[`App should match snapshot 1`] = `
   <header
     className="App-header"
   >
+    <SideDrawer />
     <h1>
       YourHome
     </h1>

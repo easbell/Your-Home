@@ -16,12 +16,6 @@ class SideDrawer extends React.Component {
     });
   };
 
-  onChange = e => {
-    this.setState({
-      placement: e.target.value,
-    });
-  };
-
   render() {
     return (
       <div>
@@ -34,9 +28,9 @@ class SideDrawer extends React.Component {
           onClose={this.onClose}
           visible={this.state.visible}
         >
-          <p>Some contents...</p>
-          <p>Some contents...</p>
-          <p>Some contents...</p>
+          <p>Project A</p>
+          <p>Project B</p>
+          <p>Project C</p>
         </Drawer>
       </div>
     );
