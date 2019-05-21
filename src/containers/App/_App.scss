@@ -1,9 +1,14 @@
 @import '~antd/dist/antd.css';
 
+header {
+  background: #3b4044;
+}
+
 h1 {
   font-family: 'Open Sans Condensed', sans-serif;
   font-size: 48px;
   text-align: center;
+  color: #fff;
 }
 
 body {
@@ -19,3 +24,4 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
 }
+

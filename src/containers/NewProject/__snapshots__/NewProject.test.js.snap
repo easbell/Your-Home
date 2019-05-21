@@ -1,12 +1,13 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`App should match snapshot 1`] = `
-<div>
+<div
+  id="add"
+>
   <Button
     block={false}
     ghost={false}
     htmlType="button"
-    id="add-project"
     loading={false}
     onClick={[Function]}
     type="primary"
