@@ -4,9 +4,9 @@ const mockProject = {
   "address": "2285 S Bannock",
   "city": "Denver",
   "state": "CO",
-  "zip_Code": "80223",
-  "start_Date": "date",
-  "end_Date": "date",
+  "zip_code": "80223",
+  "start_date": "date",
+  "end_date": "date",
   "rooms": [
     {
       "name": "kitchen",

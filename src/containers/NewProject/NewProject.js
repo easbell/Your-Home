@@ -62,10 +62,9 @@ class NewProject extends React.Component {
 
   render() {
     return (
-      <div>
+      <div id='add'>
         <Button 
           type="primary" 
-          id='add-project'
           onClick={this.showModal}>
             New Project
         </Button>

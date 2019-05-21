@@ -10,7 +10,7 @@ class App extends Component {
         <header className="App-header">
           <SideDrawer />
           <h1>YourHome</h1>
-          <NewProject />
+          <NewProject/>
         </header>
       </div>
     );

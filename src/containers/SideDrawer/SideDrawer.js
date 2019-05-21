@@ -18,9 +18,11 @@ class SideDrawer extends React.Component {
 
   render() {
     return (
-      <div>
-        <i className="fas fa-chevron-circle-right" onClick={this.showDrawer}>
-        </i>
+      <div id='menu'>
+        <img src="https://img.icons8.com/ios/30/000000/menu-filled.png"
+          onClick={this.showDrawer}
+          alt='menu'>
+        </img>
         <Drawer
           title="Your Projects"
           placement={this.state.placement}
