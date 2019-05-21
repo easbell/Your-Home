@@ -1,6 +1,7 @@
 const mockProjects = {
   data: [
     {
+      "id": "1",
       "name": "My Project",
       "description": "description",
       "address": "2285 S Bannock",
@@ -61,6 +62,7 @@ const mockProjects = {
       ]
     },
     {
+      "id": "2",
       "name": "My Project",
       "description": "description",
       "address": "2285 S Bannock",
