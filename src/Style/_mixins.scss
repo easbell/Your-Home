@@ -1,0 +1,14 @@
+@mixin card-layout {
+  // text-align: center;
+  // background: #d6d6d6;
+  // margin: 15px;
+  // border-radius: 5px;
+  // box-shadow: 1px 1px 4px 1px #a9a9a9;
+  width: 40%;
+  margin: 30px 10px 0;
+  border-radius: 10px;
+  background: #f4f4f4;
+  color: #444;
+  padding: 20px;
+  box-shadow: 0 3px 5px rgba(0,0,0,.2);
+}

@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import NewProject from '../NewProject/NewProject';
 import SideDrawer from '../SideDrawer/SideDrawer';
+import ProjectsContainer from '../../components/ProjectsContainer/ProjectsContainer';
 
 class App extends Component {
 
@@ -10,8 +11,9 @@ class App extends Component {
         <header className="App-header">
           <SideDrawer />
           <h1>YourHome</h1>
-          <NewProject/>
+          <NewProject />
         </header>
+        <ProjectsContainer />
       </div>
     );
   }

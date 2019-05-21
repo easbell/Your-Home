@@ -1,0 +1,14 @@
+.project {
+  @include card-layout;
+  height: 300px;
+  width: 300px;
+  background-image: url('../assets/home.png');
+  background-repeat: no-repeat;
+  background-position: center; 
+  text-align: center;
+  opacity: 0.7;
+  cursor: pointer;
+  &:hover {
+    opacity: 1;
+  }
+}
