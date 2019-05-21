@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import NewProject from '../NewProject/NewProject';
 import SideDrawer from '../SideDrawer/SideDrawer';
+import Room from '../Room/Room';
 
 class App extends Component {
 
