@@ -19,7 +19,7 @@ class SideDrawer extends React.Component {
   render() {
     return (
       <div id='menu'>
-        <img src="https://img.icons8.com/ios/30/000000/menu-filled.png"
+        <img src="https://img.icons8.com/ios/30/ffffff/menu-filled.png"
           onClick={this.showDrawer}
           alt='menu'>
         </img>
