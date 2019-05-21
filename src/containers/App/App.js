@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import NewProject from '../NewProject/NewProject';
 import SideDrawer from '../SideDrawer/SideDrawer';
+import Room from '../Room/Room';
 import ProjectsContainer from '../../components/ProjectsContainer/ProjectsContainer';
 import { Link, Switch, Route } from 'react-router-dom';
 import Project from '../../components/Project/Project';
