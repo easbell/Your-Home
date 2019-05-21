@@ -1,0 +1,136 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ProjectsContainer should match snapshot 1`] = `
+<div
+  className="projects"
+>
+  <Project
+    address="2285 S Bannock"
+    city="Denver"
+    description="description"
+    end_date="date"
+    id="1"
+    key="0"
+    name="My Project"
+    rooms={
+      Array [
+        Object {
+          "materials": Array [
+            Object {
+              "brand": "Kohler",
+              "element_type": "sink",
+              "manual_url": "link",
+              "model_number": "1bojdf03",
+              "name": "white sink",
+              "notes": "notes",
+              "vendor": "Home Depot",
+            },
+            Object {
+              "brand": "Frigidaire",
+              "element_type": "fridge",
+              "manual_url": "link",
+              "model_number": "1bojdf03",
+              "name": "fridge",
+              "notes": "notes",
+              "vendor": "Home Depot",
+            },
+          ],
+          "name": "kitchen",
+          "type": "kitchen",
+        },
+        Object {
+          "materials": Array [
+            Object {
+              "brand": "Kohler",
+              "element_type": "sink",
+              "manual_url": "link",
+              "model_number": "1bojdf03",
+              "name": "white sink",
+              "notes": "notes",
+              "vendor": "Home Depot",
+            },
+            Object {
+              "brand": "",
+              "element_type": "toilet",
+              "manual_url": "link",
+              "model_number": "1bojdf03",
+              "name": "toilet",
+              "notes": "notes",
+              "vendor": "Home Depot",
+            },
+          ],
+          "name": "bathroom",
+          "type": "bathroom",
+        },
+      ]
+    }
+    start_date="date"
+    state="CO"
+    zip_code="80223"
+  />
+  <Project
+    address="2285 S Bannock"
+    city="Denver"
+    description="description"
+    end_date="date"
+    id="2"
+    key="1"
+    name="My Project"
+    rooms={
+      Array [
+        Object {
+          "materials": Array [
+            Object {
+              "brand": "Kohler",
+              "element_type": "sink",
+              "manual_url": "link",
+              "model_number": "1bojdf03",
+              "name": "white sink",
+              "notes": "notes",
+              "vendor": "Home Depot",
+            },
+            Object {
+              "brand": "Frigidaire",
+              "element_type": "fridge",
+              "manual_url": "link",
+              "model_number": "1bojdf03",
+              "name": "fridge",
+              "notes": "notes",
+              "vendor": "Home Depot",
+            },
+          ],
+          "name": "kitchen",
+          "type": "kitchen",
+        },
+        Object {
+          "materials": Array [
+            Object {
+              "brand": "Kohler",
+              "element_type": "sink",
+              "manual_url": "link",
+              "model_number": "1bojdf03",
+              "name": "white sink",
+              "notes": "notes",
+              "vendor": "Home Depot",
+            },
+            Object {
+              "brand": "",
+              "element_type": "toilet",
+              "manual_url": "link",
+              "model_number": "1bojdf03",
+              "name": "toilet",
+              "notes": "notes",
+              "vendor": "Home Depot",
+            },
+          ],
+          "name": "bathroom",
+          "type": "bathroom",
+        },
+      ]
+    }
+    start_date="date"
+    state="CO"
+    zip_code="80223"
+  />
+</div>
+`;

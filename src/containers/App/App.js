@@ -18,7 +18,7 @@ class App extends Component {
       <div className="App" id='App'>
         <header className="App-header">
           <SideDrawer />
-          <Link to='/' style={{ textDecoration: 'none' }}>
+          <Link to='/'>
             <h1>YourHome</h1>
           </Link>
           <NewProject />
