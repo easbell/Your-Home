@@ -18,7 +18,7 @@ class RoomItems extends React.Component {
 
   render() {
     return (
-      <Collapse defaultActiveKey={['1']} onChange={callback}>
+      <Collapse onChange={callback}>
         <Panel header="Fixtures" key="1">
           <p>X2 Doorknobs <button>edit</button></p>
           <p>X6 hinges</p>

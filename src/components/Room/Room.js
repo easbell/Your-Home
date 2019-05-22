@@ -1,15 +1,20 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
-import homeIcon from '../../assets/home.png';
+import { Collapse } from 'antd';
+import RoomItems from '../../containers/RoomItems/RoomItems'
+
+const Panel = Collapse.Panel;
+
+function callback(key) {
+  console.log(key);
+}
 
 const Room = ({projId, roomId}) => {
   return (
-    <Link to={`/projects/${projId}/rooms/${roomId}`}>
-      <div className='room'>
-        <img src={homeIcon} className='home' alt='home-icon'/>
-        <h2>Room name</h2>
-      </div>
-    </Link>
+    <Collapse onChange={callback}>
+      <Panel header="BedRoom" key="1">
+        <RoomItems />
+      </Panel>
+    </Collapse>
   )
 }
 
