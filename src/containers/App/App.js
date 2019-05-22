@@ -15,9 +15,9 @@ class App extends Component {
   }
 
   renderRoomItems = ({ match }) => {
-    const project = mockProjects.data.find(project => parseInt(project.id) === match.params.id)
-    const room = project.rooms.find(room => parseInt(room.id) === match.params.id)
-    return <RoomItems room={room} />
+    // const project = mockProjects.data.find(project => parseInt(project.id) === match.params.id)
+    // const room = project.rooms.find(room => parseInt(room.id) === match.params.id)
+    return <RoomItems />
   }
 
   render() {
