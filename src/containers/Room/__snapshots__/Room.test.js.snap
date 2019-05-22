@@ -1,0 +1,52 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Room should match snapshot 1`] = `
+<Collapse
+  bordered={true}
+  defaultActiveKey={
+    Array [
+      "1",
+    ]
+  }
+  expandIconPosition="left"
+  onChange={[Function]}
+  openAnimation={
+    Object {
+      "appear": [Function],
+      "enter": [Function],
+      "leave": [Function],
+    }
+  }
+>
+  <CollapsePanel
+    header="Fixtures"
+    key="1"
+  >
+    <p>
+      X2 Doorknobs 
+      <button>
+        edit
+      </button>
+    </p>
+    <p>
+      X6 hinges
+    </p>
+  </CollapsePanel>
+  <CollapsePanel
+    header="Flooring"
+    key="2"
+  >
+    <p>
+      100 sq ft tile
+    </p>
+  </CollapsePanel>
+  <CollapsePanel
+    header="Walls"
+    key="3"
+  >
+    <p>
+      2 gallons grey paint
+    </p>
+  </CollapsePanel>
+</Collapse>
+`;
