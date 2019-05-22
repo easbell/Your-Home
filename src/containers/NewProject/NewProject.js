@@ -134,15 +134,6 @@ class NewProject extends React.Component {
     name: ''
   };
 
-  next = () => {
-    if(this.state.current === 0) {
-      this.handleCreate()
-    } else {
-      const current = this.state.current + 1;
-      this.setState({ current });
-    }
-  }
-
   nextField = () => {
     const current = this.state.current + 1;
     this.setState({ current });
@@ -154,10 +145,8 @@ class NewProject extends React.Component {
   }
 
   submit = () => {
-    if(this.state.name) {
-      this.setState({ visible: false });
-    }
     console.log(this.state)
+    this.setState({ visible: false });
   }
 
   addRoom = (room) => {
@@ -172,23 +161,6 @@ class NewProject extends React.Component {
     this.setState({ visible: false });
   };
 
-  handleCreate = () => {
-    const form = this.formRef.props.form;
-    form.validateFields((err, values) => {
-      if (err) {
-        return;
-      }
-      this.setState({name: values.name})
-      console.log('Received values of form: ', values);
-      form.resetFields();
-      this.nextField()
-    });
-  };
-
-  saveFormRef = formRef => {
-    this.formRef = formRef;
-  };
-
   render() {
     return (
       <div id='add'>
@@ -201,9 +173,9 @@ class NewProject extends React.Component {
           wrappedComponentRef={this.saveFormRef}
           visible={this.state.visible}
           onCancel={this.handleCancel}
-          onCreate={this.handleCreate}
+          // onCreate={this.handleCreate}
           current={this.state.current}
-          next={this.next}
+          next={this.nextField}
           prev={this.prev}
           rooms={this.state.rooms}
           addRoom={this.addRoom}
