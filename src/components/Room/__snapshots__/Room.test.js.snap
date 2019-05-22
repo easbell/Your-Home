@@ -10,10 +10,6 @@ exports[`Room should match snapshot 1`] = `
           "description": "Upstairs bedroom",
           "name": "Bedroom",
         },
-        Object {
-          "description": "Full kitchen",
-          "name": "Kitchen",
-        },
       ]
     }
     loading={false}
