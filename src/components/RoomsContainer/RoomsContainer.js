@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import Room from '../../containers/Room/Room'
+import Room from '../Room/Room'
 
 export class RoomsContainer extends Component {
   

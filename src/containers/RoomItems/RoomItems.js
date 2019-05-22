@@ -7,7 +7,7 @@ function callback(key) {
   console.log(key);
 }
 
-class Room extends React.Component {
+class RoomItems extends React.Component {
   state = { expanded: false};
 
   // method for Panel creation
@@ -34,4 +34,4 @@ class Room extends React.Component {
   }
 }
 
-export default Room;
+export default RoomItems;

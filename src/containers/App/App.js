@@ -5,12 +5,19 @@ import ProjectsContainer from '../../components/ProjectsContainer/ProjectsContai
 import { Link, Switch, Route } from 'react-router-dom';
 import ProjectDetails from '../ProjectDetails/ProjectDetails';
 import mockProjects from '../../mockProject';
+import RoomItems from '../RoomItems/RoomItems'
 
 class App extends Component {
 
   renderProject = ({ match }) => {
     const project = mockProjects.data.find(project => parseInt(project.id) === match.params.id)
     return <ProjectDetails project={project} />
+  }
+
+  renderRoomItems = ({ match }) => {
+    const project = mockProjects.data.find(project => parseInt(project.id) === match.params.id)
+    const room = project.rooms.find(room => parseInt(room.id) === match.params.id)
+    return <RoomItems room={room} />
   }
 
   render() {
@@ -30,6 +37,9 @@ class App extends Component {
             />
             <Route exact path='/projects/:id'
               render={this.renderProject}
+            />
+            <Route exact path='/projects/:id/rooms/:id'
+              render={this.renderRoomItems}
             />
           </Switch>
         </div>

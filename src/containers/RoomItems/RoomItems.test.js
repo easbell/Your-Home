@@ -2,7 +2,7 @@ import React from 'react';
 import { shallow } from 'enzyme';
 import RoomItems from './RoomItems';
 
-describe('Room', () => {
+describe('RoomItems', () => {
   let wrapper;
   
   beforeEach(() => {
