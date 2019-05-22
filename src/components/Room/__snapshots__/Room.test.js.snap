@@ -1,0 +1,34 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Room should match snapshot 1`] = `
+<div>
+  <List
+    bordered={true}
+    dataSource={
+      Array [
+        Object {
+          "description": "Upstairs bedroom",
+          "name": "Bedroom",
+        },
+        Object {
+          "description": "Full kitchen",
+          "name": "Kitchen",
+        },
+      ]
+    }
+    loading={false}
+    pagination={false}
+    renderItem={[Function]}
+    split={true}
+  />
+  <withConfigConsumer(Drawer)
+    closable={false}
+    onClose={[Function]}
+    placement="right"
+    visible={false}
+    width={640}
+  >
+    <RoomItems />
+  </withConfigConsumer(Drawer)>
+</div>
+`;
