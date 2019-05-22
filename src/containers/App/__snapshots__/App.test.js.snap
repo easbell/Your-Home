@@ -1,0 +1,36 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`App should match snapshot 1`] = `
+<div
+  className="App"
+  id="App"
+>
+  <header
+    className="App-header"
+  >
+    <SideDrawer />
+    <Link
+      to="/"
+    >
+      <h1>
+        YourHome
+      </h1>
+    </Link>
+    <NewProject />
+  </header>
+  <div>
+    <Switch>
+      <Route
+        exact={true}
+        path="/"
+        render={[Function]}
+      />
+      <Route
+        exact={true}
+        path="/projects/:id"
+        render={[Function]}
+      />
+    </Switch>
+  </div>
+</div>
+`;

@@ -1,11 +1,11 @@
 import React from 'react';
 import { shallow } from 'enzyme';
-import App from './App';
+import Project from './Project';
 
-describe('App', () => {
+describe('Project', () => {
   let wrapper;
   beforeEach(() => {
-    wrapper = shallow(<App/>)
+    wrapper = shallow(<Project/>)
   });
 
   it('should match snapshot', () => {

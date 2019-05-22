@@ -175,6 +175,7 @@ class NewProject extends React.Component {
   };
 
   handleCreate = () => {
+<<<<<<< HEAD
     const form = this.formRef.props.form;
     form.validateFields((err, values) => {
       if (err) {
@@ -185,6 +186,18 @@ class NewProject extends React.Component {
       form.resetFields();
       this.nextField()
     });
+=======
+    // const form = this.formRef.props.form;
+    // form.validateFields((err, values) => {
+    //   if (err) {
+    //     return;
+    //   }
+
+    //   console.log('Received values of form: ', values);
+    //   form.resetFields();
+    // });
+    this.setState({ visible: false });
+>>>>>>> master
   };
 
   saveFormRef = formRef => {
@@ -193,10 +206,9 @@ class NewProject extends React.Component {
 
   render() {
     return (
-      <div>
+      <div id='add'>
         <Button 
           type="primary" 
-          id='add-project'
           onClick={this.showModal}>
             New Project
         </Button>

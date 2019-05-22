@@ -1,0 +1,18 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Project should match snapshot 1`] = `
+<Link
+  to="/projects/undefined"
+>
+  <div
+    className="project"
+  >
+    <img
+      alt="home-icon"
+      className="home"
+      src="home.png"
+    />
+    <h2 />
+  </div>
+</Link>
+`;
