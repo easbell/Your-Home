@@ -1,12 +1,12 @@
 import React from 'react';
 import { shallow } from 'enzyme';
-import Room from './Room';
+import RoomItems from './RoomItems';
 
 describe('Room', () => {
   let wrapper;
   
   beforeEach(() => {
-    wrapper = shallow(<Room/>)
+    wrapper = shallow(<RoomItems/>)
   });
 
   it('should match snapshot', () => {
