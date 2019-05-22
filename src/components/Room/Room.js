@@ -17,20 +17,15 @@ class Room extends React.Component {
     });
   };
 
- // make method to dynamically make items in the dataSource array within List
-
   render() {
     return (
       <div>
         <List
           dataSource={[
+            // This should be made dynamic and come from props
             {
               name: 'Bedroom',
               description: 'Upstairs bedroom',
-            },
-            {
-              name: 'Kitchen',
-              description: 'Full kitchen',
             },
           ]}
           bordered
