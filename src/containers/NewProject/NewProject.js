@@ -1,7 +1,5 @@
 import React from 'react';
 import { Button, Modal, Form, Input, Steps, message, Menu, Dropdown, Icon, Card, Table, Divider, Tag } from 'antd';
-import './NewProject.css';
-
 
 const Step = Steps.Step;
 
@@ -175,7 +173,6 @@ class NewProject extends React.Component {
   };
 
   handleCreate = () => {
-<<<<<<< HEAD
     const form = this.formRef.props.form;
     form.validateFields((err, values) => {
       if (err) {
@@ -186,18 +183,6 @@ class NewProject extends React.Component {
       form.resetFields();
       this.nextField()
     });
-=======
-    // const form = this.formRef.props.form;
-    // form.validateFields((err, values) => {
-    //   if (err) {
-    //     return;
-    //   }
-
-    //   console.log('Received values of form: ', values);
-    //   form.resetFields();
-    // });
-    this.setState({ visible: false });
->>>>>>> master
   };
 
   saveFormRef = formRef => {
