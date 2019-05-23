@@ -26,7 +26,6 @@ exports[`App should match snapshot 1`] = `
     prev={[Function]}
     rooms={Array []}
     visible={false}
-    wrappedComponentRef={[Function]}
   />
 </div>
 `;

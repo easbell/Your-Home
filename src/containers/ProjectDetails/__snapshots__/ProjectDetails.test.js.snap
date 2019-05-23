@@ -1,15 +1,21 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`ProjectsContainer should match snapshot 1`] = `
-<div
-  className="projects"
->
-  <Project
-    address="123 Fake St."
-    description="Big, white house"
-    id={1}
-    key="0"
-    name="House 1"
+exports[`ProjectDetails should match snapshot 1`] = `
+<div>
+  <div
+    className="project-details"
+  >
+    <h2>
+      House 1
+    </h2>
+    <p>
+      123 Fake St.
+    </p>
+    <p>
+      Big, white house
+    </p>
+  </div>
+  <RoomsContainer
     rooms={
       Array [
         Object {
@@ -85,23 +91,6 @@ exports[`ProjectsContainer should match snapshot 1`] = `
             },
           ],
           "type": "Kitchen",
-        },
-      ]
-    }
-  />
-  <Project
-    address="456 Random Lane"
-    description="Small with picket fence"
-    id={2}
-    key="1"
-    name="House 2"
-    rooms={
-      Array [
-        Object {
-          "description": "Small bedroom",
-          "name": "Room 3",
-          "roomMaterials": Array [],
-          "type": "Bedroom",
         },
       ]
     }
