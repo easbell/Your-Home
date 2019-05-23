@@ -14,33 +14,46 @@ exports[`RoomItems should match snapshot 1`] = `
   }
 >
   <CollapsePanel
-    header="Fixtures"
-    key="1"
+    header="Flooring"
+    key="0"
   >
-    <p>
-      X2 Doorknobs 
+    <p
+      key="0"
+    >
+      Material 1
+      , 
+      Kenmoore
+       
       <button>
         edit
       </button>
     </p>
-    <p>
-      X6 hinges
+    <p
+      key="1"
+    >
+      Material 2
+      , 
+      Kenmoore
+       
+      <button>
+        edit
+      </button>
     </p>
   </CollapsePanel>
   <CollapsePanel
-    header="Flooring"
-    key="2"
+    header="Fixtures"
+    key="1"
   >
-    <p>
-      100 sq ft tile
-    </p>
-  </CollapsePanel>
-  <CollapsePanel
-    header="Walls"
-    key="3"
-  >
-    <p>
-      2 gallons grey paint
+    <p
+      key="2"
+    >
+      Material A
+      , 
+      GE
+       
+      <button>
+        edit
+      </button>
     </p>
   </CollapsePanel>
 </Collapse>

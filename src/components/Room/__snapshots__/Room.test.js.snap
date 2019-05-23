@@ -1,14 +1,16 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Room should match snapshot 1`] = `
-<div>
+<div
+  className="room"
+>
   <List
     bordered={true}
     dataSource={
       Array [
         Object {
-          "description": "Upstairs bedroom",
-          "name": "Bedroom",
+          "description": undefined,
+          "name": undefined,
         },
       ]
     }

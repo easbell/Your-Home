@@ -4,7 +4,6 @@ import Project from '../Project/Project';
 export class ProjectsContainer extends Component {
   
   renderProjects = () => {
-    console.log(this.props)
     return this.props.projects.map((project, i) => {
       return <Project key={i} {...project}/>
     });

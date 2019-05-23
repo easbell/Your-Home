@@ -5,132 +5,106 @@ exports[`ProjectsContainer should match snapshot 1`] = `
   className="projects"
 >
   <Project
-    address="2285 S Bannock"
-    city="Denver"
-    description="description"
-    end_date="date"
-    id="1"
+    address="123 Fake St."
+    description="Big, white house"
+    id={1}
     key="0"
-    name="My Project"
+    name="House 1"
     rooms={
       Array [
         Object {
-          "materials": Array [
+          "description": "Northeast living room",
+          "name": "Living Room 1",
+          "roomMaterials": Array [
             Object {
-              "brand": "Kohler",
-              "element_type": "sink",
-              "manual_url": "link",
-              "model_number": "1bojdf03",
-              "name": "white sink",
-              "notes": "notes",
-              "vendor": "Home Depot",
+              "element_type": "Flooring",
+              "id": 1,
+              "material": Object {
+                "brand": "Kenmoore",
+                "id": 1,
+                "manual_url": null,
+                "model_number": "abc1",
+                "name": "Material 1",
+                "notes": null,
+                "quantity": null,
+                "unit_price": null,
+                "vendor": "HD",
+              },
             },
             Object {
-              "brand": "Frigidaire",
-              "element_type": "fridge",
-              "manual_url": "link",
-              "model_number": "1bojdf03",
-              "name": "fridge",
-              "notes": "notes",
-              "vendor": "Home Depot",
+              "element_type": "Flooring",
+              "id": 2,
+              "material": Object {
+                "brand": "Kenmoore",
+                "id": 2,
+                "manual_url": null,
+                "model_number": "abc2",
+                "name": "Material 2",
+                "notes": null,
+                "quantity": null,
+                "unit_price": null,
+                "vendor": "HD",
+              },
+            },
+            Object {
+              "element_type": "Fixtures",
+              "id": 3,
+              "material": Object {
+                "brand": "GE",
+                "id": 3,
+                "manual_url": null,
+                "model_number": "abc1",
+                "name": "Material A",
+                "notes": null,
+                "quantity": null,
+                "unit_price": null,
+                "vendor": "HD",
+              },
             },
           ],
-          "name": "kitchen",
-          "type": "kitchen",
+          "type": "Living Room",
         },
         Object {
-          "materials": Array [
+          "description": "Big Kitchen",
+          "name": "Room 2",
+          "roomMaterials": Array [
             Object {
-              "brand": "Kohler",
-              "element_type": "sink",
-              "manual_url": "link",
-              "model_number": "1bojdf03",
-              "name": "white sink",
-              "notes": "notes",
-              "vendor": "Home Depot",
-            },
-            Object {
-              "brand": "",
-              "element_type": "toilet",
-              "manual_url": "link",
-              "model_number": "1bojdf03",
-              "name": "toilet",
-              "notes": "notes",
-              "vendor": "Home Depot",
+              "element_type": "Shower",
+              "id": 3,
+              "material": Object {
+                "brand": "Kenmoore",
+                "id": 1,
+                "manual_url": null,
+                "model_number": "abc1",
+                "name": "Material 1",
+                "notes": null,
+                "quantity": null,
+                "unit_price": null,
+                "vendor": "HD",
+              },
             },
           ],
-          "name": "bathroom",
-          "type": "bathroom",
+          "type": "Kitchen",
         },
       ]
     }
-    start_date="date"
-    state="CO"
-    zip_code="80223"
   />
   <Project
-    address="2285 S Bannock"
-    city="Denver"
-    description="description"
-    end_date="date"
-    id="2"
+    address="456 Random Lane"
+    description="Small with picket fence"
+    id={2}
     key="1"
-    name="My Project"
+    name="House 2"
     rooms={
       Array [
         Object {
-          "materials": Array [
-            Object {
-              "brand": "Kohler",
-              "element_type": "sink",
-              "manual_url": "link",
-              "model_number": "1bojdf03",
-              "name": "white sink",
-              "notes": "notes",
-              "vendor": "Home Depot",
-            },
-            Object {
-              "brand": "Frigidaire",
-              "element_type": "fridge",
-              "manual_url": "link",
-              "model_number": "1bojdf03",
-              "name": "fridge",
-              "notes": "notes",
-              "vendor": "Home Depot",
-            },
-          ],
-          "name": "kitchen",
-          "type": "kitchen",
-        },
-        Object {
-          "materials": Array [
-            Object {
-              "brand": "Kohler",
-              "element_type": "sink",
-              "manual_url": "link",
-              "model_number": "1bojdf03",
-              "name": "white sink",
-              "notes": "notes",
-              "vendor": "Home Depot",
-            },
-            Object {
-              "brand": "",
-              "element_type": "toilet",
-              "manual_url": "link",
-              "model_number": "1bojdf03",
-              "name": "toilet",
-              "notes": "notes",
-              "vendor": "Home Depot",
-            },
-          ],
-          "name": "bathroom",
-          "type": "bathroom",
+          "description": "Small bedroom",
+          "name": "Room 3",
+          "roomMaterials": Array [],
+          "type": "Bedroom",
         },
       ]
     }
-    start_date="date"
-    state="CO"
-    zip_code="80223"
   />
 </div>
 `;
