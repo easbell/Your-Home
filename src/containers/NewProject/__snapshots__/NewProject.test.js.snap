@@ -15,11 +15,13 @@ exports[`App should match snapshot 1`] = `
     New Project
   </Button>
   <Form(_temp)
+    addName={[Function]}
     addRoom={[Function]}
     current={0}
     name=""
     next={[Function]}
     onCancel={[Function]}
+    onCreate={[Function]}
     onSubmit={[Function]}
     prev={[Function]}
     rooms={Array []}

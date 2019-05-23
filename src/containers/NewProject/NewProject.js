@@ -6,7 +6,7 @@ const Step = Steps.Step;
 const ProjectForm = Form.create({ name: 'form_in_modal' })(
   class extends React.Component {
 
-    renderSteps = (getFieldDecorator, current, next, prev, rooms, addRoom, onCreate, name) => {
+    renderSteps = (getFieldDecorator, current, next, prev, rooms, addRoom, onCreate, name, addName) => {
 
       const onClick = function ({ key }) {
         message.info(`Added a ${key}`);
@@ -51,7 +51,7 @@ const ProjectForm = Form.create({ name: 'form_in_modal' })(
                       <Form.Item label="Name">
                         {getFieldDecorator('name', {
                           rules: [{ required: true, message: 'Please input the name of the project!' }],
-                        })(<Input />)}
+                        })(<Input onChange={addName}/>)}
                       </Form.Item>
                       <Form.Item label="Description">
                         {getFieldDecorator('description')(<Input type="textarea" />)}
@@ -109,7 +109,7 @@ const ProjectForm = Form.create({ name: 'form_in_modal' })(
     }
 
     render() {
-      const { visible, onCancel, onCreate, form, current, next, prev, rooms, addRoom, onSubmit, name } = this.props;
+      const { visible, onCancel, onCreate, form, current, next, prev, rooms, addRoom, onSubmit, name, addName } = this.props;
       const { getFieldDecorator } = form;
       return (
         <Modal
@@ -119,7 +119,7 @@ const ProjectForm = Form.create({ name: 'form_in_modal' })(
           onCancel={onCancel}
           onOk={onSubmit}
         >
-        {this.renderSteps(getFieldDecorator, current, next, prev, rooms, addRoom, onCreate, name)}
+        {this.renderSteps(getFieldDecorator, current, next, prev, rooms, addRoom, onCreate, name, addName)}
         </Modal>
       );
     }
@@ -133,6 +133,20 @@ class NewProject extends React.Component {
     rooms: [],
     name: ''
   };
+
+  next = () => {
+    if(this.state.current === 0) {
+      this.handleCreate()
+    } else {
+      const current = this.state.current + 1;
+      this.setState({ current });
+    }
+  }
+
+  addName = (e) => {
+    console.log('working')
+    this.setState({name: e.target.value})
+  }
 
   nextField = () => {
     const current = this.state.current + 1;
@@ -181,6 +195,7 @@ class NewProject extends React.Component {
           addRoom={this.addRoom}
           onSubmit={this.submit}
           name={this.state.name}
+          addName={this.addName}
         />
       </div>
     );
