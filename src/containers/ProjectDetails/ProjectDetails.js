@@ -10,9 +10,10 @@ class ProjectDetails extends React.Component {
       <div>
         <div className='project-details'>
           <h2>{name}</h2>
-          <p>{address}, {city}, {state}, {zip_code}</p>
+          {/* <p>{address}, {city}, {state}, {zip_code}</p> */}
+          <p>{address}</p>
           <p>{description}</p>
-          <p><span>{start_date}</span> to <span>{end_date}</span></p>
+          {/* <p><span>{start_date}</span> to <span>{end_date}</span></p> */}
         </div>
         <RoomsContainer rooms={rooms}/>
       </div>

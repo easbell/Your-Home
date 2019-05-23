@@ -9,7 +9,7 @@ import mockProjects from '../../mockProject';
 class App extends Component {
 
   renderProject = ({ match }) => {
-    const project = mockProjects.data.find(project => project.id === match.params.id)
+    const project = mockProjects.data.projects.find(project => (project.id === parseInt(match.params.id)))
     return <ProjectDetails project={project} />
   }
 
@@ -26,7 +26,7 @@ class App extends Component {
         <div>
           <Switch>
             <Route exact path='/'
-              render={() => <ProjectsContainer projects={mockProjects.data} />}
+              render={() => <ProjectsContainer projects={mockProjects.data.projects} />}
             />
             <Route exact path='/projects/:id'
               render={this.renderProject}

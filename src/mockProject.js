@@ -1,132 +1,104 @@
 const mockProjects = {
-  data: [
-    {
-      "id": "1",
-      "name": "My Project",
-      "description": "description",
-      "address": "2285 S Bannock",
-      "city": "Denver",
-      "state": "CO",
-      "zip_code": "80223",
-      "start_date": "date",
-      "end_date": "date",
-      "rooms": [
-        {
-          "name": "kitchen",
-          "type": "kitchen",
-          "description": "full kitchen",
-          "materials": [
-            {
-              "element_type": "sink",
-              "name": "white sink",
-              "model_number": "1bojdf03",
-              "brand": "Kohler",
-              "vendor": "Home Depot",
-              "manual_url": "link",
-              "notes": "notes"
-            },
-            {
-              "element_type": "fridge",
-              "name": "fridge",
-              "model_number": "1bojdf03",
-              "brand": "Frigidaire",
-              "vendor": "Home Depot",
-              "manual_url": "link",
-              "notes": "notes"
-            }
-          ]
-        },
-        {
-          "name": "bathroom",
-          "type": "bathroom",
-          "description": "upstairs full bathroom",
-          "materials": [
-            {
-              "element_type": "sink",
-              "name": "white sink",
-              "model_number": "1bojdf03",
-              "brand": "Kohler",
-              "vendor": "Home Depot",
-              "manual_url": "link",
-              "notes": "notes"
-            },
-            {
-              "element_type": "toilet",
-              "name": "toilet",
-              "model_number": "1bojdf03",
-              "brand": "",
-              "vendor": "Home Depot",
-              "manual_url": "link",
-              "notes": "notes"
-            }
-          ]
-        }
+  "data": {
+      "projects": [
+          {
+              "id": 1,
+              "name": "House 1",
+              "description": "Big, white house",
+              "address": "123 Fake St.",
+              "rooms": [
+                  {
+                      "name": "Living Room 1",
+                      "type": "Living Room",
+                      "description": "Northeast living room",
+                      "roomMaterials": [
+                          {
+                              "id": 1,
+                              "element_type": "Flooring",
+                              "material": {
+                                  "id": 1,
+                                  "name": "Material 1",
+                                  "model_number": "abc1",
+                                  "brand": "Kenmoore",
+                                  "vendor": "HD",
+                                  "manual_url": null,
+                                  "notes": null,
+                                  "quantity": null,
+                                  "unit_price": null
+                              }
+                          },
+                          {
+                              "id": 2,
+                              "element_type": "Flooring",
+                              "material": {
+                                  "id": 2,
+                                  "name": "Material 2",
+                                  "model_number": "abc2",
+                                  "brand": "Kenmoore",
+                                  "vendor": "HD",
+                                  "manual_url": null,
+                                  "notes": null,
+                                  "quantity": null,
+                                  "unit_price": null
+                              }
+                          },
+                          {
+                            "id": 3,
+                            "element_type": "Fixtures",
+                            "material": {
+                                "id": 3,
+                                "name": "Material A",
+                                "model_number": "abc1",
+                                "brand": "GE",
+                                "vendor": "HD",
+                                "manual_url": null,
+                                "notes": null,
+                                "quantity": null,
+                                "unit_price": null
+                            }
+                        }
+                      ]
+                  },
+                  {
+                      "name": "Room 2",
+                      "type": "Kitchen",
+                      "description": "Big Kitchen",
+                      "roomMaterials": [
+                          {
+                              "id": 3,
+                              "element_type": "Shower",
+                              "material": {
+                                  "id": 1,
+                                  "name": "Material 1",
+                                  "model_number": "abc1",
+                                  "brand": "Kenmoore",
+                                  "vendor": "HD",
+                                  "manual_url": null,
+                                  "notes": null,
+                                  "quantity": null,
+                                  "unit_price": null
+                              }
+                          }
+                      ]
+                  }
+              ]
+          },
+          {
+              "id": 2,
+              "name": "House 2",
+              "description": "Small with picket fence",
+              "address": "456 Random Lane",
+              "rooms": [
+                  {
+                      "name": "Room 3",
+                      "type": "Bedroom",
+                      "description": "Small bedroom",
+                      "roomMaterials": []
+                  }
+              ]
+          }
       ]
-    },
-    {
-      "id": "2",
-      "name": "My Project",
-      "description": "description",
-      "address": "2285 S Bannock",
-      "city": "Denver",
-      "state": "CO",
-      "zip_code": "80223",
-      "start_date": "date",
-      "end_date": "date",
-      "rooms": [
-        {
-          "name": "kitchen",
-          "type": "kitchen",
-          "description": "full kitchen",
-          "materials": [
-            {
-              "element_type": "sink",
-              "name": "white sink",
-              "model_number": "1bojdf03",
-              "brand": "Kohler",
-              "vendor": "Home Depot",
-              "manual_url": "link",
-              "notes": "notes"
-            },
-            {
-              "element_type": "fridge",
-              "name": "fridge",
-              "model_number": "1bojdf03",
-              "brand": "Frigidaire",
-              "vendor": "Home Depot",
-              "manual_url": "link",
-              "notes": "notes"
-            }
-          ]
-        },
-        {
-          "name": "bathroom",
-          "type": "bathroom",
-          "description": "upstairs full bathroom",
-          "materials": [
-            {
-              "element_type": "sink",
-              "name": "white sink",
-              "model_number": "1bojdf03",
-              "brand": "Kohler",
-              "vendor": "Home Depot",
-              "manual_url": "link",
-              "notes": "notes"
-            },
-            {
-              "element_type": "toilet",
-              "name": "toilet",
-              "model_number": "1bojdf03",
-              "brand": "",
-              "vendor": "Home Depot",
-              "manual_url": "link",
-              "notes": "notes"
-            }
-          ]
-        }
-      ]
-    }
-  ]
+  }
 }
 
 export default mockProjects;

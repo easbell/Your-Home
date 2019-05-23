@@ -8,32 +8,40 @@ function callback(key) {
 }
 
 class RoomItems extends React.Component {
-  state = { expanded: false};
+  state = { expanded: false };
 
   renderMaterialTypes = () => {
-    return this.props.materials.map(material => {
-      return
+    let allCategories = []
+    this.props.materials.forEach(material => {
+      if (!allCategories.includes(material.element_type)) {
+        allCategories.push(material.element_type)
+      }
+    })
+
+    return allCategories.map((category, i) => {
+      return(
+        <Panel header={category} key={i}>
+          {this.renderMaterials(category)}
+        </Panel>
+      )
     })
   }
 
-  renderMaterials = () => {
-
+  renderMaterials = (type) => {
+    return this.props.materials.map((material, i) => {
+      if (material.element_type === type) {
+        const { brand, manual_url, model_number, name, notes, quantity, unit_price, vendor } = material.material
+        return(
+          <p key={i}>{name}, {brand} <button>edit</button></p>
+        )
+      }
+    })
   }
 
   render() {
-    console.log(this.props)
     return (
       <Collapse onChange={callback}>
-        <Panel header="Fixtures" key="1">
-          <p>X2 Doorknobs <button>edit</button></p>
-          <p>X6 hinges</p>
-        </Panel>
-        <Panel header="Flooring" key="2">
-          <p>100 sq ft tile</p>
-        </Panel>
-        <Panel header="Walls" key="3">
-          <p>2 gallons grey paint</p>
-        </Panel>
+        {this.renderMaterialTypes()}
       </Collapse>
     );
   }

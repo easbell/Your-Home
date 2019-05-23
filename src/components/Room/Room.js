@@ -18,8 +18,7 @@ class Room extends React.Component {
   };
 
   render() {
-    const { name, type, description, materials } = this.props
-    // console.log(materials)
+    const { name, type, description, roomMaterials } = this.props
     return (
       <div className='room'>
         <List
@@ -47,7 +46,7 @@ class Room extends React.Component {
           visible={this.state.visible}
         >
           <RoomItems type={type}
-                     materials={materials}
+                     materials={roomMaterials}
           />
         </Drawer>
       </div>
