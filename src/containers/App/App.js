@@ -1,17 +1,16 @@
 import React, { Component } from 'react';
 import NewProject from '../NewProject/NewProject';
 import SideDrawer from '../SideDrawer/SideDrawer';
-import Room from '../Room/Room';
 import ProjectsContainer from '../../components/ProjectsContainer/ProjectsContainer';
 import { Link, Switch, Route } from 'react-router-dom';
-import Project from '../../components/Project/Project';
+import ProjectDetails from '../ProjectDetails/ProjectDetails';
 import mockProjects from '../../mockProject';
 
 class App extends Component {
 
   renderProject = ({ match }) => {
-    const project = mockProjects.data.find(project => parseInt(project.id) === match.params.id)
-    return <Project project={project} />
+    const project = mockProjects.data.projects.find(project => (project.id === parseInt(match.params.id)))
+    return <ProjectDetails project={project} />
   }
 
   render() {
@@ -27,7 +26,7 @@ class App extends Component {
         <div>
           <Switch>
             <Route exact path='/'
-              render={() => <ProjectsContainer />}
+              render={() => <ProjectsContainer projects={mockProjects.data.projects} />}
             />
             <Route exact path='/projects/:id'
               render={this.renderProject}

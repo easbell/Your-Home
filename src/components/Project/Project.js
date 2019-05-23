@@ -2,7 +2,8 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import homeIcon from '../../assets/home.png';
 
-const Project = ({name, address, id}) => {
+const Project = (props) => {
+  const { id, name, address } = props
   return (
     <Link to={`/projects/${id}`}>
       <div className='project'>

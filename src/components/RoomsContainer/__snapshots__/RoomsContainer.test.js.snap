@@ -1,0 +1,58 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`RoomsContainer should match snapshot 1`] = `
+<div
+  className="rooms"
+>
+  <Room
+    description="Northeast living room"
+    key="0"
+    name="Living Room 1"
+    roomMaterials={
+      Array [
+        Object {
+          "element_type": "Flooring",
+          "id": 1,
+          "material": Object {
+            "brand": "Kenmoore",
+            "id": 1,
+            "manual_url": null,
+            "model_number": "abc1",
+            "name": "Material 1",
+            "notes": null,
+            "quantity": null,
+            "unit_price": null,
+            "vendor": "HD",
+          },
+        },
+      ]
+    }
+    type="Living Room"
+  />
+  <Room
+    description="Big Kitchen"
+    key="1"
+    name="Room 2"
+    roomMaterials={
+      Array [
+        Object {
+          "element_type": "Shower",
+          "id": 3,
+          "material": Object {
+            "brand": "Kenmoore",
+            "id": 1,
+            "manual_url": null,
+            "model_number": "abc1",
+            "name": "Material 1",
+            "notes": null,
+            "quantity": null,
+            "unit_price": null,
+            "vendor": "HD",
+          },
+        },
+      ]
+    }
+    type="Kitchen"
+  />
+</div>
+`;

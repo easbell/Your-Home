@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
-import mockProjects from '../../mockProject';
 import Project from '../Project/Project';
 
 export class ProjectsContainer extends Component {
+  
   renderProjects = () => {
-    return mockProjects.data.map((project, i) => {
+    return this.props.projects.map((project, i) => {
       return <Project key={i} {...project}/>
     });
   }
