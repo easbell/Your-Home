@@ -8,7 +8,7 @@ class ProjectDetails extends React.Component {
     
     return (
       <div>
-        <div className='project-details'>
+        <div className='project-page'>
           <h2>{name}</h2>
           <p>{address}</p>
           <p>{description}</p>

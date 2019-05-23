@@ -7,12 +7,29 @@ exports[`Project should match snapshot 1`] = `
   <div
     className="project"
   >
-    <img
-      alt="home-icon"
-      className="home"
-      src="home.png"
-    />
-    <h2 />
+    <div
+      className="project-head"
+    >
+      <img
+        alt="home-icon"
+        className="home"
+        src="home.png"
+      />
+      <h2 />
+      <i
+        class="fas fa-trash-alt"
+      />
+    </div>
+    <div
+      className="project-description"
+    >
+      <p />
+      <p />
+      <p>
+        2
+         Rooms
+      </p>
+    </div>
   </div>
 </Link>
 `;

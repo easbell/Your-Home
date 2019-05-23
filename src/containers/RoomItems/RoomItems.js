@@ -32,16 +32,25 @@ class RoomItems extends React.Component {
     return materials.map((material, i) => {
       const { brand, manual_url, model_number, name, notes, quantity, unit_price, vendor } = material.material
         return(
-          <p key={i}>{name}, {brand} <button>edit</button></p>
+          <div key={i} className='material'>
+            <p>{name}, {brand}</p>
+            <div className='material-control'>
+              <button className='edit-material-btn'><i class="fas fa-pen"></i></button>
+              <button className='delete-material-btn'><i class="fas fa-trash-alt"></i></button>
+            </div>
+          </div>
         )
     })
   }
 
   render() {
     return (
-      <Collapse onChange={callback}>
-        {this.renderMaterialTypes()}
-      </Collapse>
+      <div>
+        <Collapse onChange={callback}>
+          {this.renderMaterialTypes()}
+        </Collapse>
+        <button className='add-material-btn'>Add New Material</button>
+      </div>
     );
   }
 }

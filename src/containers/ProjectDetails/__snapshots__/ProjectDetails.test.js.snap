@@ -3,7 +3,7 @@
 exports[`ProjectDetails should match snapshot 1`] = `
 <div>
   <div
-    className="project-details"
+    className="project-page"
   >
     <h2>
       House 1
@@ -14,6 +14,18 @@ exports[`ProjectDetails should match snapshot 1`] = `
     <p>
       Big, white house
     </p>
+    <button
+      className="edit-project-btn"
+    >
+      <i
+        class="fas fa-pen"
+      />
+    </button>
+    <button
+      className="add-room-btn"
+    >
+      Add New Room
+    </button>
   </div>
   <RoomsContainer
     rooms={
