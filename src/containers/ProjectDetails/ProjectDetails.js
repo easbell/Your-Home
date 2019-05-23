@@ -2,18 +2,19 @@ import React from 'react';
 import RoomsContainer from '../../components/RoomsContainer/RoomsContainer'
 
 class ProjectDetails extends React.Component {
-  constructor(props) {
-    super(props);
-  }
 
   render() {
+    const { name, address, city, description, end_date, rooms, start_date, state, zip_code } = this.props.project
+    
     return (
       <div>
         <div className='project-details'>
-          <h2>Project Name</h2>
-          <p>Details gathered from props</p>
+          <h2>{name}</h2>
+          <p>{address}, {city}, {state}, {zip_code}</p>
+          <p>{description}</p>
+          <p><span>{start_date}</span> to <span>{end_date}</span></p>
         </div>
-        <RoomsContainer />
+        <RoomsContainer rooms={rooms}/>
       </div>
     )
   }

@@ -19,7 +19,7 @@ class Room extends React.Component {
 
   render() {
     return (
-      <div>
+      <div className='room'>
         <List
           dataSource={[
             // This should be made dynamic and come from props
