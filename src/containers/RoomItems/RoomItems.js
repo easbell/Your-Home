@@ -28,13 +28,12 @@ class RoomItems extends React.Component {
   }
 
   renderMaterials = (type) => {
-    return this.props.materials.map((material, i) => {
-      if (material.element_type === type) {
-        const { brand, manual_url, model_number, name, notes, quantity, unit_price, vendor } = material.material
+    let materials = this.props.materials.filter(material => (material.element_type === type))
+    return materials.map((material, i) => {
+      const { brand, manual_url, model_number, name, notes, quantity, unit_price, vendor } = material.material
         return(
           <p key={i}>{name}, {brand} <button>edit</button></p>
         )
-      }
     })
   }
 

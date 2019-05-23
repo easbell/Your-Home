@@ -66,11 +66,8 @@ describe('RoomItems', () => {
     expect(result.length).toBe(2)
   });
 
-  it('should render category panels for each category collected when renderMaterialTypes is called', () => {
-
-  });
-
   it('should render materials when renderMaterials is called', () => {
-
+    let result = wrapper.instance().renderMaterials('Flooring')
+    expect(result.length).toBe(2)
   });
 });
