@@ -15,16 +15,75 @@ exports[`SideDrawer should match snapshot 1`] = `
     placement="left"
     title="Your Projects"
     visible={false}
+    width={500}
   >
-    <p>
+    <Button
+      block={true}
+      ghost={false}
+      htmlType="button"
+      loading={false}
+      type="default"
+    >
       Project A
-    </p>
-    <p>
+    </Button>
+    <Button
+      block={true}
+      ghost={false}
+      htmlType="button"
+      loading={false}
+      type="default"
+    >
       Project B
-    </p>
-    <p>
+    </Button>
+    <Button
+      block={true}
+      ghost={false}
+      htmlType="button"
+      loading={false}
+      type="default"
+    >
       Project C
-    </p>
+    </Button>
+    <div
+      style={
+        Object {
+          "background": "#fff",
+          "borderRadius": "0 0 4px 4px",
+          "borderTop": "1px solid #e8e8e8",
+          "bottom": 0,
+          "left": 0,
+          "padding": "10px 16px",
+          "position": "absolute",
+          "textAlign": "right",
+          "width": "100%",
+        }
+      }
+    >
+      <Button
+        block={false}
+        ghost={false}
+        htmlType="button"
+        loading={false}
+        onClick={[Function]}
+        style={
+          Object {
+            "marginRight": 8,
+          }
+        }
+      >
+        Cancel
+      </Button>
+      <Button
+        block={false}
+        ghost={false}
+        htmlType="button"
+        loading={false}
+        onClick={[Function]}
+        type="primary"
+      >
+        Submit
+      </Button>
+    </div>
   </withConfigConsumer(Drawer)>
 </div>
 `;
