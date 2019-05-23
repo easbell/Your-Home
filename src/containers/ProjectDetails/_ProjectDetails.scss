@@ -1,3 +1,26 @@
 .project-details {
+  position: relative;
+  margin-bottom: 40px;
   text-align: center;
+
+  h2 {
+    font-size: 200%;
+  }
+
+  .edit-project-btn {
+    position: absolute;
+    left: 88%;
+    top: 10%;
+  }
+
+  p {
+    margin-bottom: 8px;
+  }
+
+  .add-room-btn {
+    position: absolute;
+    bottom: 10%;
+    left: 10%;
+  }
+
 }

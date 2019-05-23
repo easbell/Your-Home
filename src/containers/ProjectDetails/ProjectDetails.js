@@ -12,6 +12,8 @@ class ProjectDetails extends React.Component {
           <h2>{name}</h2>
           <p>{address}</p>
           <p>{description}</p>
+          <button className='edit-project-btn'><i class="fas fa-pen"></i></button>
+          <button className='add-room-btn'>Add New Room</button>
         </div>
         <RoomsContainer rooms={rooms}/>
       </div>
