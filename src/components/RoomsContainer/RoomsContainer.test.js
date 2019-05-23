@@ -59,4 +59,9 @@ describe('RoomsContainer', () => {
     expect(wrapper).toMatchSnapshot();
   });
 
+  it('should render the correct amount of rooms when renderRooms is called', () => {
+    let result = wrapper.instance().renderRooms()
+    expect(result.length).toBe(2)
+  });
+
 });

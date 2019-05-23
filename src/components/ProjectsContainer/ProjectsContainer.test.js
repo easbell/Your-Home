@@ -15,4 +15,8 @@ describe('ProjectsContainer', () => {
     expect(wrapper).toMatchSnapshot();
   });
 
+  it('should render the correct amount of projects when renderProjects is called', () => {
+    let result = wrapper.instance().renderProjects()
+    expect(result.length).toBe(2)
+  });
 });
