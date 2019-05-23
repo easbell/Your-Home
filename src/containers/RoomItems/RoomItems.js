@@ -10,13 +10,18 @@ function callback(key) {
 class RoomItems extends React.Component {
   state = { expanded: false};
 
-  // method for Panel creation
-  // maybe if we append categories where a user has added no materials, it appends
-  // <Panel header="Walls" key="3" disabled></Panel>
+  renderMaterialTypes = () => {
+    return this.props.materials.map(material => {
+      return
+    })
+  }
 
-  // method for <p> with text creation, one for each material of a category
+  renderMaterials = () => {
+
+  }
 
   render() {
+    console.log(this.props)
     return (
       <Collapse onChange={callback}>
         <Panel header="Fixtures" key="1">

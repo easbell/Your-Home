@@ -18,15 +18,16 @@ class Room extends React.Component {
   };
 
   render() {
+    const { name, type, description, materials } = this.props
+    // console.log(materials)
     return (
       <div className='room'>
         <List
           dataSource={[
-            // This should be made dynamic and come from props
             {
-              name: 'Bedroom',
-              description: 'Upstairs bedroom',
-            },
+              name: name,
+              description: description,
+            }
           ]}
           bordered
           renderItem={item => (
@@ -45,7 +46,9 @@ class Room extends React.Component {
           onClose={this.onClose}
           visible={this.state.visible}
         >
-          <RoomItems />
+          <RoomItems type={type}
+                     materials={materials}
+          />
         </Drawer>
       </div>
     );

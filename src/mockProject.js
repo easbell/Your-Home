@@ -14,6 +14,7 @@ const mockProjects = {
         {
           "name": "kitchen",
           "type": "kitchen",
+          "description": "full kitchen",
           "materials": [
             {
               "element_type": "sink",
@@ -38,6 +39,7 @@ const mockProjects = {
         {
           "name": "bathroom",
           "type": "bathroom",
+          "description": "upstairs full bathroom",
           "materials": [
             {
               "element_type": "sink",
@@ -75,6 +77,7 @@ const mockProjects = {
         {
           "name": "kitchen",
           "type": "kitchen",
+          "description": "full kitchen",
           "materials": [
             {
               "element_type": "sink",
@@ -99,6 +102,7 @@ const mockProjects = {
         {
           "name": "bathroom",
           "type": "bathroom",
+          "description": "upstairs full bathroom",
           "materials": [
             {
               "element_type": "sink",
