@@ -40,8 +40,8 @@ class Room extends React.Component {
           renderItem={item => (
             <List.Item key={item.id} actions={[
               <a onClick={this.showDrawer}>View Materials</a>,
-              <a onClick={this.editRoom}><i class="fas fa-pen"></i></a>,
-              <a onClick={this.deleteRoom}><i class="fas fa-trash-alt"></i></a>
+              <a onClick={this.editRoom}><i className="fas fa-pen"></i></a>,
+              <a onClick={this.deleteRoom}><i className="fas fa-trash-alt"></i></a>
             ]}>
               <List.Item.Meta
                 title={item.name}

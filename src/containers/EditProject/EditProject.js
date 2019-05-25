@@ -74,7 +74,7 @@ class EditProject extends React.Component {
     return (
       <div>
         <Button type="primary" onClick={this.showModal}>
-          <i class="fas fa-pen"></i>
+          <i className="fas fa-pen"></i>
         </Button>
         <CollectionCreateForm
           wrappedComponentRef={this.saveFormRef}

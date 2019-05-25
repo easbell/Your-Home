@@ -1,5 +1,6 @@
 import React from 'react';
 import { Collapse } from 'antd';
+import NewMaterial from '../NewMaterial/NewMaterial'
 
 const Panel = Collapse.Panel;
 
@@ -35,8 +36,8 @@ class RoomItems extends React.Component {
           <div key={i} className='material'>
             <p>{name}, {brand}</p>
             <div className='material-control'>
-              <button className='edit-material-btn'><i class="fas fa-pen"></i></button>
-              <button className='delete-material-btn'><i class="fas fa-trash-alt"></i></button>
+              <button className='edit-material-btn'><i className="fas fa-pen"></i></button>
+              <button className='delete-material-btn'><i className="fas fa-trash-alt"></i></button>
             </div>
           </div>
         )
@@ -49,7 +50,7 @@ class RoomItems extends React.Component {
         <Collapse onChange={callback}>
           {this.renderMaterialTypes()}
         </Collapse>
-        <button className='add-material-btn'>Add New Material</button>
+        <div className='add-material-btn'><NewMaterial /></div>
       </div>
     );
   }
