@@ -1,5 +1,6 @@
 import React from 'react';
 import RoomsContainer from '../../components/RoomsContainer/RoomsContainer'
+import EditProject from '../EditProject/EditProject';
 
 class ProjectDetails extends React.Component {
 
@@ -12,7 +13,7 @@ class ProjectDetails extends React.Component {
           <h2>{name}</h2>
           <p>{address}</p>
           <p>{description}</p>
-          <button className='edit-project-btn'><i class="fas fa-pen"></i></button>
+          <div className='edit-project-btn'><EditProject /></div>
           <button className='add-room-btn'>Add New Room</button>
         </div>
         <RoomsContainer rooms={rooms}/>

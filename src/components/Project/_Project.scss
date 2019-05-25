@@ -12,6 +12,7 @@
 }
 
 .project-head {
+  align-items: center;
   display: flex;
   justify-content: space-between;
   height: 80px;
@@ -19,14 +20,14 @@
   .home {
     height: 50px;
     width: 50px;
-    // position: absolute;
-    // left: 15px;
-    // top: 15px;
+    position: relative;
+    bottom: 14px;
   }
   .fa-trash-alt {
     font-size: 40px;
-    margin-top: 5px;
     opacity: .1;
+    position: relative;
+    bottom: 14px;
   }
 }
 

@@ -12,3 +12,10 @@
   padding: 20px;
   box-shadow: 0 3px 5px rgba(0,0,0,.2);
 }
+
+@mixin btn {
+  border: 0;
+  &:hover {
+    cursor: pointer;
+  }
+}
