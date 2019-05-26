@@ -12,16 +12,19 @@
 }
 
 .project-head {
+  position: relative;
+  text-align: center;
   align-items: center;
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
   height: 80px;
 
   .home {
     height: 50px;
     width: 50px;
-    position: relative;
-    bottom: 14px;
+    position: absolute;
+    left: 0px;
+    bottom: 30px;
   }
   .fa-trash-alt {
     font-size: 40px;
@@ -30,4 +33,18 @@
     bottom: 14px;
   }
 }
-
+.project-description {
+  position: relative;
+  
+}
+.container {
+  position: relative;
+  height: 320px;
+  width: 300px;
+  .project-delete {
+    position: absolute;
+    z-index: 1;
+    bottom: 0px;
+    left: 88%;
+  }
+}

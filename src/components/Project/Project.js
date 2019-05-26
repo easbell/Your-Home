@@ -6,13 +6,12 @@ import DeleteConfirm from '../../components/DeleteConfirm/DeleteConfirm';
 const Project = (props) => {
   const { id, name, address, description, rooms } = props
   return (
+    <div className='container'>
     <Link to={`/projects/${id}`}>
       <div className='project'>
         <div className='project-head'>
           <img src={homeIcon} className='home' alt='home-icon'/>
           <h2>{name}</h2>
-          {/* <DeleteConfirm type="project"/> */}
-          {/* <i className="fas fa-trash-alt"></i> */}
         </div>
         <div className='project-description'>
           <p>{address}</p>
@@ -21,6 +20,10 @@ const Project = (props) => {
         </div>
       </div>
     </Link>
+    <div className='project-delete'>
+      <DeleteConfirm type="project"/>
+    </div>
+    </div>
   )
 }
 

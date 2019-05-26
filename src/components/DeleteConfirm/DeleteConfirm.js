@@ -3,6 +3,9 @@ import { Modal, Button } from 'antd';
 
 const confirm = Modal.confirm;
 
+// right now, a prop of type is being passed in
+// I'd imagine we will also want to pass in an id.
+
 class DeleteConfirm extends Component {
   showConfirm = (type) => {
     confirm({
@@ -11,9 +14,7 @@ class DeleteConfirm extends Component {
       onOk() {
         console.log('Delete complete')
         console.log('delete type', type)
-        // return new Promise((resolve, reject) => {
-        //   setTimeout(Math.random() > 0.5 ? resolve : reject, 1000);
-        // }).catch(() => console.log('Oops errors!'));
+        //perhaps a switch statement here based on type to inform what delete method to run
       },
       onCancel() {},
     });
