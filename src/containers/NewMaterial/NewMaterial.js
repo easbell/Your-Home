@@ -15,23 +15,25 @@ const CollectionCreateForm = Form.create({ name: 'form_in_modal' })(
           onOk={onCreate}
         >
           <Form layout="vertical">
-            <Form.Item label="Type">
-              {getFieldDecorator('type', {
-                rules: [{ required: true, message: 'Please input the type of room!' }],
-              })(<Input />)}
-            </Form.Item>
             <Form.Item label="Name">
               {getFieldDecorator('name', {
-                rules: [{ required: true, message: 'Please input the name of the room!' }],
+                rules: [{ required: true, message: 'Please input the name of the material!' }],
               })(<Input />)}
             </Form.Item>
-            <Form.Item label="Description">
-              {getFieldDecorator('description')(<Input type="textarea" />)}
+            <Form.Item label="Brand">
+              {getFieldDecorator('brand', {
+                rules: [{ required: true, message: 'Please input the brand of the material!' }],
+              })(<Input />)}
+            </Form.Item>
+            <Form.Item label="Model">
+              {getFieldDecorator('model', {
+                rules: [{ required: true, message: 'Please input the model number of the material!' }],
+              })(<Input />)}
+            </Form.Item>
+            <Form.Item label="Notes">
+              {getFieldDecorator('notes')(<Input type="textarea" />)}
             </Form.Item>
             <Form.Item className="collection-create-form_last-form-item">
-              {getFieldDecorator('modifier', {
-                initialValue: 'public',
-              })}
             </Form.Item>
           </Form>
         </Modal>

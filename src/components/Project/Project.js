@@ -10,7 +10,7 @@ const Project = (props) => {
         <div className='project-head'>
           <img src={homeIcon} className='home' alt='home-icon'/>
           <h2>{name}</h2>
-          <i class="fas fa-trash-alt"></i>
+          <i className="fas fa-trash-alt"></i>
         </div>
         <div className='project-description'>
           <p>{address}</p>
