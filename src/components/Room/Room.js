@@ -1,6 +1,7 @@
 import React from 'react';
 import { Drawer, List } from 'antd';
-import RoomItems from '../../containers/RoomItems/RoomItems'
+import RoomItems from '../../containers/RoomItems/RoomItems';
+import EditRoom from '../../containers/EditRoom/EditRoom';
 
 class Room extends React.Component {
   state = { visible: false };
@@ -40,7 +41,8 @@ class Room extends React.Component {
           renderItem={item => (
             <List.Item key={item.id} actions={[
               <a onClick={this.showDrawer}>View Materials</a>,
-              <a onClick={this.editRoom}><i className="fas fa-pen"></i></a>,
+              // <a onClick={this.editRoom}><i className="fas fa-pen"></i></a>,
+              <EditRoom />,
               <a onClick={this.deleteRoom}><i className="fas fa-trash-alt"></i></a>
             ]}>
               <List.Item.Meta
