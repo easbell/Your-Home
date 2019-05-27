@@ -1,0 +1,22 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`NewRoom should match snapshot 1`] = `
+<div>
+  <Button
+    block={false}
+    ghost={false}
+    htmlType="button"
+    loading={false}
+    onClick={[Function]}
+    type="primary"
+  >
+    Create New Room
+  </Button>
+  <Form(Component)
+    onCancel={[Function]}
+    onCreate={[Function]}
+    visible={false}
+    wrappedComponentRef={[Function]}
+  />
+</div>
+`;

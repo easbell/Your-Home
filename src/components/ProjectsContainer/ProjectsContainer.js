@@ -14,8 +14,8 @@ export class ProjectsContainer extends Component {
       <div className='projects'>
         {this.renderProjects()}
       </div>
-    )
+    );
   }
 }
 
-export default ProjectsContainer
+export default ProjectsContainer;

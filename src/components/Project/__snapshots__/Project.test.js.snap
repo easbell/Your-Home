@@ -1,18 +1,43 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Project should match snapshot 1`] = `
-<Link
-  to="/projects/undefined"
+<div
+  className="container"
 >
-  <div
-    className="project"
+  <Link
+    to="/projects/undefined"
   >
-    <img
-      alt="home-icon"
-      className="home"
-      src="home.png"
+    <div
+      className="project"
+    >
+      <div
+        className="project-head"
+      >
+        <img
+          alt="home-icon"
+          className="home"
+          src="home.png"
+        />
+        <h2 />
+      </div>
+      <div
+        className="project-description"
+      >
+        <p />
+        <p />
+        <p>
+          2
+           Rooms
+        </p>
+      </div>
+    </div>
+  </Link>
+  <div
+    className="project-delete"
+  >
+    <DeleteConfirm
+      type="project"
     />
-    <h2 />
   </div>
-</Link>
+</div>
 `;

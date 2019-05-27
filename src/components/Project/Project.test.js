@@ -4,8 +4,23 @@ import Project from './Project';
 
 describe('Project', () => {
   let wrapper;
+  let mockRooms;
   beforeEach(() => {
-    wrapper = shallow(<Project/>)
+    mockRooms =  [
+          {
+              "name": "Living Room 1",
+              "type": "Living Room",
+              "description": "Northeast living room",
+              "roomMaterials": [{}]
+          },
+          {
+              "name": "Room 2",
+              "type": "Kitchen",
+              "description": "Big Kitchen",
+              "roomMaterials": [{}]
+          }
+      ]
+    wrapper = shallow(<Project rooms={mockRooms}/>)
   });
 
   it('should match snapshot', () => {
