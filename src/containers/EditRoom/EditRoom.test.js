@@ -13,14 +13,20 @@ describe('EditRoom', () => {
   });
 
   it('showModal', () => {
+    wrapper.instance().showModal();
+    expect(wrapper.state('visible')).toBe(true);
+  });
+
+  it('handleCreate', () => {
+    wrapper.instance().handleCancel();
+    expect(wrapper.state('visible')).toBe(false);
+  });
+
+  it('saveFormRef', () => {
 
   });
 
   it('handleCreate', () => {
-
-  });
-
-  it('saveFormRef', () => {
 
   });
 

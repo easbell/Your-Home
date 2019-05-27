@@ -13,15 +13,18 @@ describe('MaterialDetails', () => {
   });
 
   it('showModal', () => {
- 
+    wrapper.instance().showModal();
+    expect(wrapper.state('visible')).toBe(true);
   });
 
   it('handleOK', () => {
-    
+    wrapper.instance().handleOk();
+    expect(wrapper.state('visible')).toBe(false);
   });
   
   it('handleCancel', () => {
-    
+    wrapper.instance().handleCancel();
+    expect(wrapper.state('visible')).toBe(false);
   });
 
 });
