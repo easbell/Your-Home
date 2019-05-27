@@ -4,7 +4,7 @@ import { Button, Modal, Form, Input } from 'antd';
 const CollectionCreateForm = Form.create({ name: 'form_in_modal' })(
   class extends React.Component {
     render() {
-      const { visible, onCancel, onCreate, form, editProject } = this.props;
+      const { visible, onCancel, onCreate, form, editProject, name, address, description } = this.props;
       const { getFieldDecorator } = form;
       return (
         <Modal
@@ -15,18 +15,20 @@ const CollectionCreateForm = Form.create({ name: 'form_in_modal' })(
           onOk={onCreate}
         >
           <Form layout="vertical">
+            <Form.Item label="Edit only the items that need updating" className='sub-title'>
+            </Form.Item>
             <Form.Item label="Name">
               {getFieldDecorator('name', {
                 rules: [{ required: false }],
-              })(<Input onChange={editProject} name='name' placeholder='Update here, or leave blank to keep unchanged' />)}
+              })(<Input onChange={editProject} name='name' placeholder={name} />)}
             </Form.Item>
             <Form.Item label="Address">
               {getFieldDecorator('address', {
                 rules: [{ required: false }],
-              })(<Input onChange={editProject} name='address' placeholder='Update here, or leave blank to keep unchanged' />)}
+              })(<Input onChange={editProject} name='address' placeholder={address} />)}
             </Form.Item>
             <Form.Item label="Description">
-              {getFieldDecorator('description')(<Input onChange={editProject} name='description' type="textarea" placeholder='Update here, or leave blank to keep unchanged' />)}
+              {getFieldDecorator('description')(<Input onChange={editProject} name='description' type="textarea" placeholder={description} />)}
             </Form.Item>
             <Form.Item className="collection-create-form_last-form-item">
             </Form.Item>
@@ -65,6 +67,7 @@ class EditProject extends React.Component {
   }
 
   render() {
+    const {name, address, description } = this.props;
     return (
       <div>
         <Button type="primary" onClick={this.showModal}>
@@ -75,6 +78,9 @@ class EditProject extends React.Component {
           onCancel={this.handleCancel}
           onCreate={this.handleCreate}
           editProject={this.editProject}
+          name={name}
+          address={address}
+          description={description}
         />
       </div>
     );
