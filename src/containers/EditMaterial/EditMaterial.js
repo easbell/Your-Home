@@ -1,7 +1,7 @@
 import React from 'react';
 import { Button, Modal, Form, Input } from 'antd';
 
-const CollectionCreateForm = Form.create({ name: 'form_in_modal' })(
+export const CollectionCreateForm = Form.create({ name: 'form_in_modal' })(
   class extends React.Component {
     render() {
       const { visible, onCancel, onCreate, form, editMaterial } = this.props;

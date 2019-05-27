@@ -18,10 +18,20 @@ exports[`EditMaterial should match snapshot 1`] = `
     />
   </Button>
   <Form(Component)
+    editMaterial={[Function]}
     onCancel={[Function]}
     onCreate={[Function]}
     visible={false}
-    wrappedComponentRef={[Function]}
   />
 </div>
+`;
+
+exports[`EditMaterial should match snapshot 2`] = `
+<Component
+  editMaterial={[MockFunction]}
+  form={[MockFunction]}
+  onCancel={[MockFunction]}
+  onCreate={[MockFunction]}
+  visible={[MockFunction]}
+/>
 `;
