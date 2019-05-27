@@ -187,10 +187,8 @@ class NewProject extends React.Component {
             New Project
         </Button>
         <ProjectForm
-          wrappedComponentRef={this.saveFormRef}
           visible={this.state.visible}
           onCancel={this.handleCancel}
-          // onCreate={this.handleCreate}
           current={this.state.current}
           next={this.nextField}
           prev={this.prev}

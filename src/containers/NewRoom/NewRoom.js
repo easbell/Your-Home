@@ -4,7 +4,7 @@ import { Button, Modal, Form, Input } from 'antd';
 const CollectionCreateForm = Form.create({ name: 'form_in_modal' })(
   class extends React.Component {
     render() {
-      const { visible, onCancel, onCreate, form } = this.props;
+      const { visible, onCancel, onCreate, form, newRoom } = this.props;
       const { getFieldDecorator } = form;
       return (
         <Modal
@@ -18,15 +18,15 @@ const CollectionCreateForm = Form.create({ name: 'form_in_modal' })(
             <Form.Item label="Type">
               {getFieldDecorator('type', {
                 rules: [{ required: true, message: 'Please input the type of room!' }],
-              })(<Input />)}
+              })(<Input onChange={newRoom} name='type'/>)}
             </Form.Item>
             <Form.Item label="Name">
               {getFieldDecorator('name', {
                 rules: [{ required: true, message: 'Please input the name of the room!' }],
-              })(<Input />)}
+              })(<Input onChange={newRoom} name='name'/>)}
             </Form.Item>
             <Form.Item label="Description">
-              {getFieldDecorator('description')(<Input type="textarea" />)}
+              {getFieldDecorator('description')(<Input onChange={newRoom} name='description' type="textarea" />)}
             </Form.Item>
             <Form.Item className="collection-create-form_last-form-item">
             </Form.Item>
@@ -38,10 +38,19 @@ const CollectionCreateForm = Form.create({ name: 'form_in_modal' })(
 );
 
 class NewRoom extends React.Component {
-  state = { visible: false };
+  state = { 
+    visible: false,
+    type: '',
+    name: '',
+    description: '' 
+  };
 
   showModal = () => {
     this.setState({ visible: true });
+  }
+
+  newRoom = (e) => {
+    this.setState({[e.target.name]: e.target.value});
   }
 
   handleCancel = () => {
@@ -49,20 +58,10 @@ class NewRoom extends React.Component {
   }
 
   handleCreate = () => {
-    const form = this.formRef.props.form;
-    form.validateFields((err, values) => {
-      if (err) {
-        return;
-      }
-
-      console.log('Received values of form: ', values);
-      form.resetFields();
-      this.setState({ visible: false });
-    });
-  }
-
-  saveFormRef = formRef => {
-    this.formRef = formRef;
+    const { name, type, description } = this.state;
+    const newRoom = { name, type, description };
+    console.log(newRoom);
+    this.setState({ visible: false});
   }
 
   render() {
@@ -72,10 +71,10 @@ class NewRoom extends React.Component {
           Create New Room
         </Button>
         <CollectionCreateForm
-          wrappedComponentRef={this.saveFormRef}
           visible={this.state.visible}
           onCancel={this.handleCancel}
           onCreate={this.handleCreate}
+          newRoom={this.newRoom}
         />
       </div>
     );
