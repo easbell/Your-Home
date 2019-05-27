@@ -22,7 +22,7 @@ class DeleteConfirm extends Component {
 
   render() {
     return (
-      <Button onClick={() => this.showConfirm(this.props.type)} type="link">
+      <Button onClick={() => this.showConfirm(this.props.type)} className='confirm-btn' type="link">
         <i className="fas fa-trash-alt"></i>
       </Button>
     );
