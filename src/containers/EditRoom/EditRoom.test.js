@@ -18,30 +18,22 @@ describe('EditRoom', () => {
     expect(wrapper.state('visible')).toBe(true);
   });
 
-  it('should update state visible when handleCreate is called', () => {
-    wrapper.setState({ visible: true })
+  it('should update state visible when handleCancel is called', () => {
+    wrapper.setState({ visible: true });
     wrapper.instance().handleCancel();
     expect(wrapper.state('visible')).toBe(false);
   });
 
-  it('saveFormRef', () => {
-
+  it('should updateState for correct name and value on editRoom', () => {
+    const mockedEvent = { target: {name: 'name', value: 'new name'} };
+    wrapper.instance().editRoom(mockedEvent);
+    expect(wrapper.state('name')).toBe('new name');
   });
 
-  describe('handleCreate', () => {
-    it('should validateFields', () => {
-
-    });
-
-    it('should reset fields', () => {
-
-    });
-
-    it.skip('should should update state visible', () => {
-      wrapper.setState({ visible: true })
-      wrapper.instance().handleCreate();
-      expect(wrapper.state('visible')).toBe(false);
-    });
+  it('should should update state visible', () => {
+    wrapper.setState({ visible: true })
+    wrapper.instance().handleCreate();
+    expect(wrapper.state('visible')).toBe(false);
   });
 
 });
