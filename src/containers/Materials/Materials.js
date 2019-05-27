@@ -27,9 +27,9 @@ class Materials extends React.Component {
   renderMaterials = (type) => {
     let materials = this.props.materials.filter(material => (material.element_type === type));
     return materials.map((material, i) => {
-        return(
-          <Material {...material} key={i} />
-        )
+      return(
+        <Material {...material} key={i} />
+      )
     });
   }
 

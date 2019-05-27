@@ -5,21 +5,15 @@ class MaterialDetails extends React.Component {
   state = { visible: false };
 
   showModal = () => {
-    this.setState({
-      visible: true,
-    });
+    this.setState({ visible: true });
   }
 
   handleOk = () => {
-    this.setState({
-      visible: false,
-    });
+    this.setState({ visible: false });
   }
 
   handleCancel = () => {
-    this.setState({
-      visible: false,
-    });
+    this.setState({ visible: false });
   }
 
   renderDetails = () => {

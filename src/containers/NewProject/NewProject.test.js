@@ -1,7 +1,6 @@
 import React from 'react';
 import { shallow } from 'enzyme';
 import NewProject from './NewProject';
-// import ProjectForm from './NewProject';
 
 describe('App', () => {
   let wrapper;

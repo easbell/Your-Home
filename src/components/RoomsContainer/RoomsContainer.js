@@ -5,7 +5,7 @@ export class RoomsContainer extends Component {
   
   renderRooms = () => {
     return this.props.rooms.map((room, i) => {
-      return <Room key={i} {...room}/>
+      return <Room key={i} {...room} />
     });
   }
 

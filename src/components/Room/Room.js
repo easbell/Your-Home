@@ -8,15 +8,11 @@ class Room extends React.Component {
   state = { visible: false };
 
   showDrawer = () => {
-    this.setState({
-      visible: true,
-    });
+    this.setState({ visible: true });
   }
 
   onClose = () => {
-    this.setState({
-      visible: false,
-    });
+    this.setState({ visible: false });
   }
 
   render() {
@@ -35,7 +31,7 @@ class Room extends React.Component {
             <List.Item key={item.id} actions={[
               <Button type='link' onClick={this.showDrawer}>View Materials</Button>,
               <EditRoom />,
-              <DeleteConfirm type="room"/>
+              <DeleteConfirm type="room" />
             ]}>
               <List.Item.Meta
                 title={item.name}
