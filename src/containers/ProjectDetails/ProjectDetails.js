@@ -6,7 +6,7 @@ import EditProject from '../EditProject/EditProject';
 class ProjectDetails extends React.Component {
 
   render() {
-    const { name, address, city, description, end_date, rooms, start_date, state, zip_code } = this.props.project
+    const { name, address, description, rooms } = this.props.project;
     
     return (
       <div>
@@ -23,7 +23,7 @@ class ProjectDetails extends React.Component {
         </div>
         <RoomsContainer rooms={rooms}/>
       </div>
-    )
+    );
   }
 }
 

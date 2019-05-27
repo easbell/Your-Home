@@ -34,21 +34,19 @@ const CollectionCreateForm = Form.create({ name: 'form_in_modal' })(
         </Modal>
       );
     }
-  },
+  }
 );
 
 class EditRoom extends React.Component {
-  state = {
-    visible: false,
-  };
+  state = { visible: false };
 
   showModal = () => {
     this.setState({ visible: true });
-  };
+  }
 
   handleCancel = () => {
     this.setState({ visible: false });
-  };
+  }
 
   handleCreate = () => {
     const form = this.formRef.props.form;
@@ -61,17 +59,17 @@ class EditRoom extends React.Component {
       form.resetFields();
       this.setState({ visible: false });
     });
-  };
+  }
 
   saveFormRef = formRef => {
     this.formRef = formRef;
-  };
+  }
 
   render() {
     return (
       <div className="edit-room-btn">
         <Button onClick={this.showModal} size="small" type="link">
-        <i className="fas fa-pen"></i>
+          <i className="fas fa-pen"></i>
         </Button>
         <CollectionCreateForm
           wrappedComponentRef={this.saveFormRef}

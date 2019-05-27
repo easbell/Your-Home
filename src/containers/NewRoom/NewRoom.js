@@ -34,21 +34,19 @@ const CollectionCreateForm = Form.create({ name: 'form_in_modal' })(
         </Modal>
       );
     }
-  },
+  }
 );
 
 class NewRoom extends React.Component {
-  state = {
-    visible: false,
-  };
+  state = { visible: false };
 
   showModal = () => {
     this.setState({ visible: true });
-  };
+  }
 
   handleCancel = () => {
     this.setState({ visible: false });
-  };
+  }
 
   handleCreate = () => {
     const form = this.formRef.props.form;
@@ -61,11 +59,11 @@ class NewRoom extends React.Component {
       form.resetFields();
       this.setState({ visible: false });
     });
-  };
+  }
 
   saveFormRef = formRef => {
     this.formRef = formRef;
-  };
+  }
 
   render() {
     return (

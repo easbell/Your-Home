@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import Room from '../Room/Room'
+import Room from '../Room/Room';
 
 export class RoomsContainer extends Component {
   
@@ -14,7 +14,7 @@ export class RoomsContainer extends Component {
       <div className='rooms'>
         {this.renderRooms()}
       </div>
-    )
+    );
   }
 }
 

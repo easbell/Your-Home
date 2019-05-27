@@ -1,13 +1,13 @@
 import React, { Component } from 'react';
 import { Modal, Button } from 'antd';
 
-const confirm = Modal.confirm;
-
 // right now, a prop of type is being passed in
 // I'd imagine we will also want to pass in an id.
 
 class DeleteConfirm extends Component {
+  
   showConfirm = (type) => {
+    const confirm = Modal.confirm;
     confirm({
       title: 'Are you sure you want to delete this item and all contents within?',
       content: 'Click OK to confirm deletion.',
@@ -21,9 +21,11 @@ class DeleteConfirm extends Component {
   }
 
   render() {
-    return(
-      <Button onClick={() => this.showConfirm(this.props.type)} type="link"><i className="fas fa-trash-alt"></i></Button>
-    )
+    return (
+      <Button onClick={() => this.showConfirm(this.props.type)} type="link">
+        <i className="fas fa-trash-alt"></i>
+      </Button>
+    );
   }
 }
 

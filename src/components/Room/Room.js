@@ -1,5 +1,5 @@
 import React from 'react';
-import { Drawer, List } from 'antd';
+import { Drawer, List, Button } from 'antd';
 import Materials from '../../containers/Materials/Materials';
 import EditRoom from '../../containers/EditRoom/EditRoom';
 import DeleteConfirm from '../DeleteConfirm/DeleteConfirm';
@@ -11,16 +11,16 @@ class Room extends React.Component {
     this.setState({
       visible: true,
     });
-  };
+  }
 
   onClose = () => {
     this.setState({
       visible: false,
     });
-  };
+  }
 
   render() {
-    const { name, type, description, roomMaterials } = this.props
+    const { name, type, description, roomMaterials } = this.props;
     return (
       <div className='room'>
         <List
@@ -33,7 +33,7 @@ class Room extends React.Component {
           bordered
           renderItem={item => (
             <List.Item key={item.id} actions={[
-              <a onClick={this.showDrawer}>View Materials</a>,
+              <Button type='link' onClick={this.showDrawer}>View Materials</Button>,
               <EditRoom />,
               <DeleteConfirm type="room"/>
             ]}>

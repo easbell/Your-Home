@@ -9,7 +9,7 @@ import mockProjects from '../../mockProject';
 class App extends Component {
 
   renderProject = ({ match }) => {
-    const project = mockProjects.data.projects.find(project => (project.id === parseInt(match.params.id)))
+    const project = mockProjects.data.projects.find(project => (project.id === parseInt(match.params.id)));
     return <ProjectDetails project={project} />
   }
 

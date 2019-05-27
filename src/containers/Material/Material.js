@@ -7,7 +7,7 @@ class Material extends Component {
 
   render() {
     const { brand, name } = this.props.material
-    return(
+    return (
       <div key={name} className='material'>
         <p>{name}, {brand}</p>
         <div className='material-control'>
@@ -16,7 +16,7 @@ class Material extends Component {
           <DeleteConfirm type="material"/>
         </div>
       </div>
-    )
+    );
   }
 }
 
