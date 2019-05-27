@@ -6,11 +6,11 @@ const Step = Steps.Step;
 const ProjectForm = Form.create({ name: 'form_in_modal' })(
   class extends React.Component {
 
-    renderSteps = (getFieldDecorator, current, next, prev, rooms, addRoom, onCreate, name, addName) => {
+    renderSteps = (getFieldDecorator, current, next, prev, rooms, addRoom, onCreate, name, addName, deleteItem) => {
 
       const onClick = function ({ key }) {
         message.info(`Added a ${key}`);
-        addRoom(key)
+        addRoom(key, Date.now())
       };
 
       const menu = (
@@ -64,7 +64,13 @@ const ProjectForm = Form.create({ name: 'form_in_modal' })(
                     <Card title="Card title" className="card">
                       {
                         rooms &&
-                        rooms.map(room => <p key={room}>{room}</p>)
+                        rooms.map(room => <div className="room-item">
+                                              <p>{room.name}</p>
+                                              <button name={room.id} 
+                                                      onClick={deleteItem}>
+                                                      x
+                                               </button>
+                                          </div>)
                       }
                     </Card>
                     <Dropdown overlay={menu}>
@@ -109,7 +115,7 @@ const ProjectForm = Form.create({ name: 'form_in_modal' })(
     }
 
     render() {
-      const { visible, onCancel, onCreate, form, current, next, prev, rooms, addRoom, onSubmit, name, addName } = this.props;
+      const { visible, onCancel, onCreate, form, current, next, prev, rooms, addRoom, onSubmit, name, addName, deleteItem } = this.props;
       const { getFieldDecorator } = form;
       return (
         <Modal
@@ -119,7 +125,7 @@ const ProjectForm = Form.create({ name: 'form_in_modal' })(
           onCancel={onCancel}
           onOk={onSubmit}
         >
-        {this.renderSteps(getFieldDecorator, current, next, prev, rooms, addRoom, onCreate, name, addName)}
+        {this.renderSteps(getFieldDecorator, current, next, prev, rooms, addRoom, onCreate, name, addName, deleteItem)}
         </Modal>
       );
     }
@@ -148,6 +154,16 @@ class NewProject extends React.Component {
     this.setState({name: e.target.value})
   }
 
+  deleteRoomItem = (e) => {
+    let newRooms = []
+    this.state.rooms.forEach(room => {
+      if(room.id != e.target.name) {
+        newRooms.push(room)
+      }
+    })
+    this.setState({rooms: newRooms})
+  }
+
   nextField = () => {
     const current = this.state.current + 1;
     this.setState({ current });
@@ -163,8 +179,8 @@ class NewProject extends React.Component {
     this.setState({ visible: false });
   }
 
-  addRoom = (room) => {
-    this.setState({ rooms: [...this.state.rooms, room]})
+  addRoom = (room, id) => {
+    this.setState({ rooms: [...this.state.rooms, {name: room, id}]})
   }
 
   showModal = () => {
@@ -196,6 +212,7 @@ class NewProject extends React.Component {
           onSubmit={this.submit}
           name={this.state.name}
           addName={this.addName}
+          deleteItem={this.deleteRoomItem}
         />
       </div>
     );
