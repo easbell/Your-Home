@@ -54,7 +54,7 @@ describe('RoomItems', () => {
         }
     }
   ]
-    wrapper = shallow(<RoomItems materials={mockMaterials} />)
+    wrapper = shallow(<Material materials={mockMaterials} />)
   });
 
   it('should match snapshot', () => {

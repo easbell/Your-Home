@@ -15,18 +15,43 @@ const CollectionCreateForm = Form.create({ name: 'form_in_modal' })(
           onOk={onCreate}
         >
           <Form layout="vertical">
-            <Form.Item label="Type">
-              {getFieldDecorator('type', {
-                rules: [{ required: false, message: 'Please input the type of room!' }],
-              })(<Input placeholder='Update here, or leave blank to keep unchanged' />)}
-            </Form.Item>
             <Form.Item label="Name">
               {getFieldDecorator('name', {
-                rules: [{ required: false, message: 'Please input the name of the room!' }],
+                rules: [{ required: false }],
               })(<Input placeholder='Update here, or leave blank to keep unchanged' />)}
             </Form.Item>
-            <Form.Item label="Description">
-              {getFieldDecorator('description')(<Input type="textarea" placeholder='Update here, or leave blank to keep unchanged' />)}
+            <Form.Item label="Brand">
+              {getFieldDecorator('brand', {
+                rules: [{ required: false }],
+              })(<Input placeholder='Update here, or leave blank to keep unchanged' />)}
+            </Form.Item>
+            <Form.Item label="Model">
+              {getFieldDecorator('model', {
+                rules: [{ required: false }],
+              })(<Input placeholder='Update here, or leave blank to keep unchanged' />)}
+            </Form.Item>
+            <Form.Item label="Vendor">
+              {getFieldDecorator('vendor', {
+                rules: [{ required: false }],
+              })(<Input placeholder='Update here, or leave blank to keep unchanged' />)}
+            </Form.Item>
+            <Form.Item label="Quantity">
+              {getFieldDecorator('quantity', {
+                rules: [{ required: false }],
+              })(<Input placeholder='Update here, or leave blank to keep unchanged' />)}
+            </Form.Item>
+            <Form.Item label="Price">
+              {getFieldDecorator('price', {
+                rules: [{ required: false }],
+              })(<Input placeholder='Update here, or leave blank to keep unchanged' />)}
+            </Form.Item>
+            <Form.Item label="Manual URL">
+              {getFieldDecorator('manual', {
+                rules: [{ required: false }],
+              })(<Input placeholder='Update here, or leave blank to keep unchanged' />)}
+            </Form.Item>
+            <Form.Item label="Notes">
+              {getFieldDecorator('notes')(<Input type="textarea" placeholder='Update here, or leave blank to keep unchanged' />)}
             </Form.Item>
             <Form.Item className="collection-create-form_last-form-item">
             </Form.Item>

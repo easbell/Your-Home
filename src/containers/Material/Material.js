@@ -2,6 +2,7 @@ import React from 'react';
 import { Collapse } from 'antd';
 import NewMaterial from '../NewMaterial/NewMaterial';
 import EditMaterial from '../EditMaterial/EditMaterial';
+import DeleteConfirm from '../../components/DeleteConfirm/DeleteConfirm';
 
 const Panel = Collapse.Panel;
 
@@ -9,7 +10,7 @@ function callback(key) {
   console.log(key);
 }
 
-class RoomItems extends React.Component {
+class Material extends React.Component {
   state = { expanded: false };
 
   renderMaterialTypes = () => {
@@ -38,7 +39,7 @@ class RoomItems extends React.Component {
             <p>{name}, {brand}</p>
             <div className='material-control'>
               <EditMaterial />
-              <button className='delete-material-btn'><i className="fas fa-trash-alt"></i></button>
+              <DeleteConfirm type="material"/>
             </div>
           </div>
         )
@@ -61,4 +62,4 @@ class RoomItems extends React.Component {
   }
 }
 
-export default RoomItems;
+export default Material;

@@ -17,12 +17,12 @@ const CollectionCreateForm = Form.create({ name: 'form_in_modal' })(
           <Form layout="vertical">
             <Form.Item label="Name">
               {getFieldDecorator('name', {
-                rules: [{ required: false, message: 'Please input the name of the project!' }],
+                rules: [{ required: false }],
               })(<Input placeholder='Update here, or leave blank to keep unchanged' />)}
             </Form.Item>
             <Form.Item label="Address">
               {getFieldDecorator('address', {
-                rules: [{ required: false, message: 'Please input the address of the project!' }],
+                rules: [{ required: false }],
               })(<Input placeholder='Update here, or leave blank to keep unchanged' />)}
             </Form.Item>
             <Form.Item label="Description">

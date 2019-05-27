@@ -1,7 +1,8 @@
 import React from 'react';
 import { Drawer, List } from 'antd';
-import RoomItems from '../../containers/RoomItems/RoomItems';
+import Material from '../../containers/Material/Material';
 import EditRoom from '../../containers/EditRoom/EditRoom';
+import DeleteConfirm from '../DeleteConfirm/DeleteConfirm';
 
 class Room extends React.Component {
   state = { visible: false };
@@ -17,14 +18,6 @@ class Room extends React.Component {
       visible: false,
     });
   };
-
-  editRoom = () => {
-    console.log('edit!')
-  }
-
-  deleteRoom = () => {
-    console.log('delete!')
-  }
 
   render() {
     const { name, type, description, roomMaterials } = this.props
@@ -42,7 +35,7 @@ class Room extends React.Component {
             <List.Item key={item.id} actions={[
               <a onClick={this.showDrawer}>View Materials</a>,
               <EditRoom />,
-              <a onClick={this.deleteRoom}><i className="fas fa-trash-alt"></i></a>
+              <DeleteConfirm type="room"/>
             ]}>
               <List.Item.Meta
                 title={item.name}
@@ -58,7 +51,7 @@ class Room extends React.Component {
           onClose={this.onClose}
           visible={this.state.visible}
         >
-          <RoomItems type={type}
+          <Material type={type}
                      materials={roomMaterials}
           />
         </Drawer>
