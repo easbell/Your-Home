@@ -5,6 +5,7 @@ export const CollectionCreateForm = Form.create({ name: 'form_in_modal' })(
   class extends React.Component {
     render() {
       const { visible, onCancel, onCreate, form, editMaterial } = this.props;
+      const { brand, manual_url, model_number, name, notes, quantity, unit_price, vendor} = this.props.materials;
       const { getFieldDecorator } = form;
       return (
         <Modal
@@ -15,43 +16,45 @@ export const CollectionCreateForm = Form.create({ name: 'form_in_modal' })(
           onOk={onCreate}
         >
           <Form layout="vertical">
+            <Form.Item label="Edit only the items that need updating" className='sub-title'>
+            </Form.Item>
             <Form.Item label="Name">
               {getFieldDecorator('name', {
                 rules: [{ required: false }],
-              })(<Input onChange={editMaterial} name='name' placeholder='Update here, or leave blank to keep unchanged' />)}
+              })(<Input onChange={editMaterial} name='name' placeholder={name} />)}
             </Form.Item>
             <Form.Item label="Brand">
               {getFieldDecorator('brand', {
                 rules: [{ required: false }],
-              })(<Input onChange={editMaterial} name='brand' placeholder='Update here, or leave blank to keep unchanged' />)}
+              })(<Input onChange={editMaterial} name='brand' placeholder={brand} />)}
             </Form.Item>
             <Form.Item label="Model">
               {getFieldDecorator('model', {
                 rules: [{ required: false }],
-              })(<Input onChange={editMaterial} name='model'  placeholder='Update here, or leave blank to keep unchanged' />)}
+              })(<Input onChange={editMaterial} name='model'  placeholder={model_number} />)}
             </Form.Item>
             <Form.Item label="Vendor">
               {getFieldDecorator('vendor', {
                 rules: [{ required: false }],
-              })(<Input onChange={editMaterial} name='vendor'  placeholder='Update here, or leave blank to keep unchanged' />)}
+              })(<Input onChange={editMaterial} name='vendor'  placeholder={vendor} />)}
             </Form.Item>
             <Form.Item label="Quantity">
               {getFieldDecorator('quantity', {
                 rules: [{ required: false }],
-              })(<Input onChange={editMaterial} name='quantity'  placeholder='Update here, or leave blank to keep unchanged' />)}
+              })(<Input onChange={editMaterial} name='quantity'  placeholder={quantity} />)}
             </Form.Item>
             <Form.Item label="Price">
               {getFieldDecorator('price', {
                 rules: [{ required: false }],
-              })(<Input onChange={editMaterial} name='price'  placeholder='Update here, or leave blank to keep unchanged' />)}
+              })(<Input onChange={editMaterial} name='price'  placeholder={unit_price} />)}
             </Form.Item>
             <Form.Item label="Manual URL">
               {getFieldDecorator('manual', {
                 rules: [{ required: false }],
-              })(<Input onChange={editMaterial} name='manual'  placeholder='Update here, or leave blank to keep unchanged' />)}
+              })(<Input onChange={editMaterial} name='manual'  placeholder={manual_url} />)}
             </Form.Item>
             <Form.Item label="Notes">
-              {getFieldDecorator('notes')(<Input onChange={editMaterial} name='notes' type="textarea" placeholder='Update here, or leave blank to keep unchanged' />)}
+              {getFieldDecorator('notes')(<Input onChange={editMaterial} name='notes' type="textarea" placeholder={notes} />)}
             </Form.Item>
             <Form.Item className="collection-create-form_last-form-item">
             </Form.Item>
@@ -105,6 +108,7 @@ class EditMaterial extends React.Component {
           onCancel={this.handleCancel}
           onCreate={this.handleCreate}
           editMaterial={this.editMaterial}
+          materials={this.props}
         />
       </div>
     );
