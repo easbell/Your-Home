@@ -26,7 +26,7 @@ exports[`Room should match snapshot 1`] = `
     visible={false}
     width={640}
   >
-    <RoomItems />
+    <Materials />
   </withConfigConsumer(Drawer)>
 </div>
 `;

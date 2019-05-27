@@ -4,8 +4,24 @@ import Material from './Material';
 
 describe('Material', () => {
   let wrapper;
+  let mockMaterial;
   beforeEach(() => {
-    wrapper = shallow(<Material/>)
+    mockMaterial = {
+      "id": 1,
+      "element_type": "Flooring",
+      "material": {
+          "id": 1,
+          "name": "Material 1",
+          "model_number": "abc1",
+          "brand": "Kenmoore",
+          "vendor": "HD",
+          "manual_url": null,
+          "notes": null,
+          "quantity": null,
+          "unit_price": null
+      }
+  }
+    wrapper = shallow(<Material material={mockMaterial} />)
   });
 
   it('should match snapshot', () => {

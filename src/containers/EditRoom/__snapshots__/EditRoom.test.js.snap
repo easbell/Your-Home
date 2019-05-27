@@ -1,0 +1,27 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`EditRoom should match snapshot 1`] = `
+<div
+  className="edit-room-btn"
+>
+  <Button
+    block={false}
+    ghost={false}
+    htmlType="button"
+    loading={false}
+    onClick={[Function]}
+    size="small"
+    type="link"
+  >
+    <i
+      className="fas fa-pen"
+    />
+  </Button>
+  <Form(Component)
+    onCancel={[Function]}
+    onCreate={[Function]}
+    visible={false}
+    wrappedComponentRef={[Function]}
+  />
+</div>
+`;

@@ -14,18 +14,16 @@ exports[`ProjectDetails should match snapshot 1`] = `
     <p>
       Big, white house
     </p>
-    <button
+    <div
       className="edit-project-btn"
     >
-      <i
-        class="fas fa-pen"
-      />
-    </button>
-    <button
+      <EditProject />
+    </div>
+    <div
       className="add-room-btn"
     >
-      Add New Room
-    </button>
+      <NewRoom />
+    </div>
   </div>
   <RoomsContainer
     rooms={

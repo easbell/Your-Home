@@ -1,11 +1,11 @@
 import React from 'react';
 import { shallow } from 'enzyme';
-import EditMaterials from './EditMaterials';
+import EditMaterial from './EditMaterial';
 
-describe('EditMaterials', () => {
+describe('EditMaterial', () => {
   let wrapper;
   beforeEach(() => {
-    wrapper = shallow(<EditMaterials/>)
+    wrapper = shallow(<EditMaterial/>)
   });
 
   it('should match snapshot', () => {

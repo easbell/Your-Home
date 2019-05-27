@@ -1,0 +1,89 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`RoomItems should match snapshot 1`] = `
+<div>
+  <div>
+    <Collapse
+      bordered={true}
+      expandIconPosition="left"
+      openAnimation={
+        Object {
+          "appear": [Function],
+          "enter": [Function],
+          "leave": [Function],
+        }
+      }
+    >
+      <CollapsePanel
+        header="Flooring"
+        key="0"
+      >
+        <Material
+          element_type="Flooring"
+          id={1}
+          key="0"
+          material={
+            Object {
+              "brand": "Kenmoore",
+              "id": 1,
+              "manual_url": null,
+              "model_number": "abc1",
+              "name": "Material 1",
+              "notes": null,
+              "quantity": null,
+              "unit_price": null,
+              "vendor": "HD",
+            }
+          }
+        />
+        <Material
+          element_type="Flooring"
+          id={2}
+          key="1"
+          material={
+            Object {
+              "brand": "Kenmoore",
+              "id": 2,
+              "manual_url": null,
+              "model_number": "abc2",
+              "name": "Material 2",
+              "notes": null,
+              "quantity": null,
+              "unit_price": null,
+              "vendor": "HD",
+            }
+          }
+        />
+      </CollapsePanel>
+      <CollapsePanel
+        header="Fixtures"
+        key="1"
+      >
+        <Material
+          element_type="Fixtures"
+          id={3}
+          key="0"
+          material={
+            Object {
+              "brand": "GE",
+              "id": 3,
+              "manual_url": null,
+              "model_number": "abc1",
+              "name": "Material A",
+              "notes": null,
+              "quantity": null,
+              "unit_price": null,
+              "vendor": "HD",
+            }
+          }
+        />
+      </CollapsePanel>
+    </Collapse>
+  </div>
+  <div
+    className="add-material-btn"
+  >
+    <NewMaterial />
+  </div>
+</div>
+`;
