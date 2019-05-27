@@ -4,7 +4,7 @@ import { Button, Modal, Form, Input } from 'antd';
 const CollectionCreateForm = Form.create({ name: 'form_in_modal' })(
   class extends React.Component {
     render() {
-      const { visible, onCancel, onCreate, form } = this.props;
+      const { visible, onCancel, onCreate, form, editRoom } = this.props;
       const { getFieldDecorator } = form;
       return (
         <Modal
@@ -18,15 +18,15 @@ const CollectionCreateForm = Form.create({ name: 'form_in_modal' })(
             <Form.Item label="Type">
               {getFieldDecorator('type', {
                 rules: [{ required: false }],
-              })(<Input placeholder='Update here, or leave blank to keep unchanged' />)}
+              })(<Input onChange={editRoom} name='type' placeholder='Update here, or leave blank to keep unchanged' />)}
             </Form.Item>
             <Form.Item label="Name">
               {getFieldDecorator('name', {
                 rules: [{ required: false }],
-              })(<Input placeholder='Update here, or leave blank to keep unchanged' />)}
+              })(<Input onChange={editRoom} name='name' placeholder='Update here, or leave blank to keep unchanged' />)}
             </Form.Item>
             <Form.Item label="Description">
-              {getFieldDecorator('description')(<Input type="textarea" placeholder='Update here, or leave blank to keep unchanged' />)}
+              {getFieldDecorator('description')(<Input onChange={editRoom} name='description' type="textarea" placeholder='Update here, or leave blank to keep unchanged' />)}
             </Form.Item>
             <Form.Item className="collection-create-form_last-form-item">
             </Form.Item>
@@ -38,7 +38,12 @@ const CollectionCreateForm = Form.create({ name: 'form_in_modal' })(
 );
 
 class EditRoom extends React.Component {
-  state = { visible: false };
+  state = { 
+    visible: false,
+    type: '',
+    name: '',
+    description: ''
+  };
 
   showModal = () => {
     this.setState({ visible: true });
@@ -48,21 +53,15 @@ class EditRoom extends React.Component {
     this.setState({ visible: false });
   }
 
-  handleCreate = () => {
-    const form = this.formRef.props.form;
-    form.validateFields((err, values) => {
-      if (err) {
-        return;
-      }
-
-      console.log('Received values of form: ', values);
-      form.resetFields();
-      this.setState({ visible: false });
-    });
+  editRoom = (e) => {
+    this.setState({[e.target.name]: e.target.value});
   }
 
-  saveFormRef = formRef => {
-    this.formRef = formRef;
+  handleCreate = () => {
+    const { name, type, description } = this.state;
+    const updatedProject = { name, type, description };
+    console.log(updatedProject);
+    this.setState({ visible: false});
   }
 
   render() {
@@ -72,10 +71,10 @@ class EditRoom extends React.Component {
           <i className="fas fa-pen"></i>
         </Button>
         <CollectionCreateForm
-          wrappedComponentRef={this.saveFormRef}
           visible={this.state.visible}
           onCancel={this.handleCancel}
           onCreate={this.handleCreate}
+          editRoom={this.editRoom}
         />
       </div>
     );
