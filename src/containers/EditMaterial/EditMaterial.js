@@ -4,7 +4,7 @@ import { Button, Modal, Form, Input } from 'antd';
 const CollectionCreateForm = Form.create({ name: 'form_in_modal' })(
   class extends React.Component {
     render() {
-      const { visible, onCancel, onCreate, form } = this.props;
+      const { visible, onCancel, onCreate, form, editMaterial } = this.props;
       const { getFieldDecorator } = form;
       return (
         <Modal
@@ -18,40 +18,40 @@ const CollectionCreateForm = Form.create({ name: 'form_in_modal' })(
             <Form.Item label="Name">
               {getFieldDecorator('name', {
                 rules: [{ required: false }],
-              })(<Input placeholder='Update here, or leave blank to keep unchanged' />)}
+              })(<Input onChange={editMaterial} name='name' placeholder='Update here, or leave blank to keep unchanged' />)}
             </Form.Item>
             <Form.Item label="Brand">
               {getFieldDecorator('brand', {
                 rules: [{ required: false }],
-              })(<Input placeholder='Update here, or leave blank to keep unchanged' />)}
+              })(<Input onChange={editMaterial} name='brand' placeholder='Update here, or leave blank to keep unchanged' />)}
             </Form.Item>
             <Form.Item label="Model">
               {getFieldDecorator('model', {
                 rules: [{ required: false }],
-              })(<Input placeholder='Update here, or leave blank to keep unchanged' />)}
+              })(<Input onChange={editMaterial} name='model'  placeholder='Update here, or leave blank to keep unchanged' />)}
             </Form.Item>
             <Form.Item label="Vendor">
               {getFieldDecorator('vendor', {
                 rules: [{ required: false }],
-              })(<Input placeholder='Update here, or leave blank to keep unchanged' />)}
+              })(<Input onChange={editMaterial} name='vendor'  placeholder='Update here, or leave blank to keep unchanged' />)}
             </Form.Item>
             <Form.Item label="Quantity">
               {getFieldDecorator('quantity', {
                 rules: [{ required: false }],
-              })(<Input placeholder='Update here, or leave blank to keep unchanged' />)}
+              })(<Input onChange={editMaterial} name='quantity'  placeholder='Update here, or leave blank to keep unchanged' />)}
             </Form.Item>
             <Form.Item label="Price">
               {getFieldDecorator('price', {
                 rules: [{ required: false }],
-              })(<Input placeholder='Update here, or leave blank to keep unchanged' />)}
+              })(<Input onChange={editMaterial} name='price'  placeholder='Update here, or leave blank to keep unchanged' />)}
             </Form.Item>
             <Form.Item label="Manual URL">
               {getFieldDecorator('manual', {
                 rules: [{ required: false }],
-              })(<Input placeholder='Update here, or leave blank to keep unchanged' />)}
+              })(<Input onChange={editMaterial} name='manual'  placeholder='Update here, or leave blank to keep unchanged' />)}
             </Form.Item>
             <Form.Item label="Notes">
-              {getFieldDecorator('notes')(<Input type="textarea" placeholder='Update here, or leave blank to keep unchanged' />)}
+              {getFieldDecorator('notes')(<Input onChange={editMaterial} name='notes' type="textarea" placeholder='Update here, or leave blank to keep unchanged' />)}
             </Form.Item>
             <Form.Item className="collection-create-form_last-form-item">
             </Form.Item>
@@ -63,7 +63,17 @@ const CollectionCreateForm = Form.create({ name: 'form_in_modal' })(
 );
 
 class EditMaterial extends React.Component {
-  state = { visible: false };
+  state = { 
+    visible: false,
+    name: '',
+    brand: '',
+    vendor: '',
+    model: '',
+    quantity: '',
+    price: '',
+    manual: '',
+    notes: ''
+  };
 
   showModal = () => {
     this.setState({ visible: true });
@@ -73,21 +83,15 @@ class EditMaterial extends React.Component {
     this.setState({ visible: false });
   }
 
-  handleCreate = () => {
-    const form = this.formRef.props.form;
-    form.validateFields((err, values) => {
-      if (err) {
-        return;
-      }
-
-      console.log('Received values of form: ', values);
-      form.resetFields();
-      this.setState({ visible: false });
-    });
+  editMaterial = (e) => {
+    this.setState({[e.target.name]: e.target.value});
   }
 
-  saveFormRef = formRef => {
-    this.formRef = formRef;
+  handleCreate = () => {
+    const { name, brand, vendor, model, quantity, price, manual, notes } = this.state;
+    const updatedProject = { name, brand, vendor, model, quantity, price, manual, notes };
+    console.log(updatedProject);
+    this.setState({ visible: false});
   }
 
   render() {
@@ -97,10 +101,10 @@ class EditMaterial extends React.Component {
           <i className="fas fa-pen"></i>
         </Button>
         <CollectionCreateForm
-          wrappedComponentRef={this.saveFormRef}
           visible={this.state.visible}
           onCancel={this.handleCancel}
           onCreate={this.handleCreate}
+          editMaterial={this.editMaterial}
         />
       </div>
     );
