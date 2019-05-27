@@ -1,6 +1,6 @@
 import React from 'react';
 import { Drawer, List } from 'antd';
-import Material from '../../containers/Material/Material';
+import Materials from '../../containers/Materials/Materials';
 import EditRoom from '../../containers/EditRoom/EditRoom';
 import DeleteConfirm from '../DeleteConfirm/DeleteConfirm';
 
@@ -51,7 +51,7 @@ class Room extends React.Component {
           onClose={this.onClose}
           visible={this.state.visible}
         >
-          <Material type={type}
+          <Materials type={type}
                      materials={roomMaterials}
           />
         </Drawer>
