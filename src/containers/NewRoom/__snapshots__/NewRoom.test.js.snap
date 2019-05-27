@@ -13,10 +13,10 @@ exports[`NewRoom should match snapshot 1`] = `
     Create New Room
   </Button>
   <Form(Component)
+    newRoom={[Function]}
     onCancel={[Function]}
     onCreate={[Function]}
     visible={false}
-    wrappedComponentRef={[Function]}
   />
 </div>
 `;

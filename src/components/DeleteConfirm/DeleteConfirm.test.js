@@ -5,16 +5,17 @@ import DeleteConfirm from './DeleteConfirm';
 describe('DeleteConfirm', () => {
   let wrapper;
   beforeEach(() => {
-    wrapper = shallow(<DeleteConfirm />)
+    wrapper = shallow(<DeleteConfirm type='project'/>)
   });
 
   it('should match snapshot', () => {
     expect(wrapper).toMatchSnapshot();
   });
 
-  it('should run show confirm when button is clicked', () => {
-    // perhaps a simulation
-    //
+  it.skip('should run showConfirm when button is clicked', () => {
+    wrapper.find('.confirm-btn').simulate('click', wrapper.props.type);
+    const spy = jest.spyOn(wrapper.instance(), 'showConfirm');
+    expect(spy).toHaveBeenCalled();
   });
 
   it('should confirm new data', () => {

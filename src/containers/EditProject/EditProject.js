@@ -4,7 +4,7 @@ import { Button, Modal, Form, Input } from 'antd';
 const CollectionCreateForm = Form.create({ name: 'form_in_modal' })(
   class extends React.Component {
     render() {
-      const { visible, onCancel, onCreate, form } = this.props;
+      const { visible, onCancel, onCreate, form, editProject, name, address, description } = this.props;
       const { getFieldDecorator } = form;
       return (
         <Modal
@@ -15,18 +15,20 @@ const CollectionCreateForm = Form.create({ name: 'form_in_modal' })(
           onOk={onCreate}
         >
           <Form layout="vertical">
+            <Form.Item label="Edit only the items that need updating" className='sub-title'>
+            </Form.Item>
             <Form.Item label="Name">
               {getFieldDecorator('name', {
                 rules: [{ required: false }],
-              })(<Input placeholder='Update here, or leave blank to keep unchanged' />)}
+              })(<Input onChange={editProject} name='name' placeholder={name} />)}
             </Form.Item>
             <Form.Item label="Address">
               {getFieldDecorator('address', {
                 rules: [{ required: false }],
-              })(<Input placeholder='Update here, or leave blank to keep unchanged' />)}
+              })(<Input onChange={editProject} name='address' placeholder={address} />)}
             </Form.Item>
             <Form.Item label="Description">
-              {getFieldDecorator('description')(<Input type="textarea" placeholder='Update here, or leave blank to keep unchanged' />)}
+              {getFieldDecorator('description')(<Input onChange={editProject} name='description' type="textarea" placeholder={description} />)}
             </Form.Item>
             <Form.Item className="collection-create-form_last-form-item">
             </Form.Item>
@@ -38,10 +40,19 @@ const CollectionCreateForm = Form.create({ name: 'form_in_modal' })(
 );
 
 class EditProject extends React.Component {
-  state = { visible: false };
+  state = { 
+    visible: false,
+    name: '',
+    address: '',
+    description: ''
+  };
 
   showModal = () => {
     this.setState({ visible: true });
+  }
+
+  editProject = (e) => {
+    this.setState({[e.target.name]: e.target.value});
   }
 
   handleCancel = () => {
@@ -49,33 +60,27 @@ class EditProject extends React.Component {
   }
 
   handleCreate = () => {
-    const form = this.formRef.props.form;
-    form.validateFields((err, values) => {
-      if (err) {
-        return;
-      }
-
-      console.log('Received values of form: ', values);
-      form.resetFields();
-      this.setState({ visible: false });
-    });
-  }
-
-  saveFormRef = formRef => {
-    this.formRef = formRef;
+    const { name, address, description } = this.state;
+    const updatedProject = { name, address, description };
+    console.log(updatedProject);
+    this.setState({ visible: false});
   }
 
   render() {
+    const {name, address, description } = this.props;
     return (
       <div>
         <Button type="primary" onClick={this.showModal}>
           <i className="fas fa-pen"></i>
         </Button>
         <CollectionCreateForm
-          wrappedComponentRef={this.saveFormRef}
           visible={this.state.visible}
           onCancel={this.handleCancel}
           onCreate={this.handleCreate}
+          editProject={this.editProject}
+          name={name}
+          address={address}
+          description={description}
         />
       </div>
     );

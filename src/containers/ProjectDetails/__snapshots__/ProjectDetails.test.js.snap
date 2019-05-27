@@ -17,7 +17,11 @@ exports[`ProjectDetails should match snapshot 1`] = `
     <div
       className="edit-project-btn"
     >
-      <EditProject />
+      <EditProject
+        address="123 Fake St."
+        description="Big, white house"
+        name="House 1"
+      />
     </div>
     <div
       className="add-room-btn"

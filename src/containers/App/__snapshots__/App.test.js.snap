@@ -16,7 +16,7 @@ exports[`App should match snapshot 1`] = `
         YourHome
       </h1>
     </Link>
-    <NewProject />
+    <ConnectFunction />
   </header>
   <div>
     <Switch>

@@ -1,9 +1,11 @@
 import React from 'react';
 import { Button, Modal, Form, Input, Steps, message, Menu, Dropdown, Icon, Card, Table, Divider, Tag } from 'antd';
+import { connect } from 'react-redux';
+import { addProject } from '../../actions';
 
 const Step = Steps.Step;
 
-const ProjectForm = Form.create({ name: 'form_in_modal' })(
+export const ProjectForm = Form.create({ name: 'form_in_modal' })(
   class extends React.Component {
 
     renderSteps = (getFieldDecorator, current, next, prev, rooms, addRoom, onCreate, name, addName) => {
@@ -126,7 +128,7 @@ const ProjectForm = Form.create({ name: 'form_in_modal' })(
   },
 );
 
-class NewProject extends React.Component {
+export class NewProject extends React.Component {
   state = {
     visible: false,
     current: 0,
@@ -134,32 +136,25 @@ class NewProject extends React.Component {
     name: ''
   };
 
-  next = () => {
-    if(this.state.current === 0) {
-      this.handleCreate()
-    } else {
-      const current = this.state.current + 1;
-      this.setState({ current });
-    }
-  }
-
   addName = (e) => {
-    console.log('working')
     this.setState({name: e.target.value})
   }
 
   nextField = () => {
-    const current = this.state.current + 1;
-    this.setState({ current });
+    const { current } = this.state;
+    const newCurrent = current + 1;
+    this.setState({ current: newCurrent });
   }
 
   prev = () => {
-    const current = this.state.current - 1;
-    this.setState({ current });
+    const { current } = this.state;
+    const newCurrent = current - 1;
+    this.setState({ current: newCurrent });
   }
 
   submit = () => {
-    console.log(this.state)
+    const newProject = {name: this.state.name, rooms: this.state.rooms}
+    this.props.addProject(newProject)
     this.setState({ visible: false });
   }
 
@@ -184,10 +179,8 @@ class NewProject extends React.Component {
             New Project
         </Button>
         <ProjectForm
-          wrappedComponentRef={this.saveFormRef}
           visible={this.state.visible}
           onCancel={this.handleCancel}
-          // onCreate={this.handleCreate}
           current={this.state.current}
           next={this.nextField}
           prev={this.prev}
@@ -202,4 +195,8 @@ class NewProject extends React.Component {
   }
 }
 
-export default NewProject;
+export const mapDispatchToProps = (dispatch) => ({
+  addProject: (project) => dispatch(addProject(project))
+})
+
+export default connect(null, mapDispatchToProps)(NewProject);

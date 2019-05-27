@@ -3,6 +3,7 @@
 exports[`DeleteConfirm should match snapshot 1`] = `
 <Button
   block={false}
+  className="confirm-btn"
   ghost={false}
   htmlType="button"
   loading={false}

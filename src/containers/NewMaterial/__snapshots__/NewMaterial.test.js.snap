@@ -14,9 +14,9 @@ exports[`NewMaterial should match snapshot 1`] = `
   </Button>
   <Form(Component)
     onCancel={[Function]}
+    onChange={[Function]}
     onCreate={[Function]}
     visible={false}
-    wrappedComponentRef={[Function]}
   />
 </div>
 `;

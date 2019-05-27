@@ -7,3 +7,8 @@ export const isLoading = (bool) => ({
   type: 'IS_LOADING',
   isLoading: bool
 });
+
+export const addProject = (project) => ({
+  type: 'ADD_PROJECT',
+  project
+});
