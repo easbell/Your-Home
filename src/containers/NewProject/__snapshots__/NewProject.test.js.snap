@@ -21,7 +21,6 @@ exports[`App should match snapshot 1`] = `
     name=""
     next={[Function]}
     onCancel={[Function]}
-    onCreate={[Function]}
     onSubmit={[Function]}
     prev={[Function]}
     rooms={Array []}

@@ -1,0 +1,36 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Material should match snapshot 1`] = `
+<div
+  className="material"
+>
+  <p>
+    , 
+  </p>
+  <div
+    className="material-control"
+  >
+    <MaterialDetails
+      element_type="Flooring"
+      id={1}
+      material={
+        Object {
+          "brand": "Kenmoore",
+          "id": 1,
+          "manual_url": null,
+          "model_number": "abc1",
+          "name": "Material 1",
+          "notes": null,
+          "quantity": null,
+          "unit_price": null,
+          "vendor": "HD",
+        }
+      }
+    />
+    <EditMaterial />
+    <DeleteConfirm
+      type="material"
+    />
+  </div>
+</div>
+`;

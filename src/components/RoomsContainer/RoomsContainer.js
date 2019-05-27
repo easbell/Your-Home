@@ -1,11 +1,11 @@
 import React, { Component } from 'react';
-import Room from '../Room/Room'
+import Room from '../Room/Room';
 
 export class RoomsContainer extends Component {
   
   renderRooms = () => {
     return this.props.rooms.map((room, i) => {
-      return <Room key={i} {...room}/>
+      return <Room key={i} {...room} />
     });
   }
 
@@ -14,7 +14,7 @@ export class RoomsContainer extends Component {
       <div className='rooms'>
         {this.renderRooms()}
       </div>
-    )
+    );
   }
 }
 

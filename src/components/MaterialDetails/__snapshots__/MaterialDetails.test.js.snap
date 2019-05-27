@@ -1,0 +1,76 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`MaterialDetails should match snapshot 1`] = `
+<div>
+  <Button
+    block={false}
+    ghost={false}
+    htmlType="button"
+    loading={false}
+    onClick={[Function]}
+    type="link"
+  >
+    View Details
+  </Button>
+  <Modal
+    cancelButtonDisabled={false}
+    confirmLoading={false}
+    maskTransitionName="fade"
+    okButtonDisabled={false}
+    okType="primary"
+    onCancel={[Function]}
+    onOk={[Function]}
+    transitionName="zoom"
+    visible={false}
+    width={520}
+  >
+    <div>
+      <Tabs
+        defaultActiveKey="1"
+        hideAdd={false}
+        tabPosition="top"
+      >
+        <TabPane
+          key="1"
+          placeholder={null}
+          tab="General"
+        >
+          <p>
+            Name: 
+          </p>
+          <p>
+            Brand: 
+          </p>
+          <p>
+            Quantity: 
+          </p>
+        </TabPane>
+        <TabPane
+          key="2"
+          placeholder={null}
+          tab="Product Details"
+        >
+          <p>
+            Model Number: 
+          </p>
+          <p>
+            Vendor: 
+          </p>
+          <p>
+            Price: 
+          </p>
+        </TabPane>
+        <TabPane
+          key="3"
+          placeholder={null}
+          tab="Notes"
+        >
+          <p>
+            Notes: 
+          </p>
+        </TabPane>
+      </Tabs>
+    </div>
+  </Modal>
+</div>
+`;

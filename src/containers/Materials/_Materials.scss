@@ -1,0 +1,19 @@
+.material {
+  display: flex;
+  justify-content: space-between;
+
+  .edit-material-btn {
+    margin-right: 10px;
+  }
+}
+
+.add-material-btn {
+  margin-top: 50px;
+}
+
+.material-control {
+  display: flex;
+  align-items: center;
+  position: relative;
+  bottom: 6px;
+}

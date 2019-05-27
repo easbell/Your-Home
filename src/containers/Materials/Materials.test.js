@@ -1,6 +1,6 @@
 import React from 'react';
 import { shallow } from 'enzyme';
-import RoomItems from './RoomItems';
+import Materials from './Materials';
 
 describe('RoomItems', () => {
   let wrapper;
@@ -54,7 +54,7 @@ describe('RoomItems', () => {
         }
     }
   ]
-    wrapper = shallow(<RoomItems materials={mockMaterials} />)
+    wrapper = shallow(<Materials materials={mockMaterials} />)
   });
 
   it('should match snapshot', () => {
