@@ -19,6 +19,7 @@ exports[`EditMaterial should match snapshot 1`] = `
   </Button>
   <Form(Component)
     editMaterial={[Function]}
+    materials={Object {}}
     onCancel={[Function]}
     onCreate={[Function]}
     visible={false}
