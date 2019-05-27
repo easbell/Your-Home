@@ -4,7 +4,7 @@ import { Button, Modal, Form, Input } from 'antd';
 const CollectionCreateForm = Form.create({ name: 'form_in_modal' })(
   class extends React.Component {
     render() {
-      const { visible, onCancel, onCreate, form, editRoom } = this.props;
+      const { visible, onCancel, onCreate, form, editRoom, name, type, description } = this.props;
       const { getFieldDecorator } = form;
       return (
         <Modal
@@ -15,18 +15,20 @@ const CollectionCreateForm = Form.create({ name: 'form_in_modal' })(
           onOk={onCreate}
         >
           <Form layout="vertical">
+            <Form.Item label="Edit only the items that need updating" className='sub-title'>
+            </Form.Item>
             <Form.Item label="Type">
               {getFieldDecorator('type', {
                 rules: [{ required: false }],
-              })(<Input onChange={editRoom} name='type' placeholder='Update here, or leave blank to keep unchanged' />)}
+              })(<Input onChange={editRoom} name='type' placeholder={type} />)}
             </Form.Item>
             <Form.Item label="Name">
               {getFieldDecorator('name', {
                 rules: [{ required: false }],
-              })(<Input onChange={editRoom} name='name' placeholder='Update here, or leave blank to keep unchanged' />)}
+              })(<Input onChange={editRoom} name='name' placeholder={name} />)}
             </Form.Item>
             <Form.Item label="Description">
-              {getFieldDecorator('description')(<Input onChange={editRoom} name='description' type="textarea" placeholder='Update here, or leave blank to keep unchanged' />)}
+              {getFieldDecorator('description')(<Input onChange={editRoom} name='description' type="textarea" placeholder={description} />)}
             </Form.Item>
             <Form.Item className="collection-create-form_last-form-item">
             </Form.Item>
@@ -75,6 +77,9 @@ class EditRoom extends React.Component {
           onCancel={this.handleCancel}
           onCreate={this.handleCreate}
           editRoom={this.editRoom}
+          name={this.props.name}
+          type={this.props.type}
+          description={this.props.description}
         />
       </div>
     );
