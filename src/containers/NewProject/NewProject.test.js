@@ -26,6 +26,7 @@ describe('App', () => {
   });
 
   it('should setState on submit', () => {
+    wrapper.setState({ visible: true })
     wrapper.instance().submit();
     expect(wrapper.state('visible')).toBe(false);
   });
@@ -36,11 +37,13 @@ describe('App', () => {
   });
 
   it('should setState on showModal', () => {
+    wrapper.setState({ visible: false })
     wrapper.instance().showModal();
     expect(wrapper.state('visible')).toBe(true);
   });
 
   it('should setState on handleCancel', () => {
+    wrapper.setState({ visible: true })
     wrapper.instance().handleCancel();
     expect(wrapper.state('visible')).toBe(false);
   });

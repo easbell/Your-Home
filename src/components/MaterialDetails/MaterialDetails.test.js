@@ -12,17 +12,20 @@ describe('MaterialDetails', () => {
     expect(wrapper).toMatchSnapshot();
   });
 
-  it('showModal', () => {
+  it('should update state visible when showModal is called', () => {
+    wrapper.setState({ visible: false })
     wrapper.instance().showModal();
     expect(wrapper.state('visible')).toBe(true);
   });
 
-  it('handleOK', () => {
+  it('should update state visible when handleOK is called', () => {
+    wrapper.setState({ visible: true })
     wrapper.instance().handleOk();
     expect(wrapper.state('visible')).toBe(false);
   });
   
-  it('handleCancel', () => {
+  it('should update state visible when handleCancel is called', () => {
+    wrapper.setState({ visible: true })
     wrapper.instance().handleCancel();
     expect(wrapper.state('visible')).toBe(false);
   });

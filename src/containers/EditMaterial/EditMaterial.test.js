@@ -12,22 +12,36 @@ describe('EditMaterial', () => {
     expect(wrapper).toMatchSnapshot();
   });
 
-  it('showModal', () => {
+  it('should update state visible when showModal is called', () => {
+    wrapper.setState({ visible: false })
     wrapper.instance().showModal();
     expect(wrapper.state('visible')).toBe(true);
   });
 
-  it('handleCancel', () => {
+  it('should update state visible when handleCancel is called', () => {
+    wrapper.setState({ visible: true })
     wrapper.instance().handleCancel();
     expect(wrapper.state('visible')).toBe(false);
   });
 
-  it('handleCreate', () => {
+  it('saveFormRef', () => {
 
   });
 
-  it('saveFormRef', () => {
+  describe('handleCreate', () => {
+    it('should validateFields', () => {
 
+    });
+
+    it('should reset fields', () => {
+
+    });
+
+    it.skip('should should update state visible', () => {
+      wrapper.setState({ visible: true })
+      wrapper.instance().handleCreate();
+      expect(wrapper.state('visible')).toBe(false);
+    });
   });
 
 });

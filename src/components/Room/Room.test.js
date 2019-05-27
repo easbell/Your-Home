@@ -13,11 +13,13 @@ describe('Room', () => {
   });
 
   it('should setState on showDrawer', () => {
+    wrapper.setState({ visible: false })
     wrapper.instance().showDrawer();
     expect(wrapper.state('visible')).toBe(true);
   });
 
   it('should setState on onClose', () => {
+    wrapper.setState({ visible: true })
     wrapper.instance().onClose();
     expect(wrapper.state('visible')).toBe(false);
   });
