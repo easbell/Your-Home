@@ -90,7 +90,6 @@ class NewMaterial extends React.Component {
   handleCreate = () => {
     const { name, brand, model, vendor, quantity, price, manual, notes } = this.state;
     const newMaterial = { name, brand, model, vendor, quantity, price, manual, notes };
-    console.log(newMaterial);
     this.setState({ visible: false});
   }
 

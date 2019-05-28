@@ -11,7 +11,6 @@ export class ProjectsContainer extends Component {
   }
 
   render() {
-    console.log(this.props.projects)
     return (
       <div className='projects'>
         {this.renderProjects()}

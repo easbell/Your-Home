@@ -7,26 +7,22 @@ class Materials extends React.Component {
   state = { expanded: false };
 
   renderMaterialTypes = () => {
-    let allCategories = [];
-    this.props.materials.forEach(material => {
-      if (!allCategories.includes(material.element_type)) {
-        allCategories.push(material.element_type)
-      }
-    });
-
-    return allCategories.map((category, i) => {
+    const { materials } = this.props
+    const types = Object.keys(materials)
+    
+    return types.map((type, i) => {
       const Panel = Collapse.Panel;
       return(
-        <Panel header={category} key={i}>
-          {this.renderMaterials(category)}
+        <Panel header={type} key={i}>
+          {this.renderMaterials(type)}
         </Panel>
       )
-    });
+    })
   }
 
   renderMaterials = (type) => {
-    let materials = this.props.materials.filter(material => (material.element_type === type));
-    return materials.map((material, i) => {
+    const { materials } = this.props
+    return materials[type].map((material, i) => {
       return(
         <Material {...material} key={i} />
       )

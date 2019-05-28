@@ -1,13 +1,14 @@
-import { isLoading, hasErrored, setProjects } from '../actions';
+import { isLoading, hasErrored, setMaterials } from '../actions';
 
-export const fetchAllProjects = () => {
+
+export const fetchRoomMaterials = (id) => {
   return async (dispatch) => {
     const url = "https://hometrackr.herokuapp.com//api/v1/graphql"
     try {
       dispatch(isLoading(true));
       const response = await fetch(url, {
         body: JSON.stringify({
-          "query": "query { projects { id name description address rooms { id name type description }}}"
+          "query": `query { getRoomsMaterials(room_id: ${id})}`
           }),
         method: 'POST',
         headers: {
@@ -19,7 +20,7 @@ export const fetchAllProjects = () => {
       }
       const data = await response.json()
       dispatch(isLoading(false))
-      dispatch(setProjects(data.data.projects))
+      dispatch(setMaterials(data.data.getRoomsMaterials))
     } catch(error) {
       dispatch(hasErrored(error.message))
     }

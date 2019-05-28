@@ -17,3 +17,8 @@ export const setProjects = (projects) => ({
   type: 'SET_PROJECTS',
   projects
 });
+
+export const setMaterials = (materials) => ({
+  type: 'SET_MATERIALS',
+  materials
+})

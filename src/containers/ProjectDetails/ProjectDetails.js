@@ -5,9 +5,9 @@ import EditProject from '../EditProject/EditProject';
 
 class ProjectDetails extends React.Component {
 
-  render() {
+  renderDetails = () => {
     const { name, address, description, rooms } = this.props.project;
-    return (
+    return(
       <div>
         <div className='project-page'>
           <h2>{name}</h2>
@@ -21,6 +21,18 @@ class ProjectDetails extends React.Component {
           </div>
         </div>
         <RoomsContainer rooms={rooms}/>
+      </div>
+    );
+  }
+
+  render() {
+    return (
+      <div>
+        {this.props.project &&
+          <div>
+            {this.renderDetails()}
+          </div>
+        }
       </div>
     );
   }
