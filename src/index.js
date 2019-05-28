@@ -12,8 +12,9 @@ import rootReducer from './reducers';
 export const addProject = async () => {
   const url = "https://hometrackr.herokuapp.com//api/v1/graphql"
   const response = await fetch(url, {
-    body: JSON.stringify({ "query":"mutation { createProject (project: {name: \"My House name\", description: \"made by graphql\", address: \"some address\"}) {id name description address }}"
-  }),
+    body: JSON.stringify({
+      "query": "query { projects { id name description address rooms { name type description }}}"
+      }),
     method: 'POST',
     headers: {
       'Content-Type': 'application/json'
