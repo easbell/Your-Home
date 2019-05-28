@@ -61,23 +61,24 @@ const ProjectForm = Form.create({ name: 'form_in_modal' })(
         {
           title: 'Rooms',
           content: <div>
-                    <Card title="Card title" className="card">
-                      {
-                        rooms &&
-                        rooms.map(room => <div className="room-item">
-                                              <p>{room.name}</p>
-                                              <button name={room.id} 
-                                                      onClick={deleteItem}>
-                                                      x
-                                               </button>
-                                          </div>)
-                      }
-                    </Card>
-                    <Dropdown overlay={menu}>
+                    <Card title={name} className="card" extra={<Dropdown overlay={menu}>
                       <a className="ant-dropdown-link" href="#">
                         Select a Room Type <Icon type="down" />
                       </a>
-                    </Dropdown>
+                    </Dropdown>}>
+                      {
+                        rooms &&
+                        rooms.map(room => <div className="room-item">
+                                              <h4>{room.name}</h4>
+                                              <Button className="delete-btn"
+                                                      name={room.id} 
+                                                      onClick={deleteItem}
+                                                      >
+                                                      delete
+                                              </Button>
+                                          </div>)
+                      }
+                    </Card>
                    </div>
         },
         {
@@ -124,6 +125,15 @@ const ProjectForm = Form.create({ name: 'form_in_modal' })(
           okText="Create"
           onCancel={onCancel}
           onOk={onSubmit}
+          footer={[
+            <Button key="back" onClick={onCancel}>
+              Cancel
+            </Button>,
+            current > 1 &&
+            <Button key="submit" type="primary" onClick={onSubmit}>
+              Submit
+            </Button>,
+          ]}
         >
         {this.renderSteps(getFieldDecorator, current, next, prev, rooms, addRoom, onCreate, name, addName, deleteItem)}
         </Modal>
@@ -176,7 +186,7 @@ class NewProject extends React.Component {
 
   submit = () => {
     console.log(this.state)
-    this.setState({ visible: false });
+    this.setState({ current: 0, visible: false, rooms: [], name: '' });
   }
 
   addRoom = (room, id) => {
