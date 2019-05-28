@@ -17,33 +17,32 @@ exports[`SideDrawer should match snapshot 1`] = `
     visible={false}
     width={500}
   >
-    <Button
-      block={true}
-      ghost={false}
-      htmlType="button"
-      loading={false}
-      type="default"
+    <Link
+      key="linkundefined"
+      onClick={[Function]}
+      to="/projects/undefined"
     >
-      Project A
-    </Button>
-    <Button
-      block={true}
-      ghost={false}
-      htmlType="button"
-      loading={false}
-      type="default"
+      <Button
+        block={true}
+        ghost={false}
+        htmlType="button"
+        loading={false}
+        type="default"
+      />
+    </Link>
+    <Link
+      key="linkundefined"
+      onClick={[Function]}
+      to="/projects/undefined"
     >
-      Project B
-    </Button>
-    <Button
-      block={true}
-      ghost={false}
-      htmlType="button"
-      loading={false}
-      type="default"
-    >
-      Project C
-    </Button>
+      <Button
+        block={true}
+        ghost={false}
+        htmlType="button"
+        loading={false}
+        type="default"
+      />
+    </Link>
     <div
       style={
         Object {
@@ -72,16 +71,6 @@ exports[`SideDrawer should match snapshot 1`] = `
         }
       >
         Cancel
-      </Button>
-      <Button
-        block={false}
-        ghost={false}
-        htmlType="button"
-        loading={false}
-        onClick={[Function]}
-        type="primary"
-      >
-        Submit
       </Button>
     </div>
   </withConfigConsumer(Drawer)>

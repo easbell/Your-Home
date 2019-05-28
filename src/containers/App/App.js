@@ -4,12 +4,16 @@ import SideDrawer from '../SideDrawer/SideDrawer';
 import ProjectsContainer from '../../components/ProjectsContainer/ProjectsContainer';
 import { Link, Switch, Route } from 'react-router-dom';
 import ProjectDetails from '../ProjectDetails/ProjectDetails';
-import mockProjects from '../../mockProject';
+import { fetchAllProjects } from '../../thunks/fetchAllProjects';
+import { connect } from 'react-redux';
 
-class App extends Component {
+export class App extends Component {
+  componentDidMount = () => {
+    this.props.fetchAllProjects();
+  }
 
   renderProject = ({ match }) => {
-    const project = mockProjects.data.projects.find(project => (project.id === parseInt(match.params.id)));
+    const project = this.props.projects.find(project => (project.id === parseInt(match.params.id)));
     return <ProjectDetails project={project} />
   }
 
@@ -26,7 +30,7 @@ class App extends Component {
         <div>
           <Switch>
             <Route exact path='/'
-              render={() => <ProjectsContainer projects={mockProjects.data.projects} />}
+              render={() => <ProjectsContainer />}
             />
             <Route exact path='/projects/:id'
               render={this.renderProject}
@@ -38,4 +42,12 @@ class App extends Component {
   }
 }
 
-export default App;
+export const mapDispatchToProps = dispatch => ({
+  fetchAllProjects: (projects) => dispatch(fetchAllProjects(projects))
+});
+
+export const mapStateToProps = state => ({
+  projects: state.projects
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(App);

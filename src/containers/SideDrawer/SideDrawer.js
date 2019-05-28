@@ -1,8 +1,14 @@
 import React from 'react';
 import { Drawer, Button } from 'antd';
+import { connect } from 'react-redux';
+import { Link } from 'react-router-dom';
 
-class SideDrawer extends React.Component {
-  state = { visible: false, childrenDrawer: false, placement: 'left'};
+export class SideDrawer extends React.Component {
+  state = { 
+    visible: false, 
+    childrenDrawer: false, 
+    placement: 'left'
+  };
 
   showDrawer = () => {
     this.setState({
@@ -15,6 +21,14 @@ class SideDrawer extends React.Component {
       visible: false,
     });
   };
+
+  renderProjects = () => {
+    return this.props.projects.map(project => (
+      <Link to={`/projects/${project.id}`} onClick={this.onClose} key={'link'+project.id}>
+        <Button type="default" key={project.id} block>{project.name}</Button>
+      </Link>
+    ))
+  }
 
   render() {
     return (
@@ -31,9 +45,7 @@ class SideDrawer extends React.Component {
           onClose={this.onClose}
           visible={this.state.visible}
         >
-          <Button type="default" onClick={this.showChildrenDrawer} block>Project A</Button>
-          <Button type="default" onClick={this.showChildrenDrawer} block>Project B</Button>
-          <Button type="default" onClick={this.showChildrenDrawer} block>Project C</Button>
+          {this.renderProjects()}
           <div
             style={{
               position: 'absolute',
@@ -55,9 +67,6 @@ class SideDrawer extends React.Component {
             >
               Cancel
             </Button>
-            <Button onClick={this.onClose} type="primary">
-              Submit
-            </Button>
           </div>
         </Drawer>
       </div>
@@ -65,4 +74,8 @@ class SideDrawer extends React.Component {
   }
 }
 
-export default SideDrawer;
+export const mapStateToProps = state => ({
+  projects: state.projects
+});
+
+export default connect(mapStateToProps)(SideDrawer);
