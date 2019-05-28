@@ -12,7 +12,7 @@ class Material extends Component {
         <p>{name}, {brand}</p>
         <div className='material-control'>
           <MaterialDetails {...this.props.material}/>
-          <EditMaterial />
+          <EditMaterial {...this.props.material}/>
           <DeleteConfirm type="material"/>
         </div>
       </div>

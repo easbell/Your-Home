@@ -18,10 +18,10 @@ exports[`EditRoom should match snapshot 1`] = `
     />
   </Button>
   <Form(Component)
+    editRoom={[Function]}
     onCancel={[Function]}
     onCreate={[Function]}
     visible={false}
-    wrappedComponentRef={[Function]}
   />
 </div>
 `;

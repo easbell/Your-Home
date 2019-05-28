@@ -6,12 +6,12 @@ describe('hasErrored', () => {
     const expected = ''
     const result = hasErrored(undefined, {})
     expect(result).toEqual(expected)
-  })
+  });
 
   it('should return a string if the action type is HAS_ERRORED', () => {
     const mockMessage = 'Something went wrong'
     const mockAction = actions.hasErrored(mockMessage)
     const result = hasErrored(undefined, mockAction)
     expect(result).toEqual(mockMessage)
-  })
-})
+  });
+});

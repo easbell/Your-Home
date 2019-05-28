@@ -30,7 +30,7 @@ class Room extends React.Component {
           renderItem={item => (
             <List.Item key={item.id} actions={[
               <Button type='link' onClick={this.showDrawer}>View Materials</Button>,
-              <EditRoom />,
+              <EditRoom {...this.props}/>,
               <DeleteConfirm type="room" />
             ]}>
               <List.Item.Meta

@@ -15,10 +15,10 @@ exports[`EditProject should match snapshot 1`] = `
     />
   </Button>
   <Form(Component)
+    editProject={[Function]}
     onCancel={[Function]}
     onCreate={[Function]}
     visible={false}
-    wrappedComponentRef={[Function]}
   />
 </div>
 `;

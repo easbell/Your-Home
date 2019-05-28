@@ -4,7 +4,7 @@ import { Button, Modal, Form, Input } from 'antd';
 const CollectionCreateForm = Form.create({ name: 'form_in_modal' })(
   class extends React.Component {
     render() {
-      const { visible, onCancel, onCreate, form } = this.props;
+      const { visible, onCancel, onCreate, form, onChange } = this.props;
       const { getFieldDecorator } = form;
       return (
         <Modal
@@ -18,40 +18,40 @@ const CollectionCreateForm = Form.create({ name: 'form_in_modal' })(
             <Form.Item label="Name">
               {getFieldDecorator('name', {
                 rules: [{ required: true, message: 'Please input the name of the material!' }],
-              })(<Input />)}
+              })(<Input onChange={onChange} name='name' />)}
             </Form.Item>
             <Form.Item label="Brand">
               {getFieldDecorator('brand', {
                 rules: [{ required: true, message: 'Please input the brand of the material!' }],
-              })(<Input />)}
+              })(<Input onChange={onChange} name='brand' />)}
             </Form.Item>
             <Form.Item label="Model">
               {getFieldDecorator('model', {
                 rules: [{ required: true, message: 'Please input the model number of the material!' }],
-              })(<Input />)}
+              })(<Input onChange={onChange} name='model' />)}
             </Form.Item>
             <Form.Item label="Vendor">
               {getFieldDecorator('vendor', {
                 rules: [{ required: true, message: 'Please input where the material was purchased!' }],
-              })(<Input />)}
+              })(<Input onChange={onChange} name='vendor' />)}
             </Form.Item>
             <Form.Item label="Quantity">
               {getFieldDecorator('quantity', {
                 rules: [{ required: true, message: 'Please input how many of this item was purchased!' }],
-              })(<Input />)}
+              })(<Input onChange={onChange} name='quantity' />)}
             </Form.Item>
             <Form.Item label="Price">
               {getFieldDecorator('price', {
                 rules: [{ required: true, message: 'Please input the price of the material!' }],
-              })(<Input />)}
+              })(<Input onChange={onChange} name='price' />)}
             </Form.Item>
             <Form.Item label="Manual URL">
               {getFieldDecorator('manual', {
                 rules: [{ required: false, message: 'Please input the price of the material!' }],
-              })(<Input />)}
+              })(<Input onChange={onChange} name='manual' />)}
             </Form.Item>
             <Form.Item label="Notes">
-              {getFieldDecorator('notes')(<Input type="textarea" />)}
+              {getFieldDecorator('notes')(<Input onChange={onChange} name='notes' type="textarea" />)}
             </Form.Item>
             <Form.Item className="collection-create-form_last-form-item">
             </Form.Item>
@@ -63,7 +63,17 @@ const CollectionCreateForm = Form.create({ name: 'form_in_modal' })(
 );
 
 class NewMaterial extends React.Component {
-  state = { visible: false };
+  state = { 
+    visible: false,
+    name: '',
+    brand: '',
+    model: '',
+    vendor: '',
+    quantity: '',
+    price: '',
+    manual: '',
+    notes: ''
+  };
 
   showModal = () => {
     this.setState({ visible: true });
@@ -73,21 +83,15 @@ class NewMaterial extends React.Component {
     this.setState({ visible: false });
   }
 
-  handleCreate = () => {
-    const form = this.formRef.props.form;
-    form.validateFields((err, values) => {
-      if (err) {
-        return;
-      }
-
-      console.log('Received values of form: ', values);
-      form.resetFields();
-      this.setState({ visible: false });
-    });
+  onChange = (e) => {
+    this.setState({[e.target.name]: e.target.value});
   }
 
-  saveFormRef = formRef => {
-    this.formRef = formRef;
+  handleCreate = () => {
+    const { name, brand, model, vendor, quantity, price, manual, notes } = this.state;
+    const newMaterial = { name, brand, model, vendor, quantity, price, manual, notes };
+    console.log(newMaterial);
+    this.setState({ visible: false});
   }
 
   render() {
@@ -97,10 +101,10 @@ class NewMaterial extends React.Component {
           Add New Material
         </Button>
         <CollectionCreateForm
-          wrappedComponentRef={this.saveFormRef}
           visible={this.state.visible}
           onCancel={this.handleCancel}
           onCreate={this.handleCreate}
+          onChange={this.onChange}
         />
       </div>
     );
