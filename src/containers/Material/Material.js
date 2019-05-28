@@ -6,7 +6,6 @@ import MaterialDetails from '../../components/MaterialDetails/MaterialDetails';
 class Material extends Component {
 
   render() {
-    console.log(this.props)
     const { brand, name } = this.props
     return (
       <div key={name} className='material'>

@@ -3,10 +3,10 @@ import { connect } from 'react-redux';
 import { Drawer, List, Button } from 'antd';
 import Materials from '../../containers/Materials/Materials';
 import EditRoom from '../../containers/EditRoom/EditRoom';
-import { fetchRoomMaterials } from '../../thunks/fetchAllProjects';
+import { fetchRoomMaterials } from '../../thunks/fetchRoomMaterials';
 import DeleteConfirm from '../DeleteConfirm/DeleteConfirm';
 
-class Room extends React.Component {
+export class Room extends React.Component {
   state = { visible: false };
 
   showDrawer = async () => {
@@ -20,7 +20,6 @@ class Room extends React.Component {
   }
 
   render() {
-    console.log(this.props)
     const { name, type, description, materials } = this.props;
     return (
       <div className='room'>

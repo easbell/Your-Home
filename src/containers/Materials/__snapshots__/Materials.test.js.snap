@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`RoomItems should match snapshot 1`] = `
+exports[`Materials should match snapshot 1`] = `
 <div>
   <div>
     <Collapse
@@ -15,67 +15,49 @@ exports[`RoomItems should match snapshot 1`] = `
       }
     >
       <CollapsePanel
-        header="Flooring"
+        header="shower"
         key="0"
       >
         <Material
-          element_type="Flooring"
+          brand="Kenmoore"
           id={1}
           key="0"
-          material={
-            Object {
-              "brand": "Kenmoore",
-              "id": 1,
-              "manual_url": null,
-              "model_number": "abc1",
-              "name": "Material 1",
-              "notes": null,
-              "quantity": null,
-              "unit_price": null,
-              "vendor": "HD",
-            }
-          }
+          manual_url={null}
+          model_number="abc1"
+          name="Material 1"
+          notes={null}
+          quantity={null}
+          unit_price={null}
+          vendor="HD"
         />
         <Material
-          element_type="Flooring"
+          brand="Best brand"
           id={2}
           key="1"
-          material={
-            Object {
-              "brand": "Kenmoore",
-              "id": 2,
-              "manual_url": null,
-              "model_number": "abc2",
-              "name": "Material 2",
-              "notes": null,
-              "quantity": null,
-              "unit_price": null,
-              "vendor": "HD",
-            }
-          }
+          manual_url={null}
+          model_number="1234aa"
+          name="Material 2"
+          notes={null}
+          quantity={null}
+          unit_price={null}
+          vendor="HD"
         />
       </CollapsePanel>
       <CollapsePanel
-        header="Fixtures"
+        header="sink"
         key="1"
       >
         <Material
-          element_type="Fixtures"
+          brand="Kenmoore"
           id={3}
           key="0"
-          material={
-            Object {
-              "brand": "GE",
-              "id": 3,
-              "manual_url": null,
-              "model_number": "abc1",
-              "name": "Material A",
-              "notes": null,
-              "quantity": null,
-              "unit_price": null,
-              "vendor": "HD",
-            }
-          }
+          manual_url={null}
+          model_number="hejso125"
+          name="Material 3"
+          notes={null}
+          quantity={null}
+          unit_price={null}
+          vendor="HD"
         />
       </CollapsePanel>
     </Collapse>
