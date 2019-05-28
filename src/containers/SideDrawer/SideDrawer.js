@@ -3,7 +3,7 @@ import { Drawer, Button } from 'antd';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 
-class SideDrawer extends React.Component {
+export class SideDrawer extends React.Component {
   state = { 
     visible: false, 
     childrenDrawer: false, 

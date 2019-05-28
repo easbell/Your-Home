@@ -1,6 +1,6 @@
 import React from 'react';
 import { shallow } from 'enzyme';
-import ProjectsContainer from './ProjectsContainer';
+import { ProjectsContainer } from './ProjectsContainer';
 import mockProjects from '../../mockProject'
 
 describe('ProjectsContainer', () => {

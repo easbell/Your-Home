@@ -7,7 +7,7 @@ import ProjectDetails from '../ProjectDetails/ProjectDetails';
 import { fetchAllProjects } from '../../thunks/fetchAllProjects';
 import { connect } from 'react-redux';
 
-class App extends Component {
+export class App extends Component {
   componentDidMount = () => {
     this.props.fetchAllProjects();
   }

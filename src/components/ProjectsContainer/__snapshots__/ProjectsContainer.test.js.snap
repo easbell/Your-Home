@@ -8,7 +8,7 @@ exports[`ProjectsContainer should match snapshot 1`] = `
     address="123 Fake St."
     description="Big, white house"
     id={1}
-    key="0"
+    key="1"
     name="House 1"
     rooms={
       Array [
@@ -93,7 +93,7 @@ exports[`ProjectsContainer should match snapshot 1`] = `
     address="456 Random Lane"
     description="Small with picket fence"
     id={2}
-    key="1"
+    key="2"
     name="House 2"
     rooms={
       Array [

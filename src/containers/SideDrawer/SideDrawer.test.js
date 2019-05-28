@@ -1,12 +1,14 @@
-import SideDrawer from './SideDrawer';
+import { SideDrawer } from './SideDrawer';
 import React from 'react';
 import { shallow } from 'enzyme';
 
 describe('SideDrawer', () => {
   let wrapper;
+  let mockProjects
 
   beforeEach(() => {
-    wrapper = shallow(<SideDrawer />)
+    mockProjects = ['1', '2']
+    wrapper = shallow(<SideDrawer projects={mockProjects}/>)
   });
 
   it('should match snapshot', () => {
