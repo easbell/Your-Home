@@ -4,13 +4,12 @@ import SideDrawer from '../SideDrawer/SideDrawer';
 import ProjectsContainer from '../../components/ProjectsContainer/ProjectsContainer';
 import { Link, Switch, Route } from 'react-router-dom';
 import ProjectDetails from '../ProjectDetails/ProjectDetails';
-import { fetchAllProjects, fetchRoomMaterials } from '../../thunks/fetchAllProjects';
+import { fetchAllProjects } from '../../thunks/fetchAllProjects';
 import { connect } from 'react-redux';
 
 export class App extends Component {
   componentDidMount = () => {
     this.props.fetchAllProjects();
-    this.props.fetchRoomMaterials();
   }
 
   renderProject = ({ match }) => {
@@ -44,8 +43,7 @@ export class App extends Component {
 }
 
 export const mapDispatchToProps = dispatch => ({
-  fetchAllProjects: (projects) => dispatch(fetchAllProjects(projects)),
-  fetchRoomMaterials: (materials) => dispatch(fetchRoomMaterials(materials))
+  fetchAllProjects: (projects) => dispatch(fetchAllProjects(projects))
 });
 
 export const mapStateToProps = state => ({

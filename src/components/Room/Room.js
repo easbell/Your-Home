@@ -1,13 +1,17 @@
 import React from 'react';
+import { connect } from 'react-redux';
 import { Drawer, List, Button } from 'antd';
 import Materials from '../../containers/Materials/Materials';
 import EditRoom from '../../containers/EditRoom/EditRoom';
+import { fetchRoomMaterials } from '../../thunks/fetchAllProjects';
 import DeleteConfirm from '../DeleteConfirm/DeleteConfirm';
 
 class Room extends React.Component {
   state = { visible: false };
 
-  showDrawer = () => {
+  showDrawer = async () => {
+    const { id } = this.props
+    await this.props.fetchRoomMaterials(id)
     this.setState({ visible: true });
   }
 
@@ -16,7 +20,8 @@ class Room extends React.Component {
   }
 
   render() {
-    const { name, type, description, roomMaterials } = this.props;
+    console.log(this.props)
+    const { name, type, description, materials } = this.props;
     return (
       <div className='room'>
         <List
@@ -48,7 +53,7 @@ class Room extends React.Component {
           visible={this.state.visible}
         >
           <Materials type={type}
-                     materials={roomMaterials}
+                     materials={materials}
           />
         </Drawer>
       </div>
@@ -56,5 +61,12 @@ class Room extends React.Component {
   }
 }
 
+export const mapDispatchToProps = dispatch => ({
+  fetchRoomMaterials: (materials) => dispatch(fetchRoomMaterials(materials))
+});
 
-export default Room;
+export const mapStateToProps = state => ({
+  materials: state.materials
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(Room);

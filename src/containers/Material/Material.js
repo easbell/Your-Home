@@ -6,13 +6,14 @@ import MaterialDetails from '../../components/MaterialDetails/MaterialDetails';
 class Material extends Component {
 
   render() {
-    const { brand, name } = this.props.material
+    console.log(this.props)
+    const { brand, name } = this.props
     return (
       <div key={name} className='material'>
         <p>{name}, {brand}</p>
         <div className='material-control'>
-          <MaterialDetails {...this.props.material}/>
-          <EditMaterial {...this.props.material}/>
+          <MaterialDetails {...this.props}/>
+          <EditMaterial {...this.props}/>
           <DeleteConfirm type="material"/>
         </div>
       </div>

@@ -7,7 +7,7 @@ export const fetchAllProjects = () => {
       dispatch(isLoading(true));
       const response = await fetch(url, {
         body: JSON.stringify({
-          "query": "query { projects { id name description address rooms { name type description }}}"
+          "query": "query { projects { id name description address rooms { id name type description }}}"
           }),
         method: 'POST',
         headers: {
@@ -26,14 +26,14 @@ export const fetchAllProjects = () => {
   }
 }
 
-export const fetchRoomMaterials = () => {
+export const fetchRoomMaterials = (id) => {
   return async (dispatch) => {
     const url = "https://hometrackr.herokuapp.com//api/v1/graphql"
     try {
       dispatch(isLoading(true));
       const response = await fetch(url, {
         body: JSON.stringify({
-          "query": "query { getRoomsMaterials(room_id: 1)}"
+          "query": `query { getRoomsMaterials(room_id: ${id})}`
           }),
         method: 'POST',
         headers: {
@@ -44,7 +44,6 @@ export const fetchRoomMaterials = () => {
         throw Error(response.statusText)
       }
       const data = await response.json()
-      console.log(data.data.getRoomsMaterials)
       dispatch(isLoading(false))
       dispatch(setMaterials(data.data.getRoomsMaterials))
     } catch(error) {
