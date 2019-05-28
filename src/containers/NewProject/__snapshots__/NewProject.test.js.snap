@@ -18,6 +18,7 @@ exports[`App should match snapshot 1`] = `
     addName={[Function]}
     addRoom={[Function]}
     current={0}
+    deleteItem={[Function]}
     name=""
     next={[Function]}
     onCancel={[Function]}

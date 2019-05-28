@@ -8,11 +8,11 @@ const Step = Steps.Step;
 export const ProjectForm = Form.create({ name: 'form_in_modal' })(
   class extends React.Component {
 
-    renderSteps = (getFieldDecorator, current, next, prev, rooms, addRoom, onCreate, name, addName) => {
+    renderSteps = (getFieldDecorator, current, next, prev, rooms, addRoom, onCreate, name, addName, deleteItem) => {
 
       const onClick = function ({ key }) {
         message.info(`Added a ${key}`);
-        addRoom(key)
+        addRoom(key, Date.now())
       };
 
       const menu = (
@@ -63,24 +63,31 @@ export const ProjectForm = Form.create({ name: 'form_in_modal' })(
         {
           title: 'Rooms',
           content: <div>
-                    <Card title="Card title" className="card">
-                      {
-                        rooms &&
-                        rooms.map(room => <p key={room}>{room}</p>)
-                      }
-                    </Card>
-                    <Dropdown overlay={menu}>
+                    <Card title={name} className="card" extra={<Dropdown overlay={menu}>
                       <a className="ant-dropdown-link" href="#">
                         Select a Room Type <Icon type="down" />
                       </a>
-                    </Dropdown>
+                    </Dropdown>}>
+                      {
+                        rooms &&
+                        rooms.map(room => <div className="room-item">
+                                              <h4>{room.name}</h4>
+                                              <Button className="delete-btn"
+                                                      name={room.id} 
+                                                      onClick={deleteItem}
+                                                      >
+                                                      delete
+                                              </Button>
+                                          </div>)
+                      }
+                    </Card>
                    </div>
         },
         {
           title: 'Create Project',
           content: <div>
                     <Card title="Review Project" className="card">
-                    <Table dataSource={dataSource} columns={columns} />
+                    <Table pagination={false} dataSource={dataSource} columns={columns} />
                     </Card>
                    </div>
         }
@@ -111,7 +118,7 @@ export const ProjectForm = Form.create({ name: 'form_in_modal' })(
     }
 
     render() {
-      const { visible, onCancel, onCreate, form, current, next, prev, rooms, addRoom, onSubmit, name, addName } = this.props;
+      const { visible, onCancel, onCreate, form, current, next, prev, rooms, addRoom, onSubmit, name, addName, deleteItem } = this.props;
       const { getFieldDecorator } = form;
       return (
         <Modal
@@ -120,8 +127,17 @@ export const ProjectForm = Form.create({ name: 'form_in_modal' })(
           okText="Create"
           onCancel={onCancel}
           onOk={onSubmit}
+          footer={[
+            <Button key="back" onClick={onCancel}>
+              Cancel
+            </Button>,
+            current > 1 &&
+            <Button key="submit" type="primary" onClick={onSubmit}>
+              Submit
+            </Button>,
+          ]}
         >
-        {this.renderSteps(getFieldDecorator, current, next, prev, rooms, addRoom, onCreate, name, addName)}
+        {this.renderSteps(getFieldDecorator, current, next, prev, rooms, addRoom, onCreate, name, addName, deleteItem)}
         </Modal>
       );
     }
@@ -140,6 +156,16 @@ export class NewProject extends React.Component {
     this.setState({name: e.target.value})
   }
 
+  deleteRoomItem = (e) => {
+    let newRooms = []
+    this.state.rooms.forEach(room => {
+      if(room.id != e.target.name) {
+        newRooms.push(room)
+      }
+    })
+    this.setState({rooms: newRooms})
+  }
+
   nextField = () => {
     const { current } = this.state;
     const newCurrent = current + 1;
@@ -153,13 +179,12 @@ export class NewProject extends React.Component {
   }
 
   submit = () => {
-    const newProject = {name: this.state.name, rooms: this.state.rooms}
-    this.props.addProject(newProject)
-    this.setState({ visible: false });
+    console.log(this.state)
+    this.setState({ current: 0, visible: false, rooms: [], name: '' });
   }
 
-  addRoom = (room) => {
-    this.setState({ rooms: [...this.state.rooms, room]})
+  addRoom = (room, id) => {
+    this.setState({ rooms: [...this.state.rooms, {name: room, id}]})
   }
 
   showModal = () => {
@@ -189,6 +214,7 @@ export class NewProject extends React.Component {
           onSubmit={this.submit}
           name={this.state.name}
           addName={this.addName}
+          deleteItem={this.deleteRoomItem}
         />
       </div>
     );
