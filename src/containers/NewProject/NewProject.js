@@ -8,7 +8,7 @@ const Step = Steps.Step;
 export const ProjectForm = Form.create({ name: 'form_in_modal' })(
   class extends React.Component {
 
-    renderSteps = (getFieldDecorator, current, next, prev, rooms, addRoom, onCreate, name, addName, deleteItem) => {
+    renderSteps = (getFieldDecorator, current, next, prev, rooms, addRoom, onCreate, name, onChange, deleteItem) => {
 
       const onClick = function ({ key }) {
         message.info(`Added a ${key}`);
@@ -53,10 +53,13 @@ export const ProjectForm = Form.create({ name: 'form_in_modal' })(
                       <Form.Item label="Name">
                         {getFieldDecorator('name', {
                           rules: [{ required: true, message: 'Please input the name of the project!' }],
-                        })(<Input onChange={addName}/>)}
+                        })(<Input name='name' onChange={onChange}/>)}
+                      </Form.Item>
+                      <Form.Item label="Address">
+                        {getFieldDecorator('address')(<Input name='address' onChange={onChange} />)}
                       </Form.Item>
                       <Form.Item label="Description">
-                        {getFieldDecorator('description')(<Input type="textarea" />)}
+                        {getFieldDecorator('description')(<Input name='description' onChange={onChange} type="textarea" />)}
                       </Form.Item>
                     </Form>
         },
@@ -118,7 +121,7 @@ export const ProjectForm = Form.create({ name: 'form_in_modal' })(
     }
 
     render() {
-      const { visible, onCancel, onCreate, form, current, next, prev, rooms, addRoom, onSubmit, name, addName, deleteItem } = this.props;
+      const { visible, onCancel, onCreate, form, current, next, prev, rooms, addRoom, onSubmit, name, onChange, deleteItem } = this.props;
       const { getFieldDecorator } = form;
       return (
         <Modal
@@ -137,7 +140,7 @@ export const ProjectForm = Form.create({ name: 'form_in_modal' })(
             </Button>,
           ]}
         >
-        {this.renderSteps(getFieldDecorator, current, next, prev, rooms, addRoom, onCreate, name, addName, deleteItem)}
+        {this.renderSteps(getFieldDecorator, current, next, prev, rooms, addRoom, onCreate, name, onChange, deleteItem)}
         </Modal>
       );
     }
@@ -149,11 +152,13 @@ export class NewProject extends React.Component {
     visible: false,
     current: 0,
     rooms: [],
-    name: ''
+    name: '',
+    address: '',
+    description: ''
   };
 
-  addName = (e) => {
-    this.setState({name: e.target.value})
+  onChange = (e) => {
+    this.setState({[e.target.name]: e.target.value})
   }
 
   deleteRoomItem = (e) => {
@@ -213,7 +218,7 @@ export class NewProject extends React.Component {
           addRoom={this.addRoom}
           onSubmit={this.submit}
           name={this.state.name}
-          addName={this.addName}
+          onChange={this.onChange}
           deleteItem={this.deleteRoomItem}
         />
       </div>
