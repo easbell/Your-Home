@@ -1,14 +1,15 @@
 import React from 'react';
 import { Button, Modal, Form, Input, Steps, message, Menu, Dropdown, Icon, Card, Table, Divider, Tag } from 'antd';
 import { connect } from 'react-redux';
-import { addProject } from '../../actions';
+import { addNewProject } from '../../thunks/addNewProject';
+import { addProjectHelper } from '../../utils/addProjectHelper';
 
 const Step = Steps.Step;
 
 export const ProjectForm = Form.create({ name: 'form_in_modal' })(
   class extends React.Component {
 
-    renderSteps = (getFieldDecorator, current, next, prev, rooms, addRoom, onCreate, name, addName, deleteItem) => {
+    renderSteps = (getFieldDecorator, current, next, prev, rooms, addRoom, onCreate, name, onChange, deleteItem) => {
 
       const onClick = function ({ key }) {
         message.info(`Added a ${key}`);
@@ -53,10 +54,13 @@ export const ProjectForm = Form.create({ name: 'form_in_modal' })(
                       <Form.Item label="Name">
                         {getFieldDecorator('name', {
                           rules: [{ required: true, message: 'Please input the name of the project!' }],
-                        })(<Input onChange={addName}/>)}
+                        })(<Input name='name' onChange={onChange}/>)}
+                      </Form.Item>
+                      <Form.Item label="Address">
+                        {getFieldDecorator('address')(<Input name='address' onChange={onChange} />)}
                       </Form.Item>
                       <Form.Item label="Description">
-                        {getFieldDecorator('description')(<Input type="textarea" />)}
+                        {getFieldDecorator('description')(<Input name='description' onChange={onChange} type="textarea" />)}
                       </Form.Item>
                     </Form>
         },
@@ -70,7 +74,7 @@ export const ProjectForm = Form.create({ name: 'form_in_modal' })(
                     </Dropdown>}>
                       {
                         rooms &&
-                        rooms.map(room => <div className="room-item">
+                        rooms.map(room => <div key={room.id} className="room-item">
                                               <h4>{room.name}</h4>
                                               <Button className="delete-btn"
                                                       name={room.id} 
@@ -118,7 +122,7 @@ export const ProjectForm = Form.create({ name: 'form_in_modal' })(
     }
 
     render() {
-      const { visible, onCancel, onCreate, form, current, next, prev, rooms, addRoom, onSubmit, name, addName, deleteItem } = this.props;
+      const { visible, onCancel, onCreate, form, current, next, prev, rooms, addRoom, onSubmit, name, onChange, deleteItem } = this.props;
       const { getFieldDecorator } = form;
       return (
         <Modal
@@ -137,7 +141,7 @@ export const ProjectForm = Form.create({ name: 'form_in_modal' })(
             </Button>,
           ]}
         >
-        {this.renderSteps(getFieldDecorator, current, next, prev, rooms, addRoom, onCreate, name, addName, deleteItem)}
+        {this.renderSteps(getFieldDecorator, current, next, prev, rooms, addRoom, onCreate, name, onChange, deleteItem)}
         </Modal>
       );
     }
@@ -149,11 +153,13 @@ export class NewProject extends React.Component {
     visible: false,
     current: 0,
     rooms: [],
-    name: ''
+    name: '',
+    address: '',
+    description: ''
   };
 
-  addName = (e) => {
-    this.setState({name: e.target.value})
+  onChange = (e) => {
+    this.setState({[e.target.name]: e.target.value})
   }
 
   deleteRoomItem = (e) => {
@@ -179,12 +185,15 @@ export class NewProject extends React.Component {
   }
 
   submit = () => {
-    console.log(this.state)
-    this.setState({ current: 0, visible: false, rooms: [], name: '' });
+    const { name, address, description, rooms } = this.state;
+    const newProject = { name, address, description, rooms };
+    const body = addProjectHelper(newProject)
+    this.props.addNewProject(body)
+    this.setState({ current: 0, visible: false, rooms: [], name: '', address: '', description: '' });
   }
 
   addRoom = (room, id) => {
-    this.setState({ rooms: [...this.state.rooms, {name: room, id}]})
+    this.setState({ rooms: [...this.state.rooms, {name: room, id, type: room}]})
   }
 
   showModal = () => {
@@ -213,7 +222,7 @@ export class NewProject extends React.Component {
           addRoom={this.addRoom}
           onSubmit={this.submit}
           name={this.state.name}
-          addName={this.addName}
+          onChange={this.onChange}
           deleteItem={this.deleteRoomItem}
         />
       </div>
@@ -222,7 +231,7 @@ export class NewProject extends React.Component {
 }
 
 export const mapDispatchToProps = (dispatch) => ({
-  addProject: (project) => dispatch(addProject(project))
+  addNewProject: (project) => dispatch(addNewProject(project)),
 })
 
 export default connect(null, mapDispatchToProps)(NewProject);
