@@ -33,7 +33,10 @@ describe('App', () => {
 
   it('should setState on addRoom', () => {
     wrapper.instance().addRoom('Kitchen');
-    expect(wrapper.state('rooms')).toEqual(['Kitchen']);
+    expect(wrapper.state('rooms')).toEqual([{
+           "id": undefined,
+           "name": "Kitchen",
+         }]);
   });
 
   it('should setState on showModal', () => {
