@@ -1,7 +1,8 @@
 import React from 'react';
 import { Button, Modal, Form, Input, Steps, message, Menu, Dropdown, Icon, Card, Table, Divider, Tag } from 'antd';
 import { connect } from 'react-redux';
-import { addProject } from '../../actions';
+import { addNewProject } from '../../thunks/addNewProject';
+import { addProjectHelper } from '../../utils/addProjectHelper';
 
 const Step = Steps.Step;
 
@@ -73,7 +74,7 @@ export const ProjectForm = Form.create({ name: 'form_in_modal' })(
                     </Dropdown>}>
                       {
                         rooms &&
-                        rooms.map(room => <div className="room-item">
+                        rooms.map(room => <div key={room.id} className="room-item">
                                               <h4>{room.name}</h4>
                                               <Button className="delete-btn"
                                                       name={room.id} 
@@ -184,12 +185,15 @@ export class NewProject extends React.Component {
   }
 
   submit = () => {
-    console.log(this.state)
-    this.setState({ current: 0, visible: false, rooms: [], name: '' });
+    const { name, address, description, rooms } = this.state;
+    const newProject = { name, address, description, rooms };
+    const body = addProjectHelper(newProject)
+    this.props.addNewProject(body)
+    this.setState({ current: 0, visible: false, rooms: [], name: '', address: '', description: '' });
   }
 
   addRoom = (room, id) => {
-    this.setState({ rooms: [...this.state.rooms, {name: room, id}]})
+    this.setState({ rooms: [...this.state.rooms, {name: room, id, type: room}]})
   }
 
   showModal = () => {
@@ -227,7 +231,7 @@ export class NewProject extends React.Component {
 }
 
 export const mapDispatchToProps = (dispatch) => ({
-  addProject: (project) => dispatch(addProject(project))
+  addNewProject: (project) => dispatch(addNewProject(project)),
 })
 
 export default connect(null, mapDispatchToProps)(NewProject);
