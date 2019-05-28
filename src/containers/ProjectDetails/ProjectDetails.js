@@ -7,7 +7,6 @@ class ProjectDetails extends React.Component {
 
   render() {
     const { name, address, description, rooms } = this.props.project;
-    
     return (
       <div>
         <div className='project-page'>

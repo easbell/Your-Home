@@ -4,7 +4,11 @@ import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 
 class SideDrawer extends React.Component {
-  state = { visible: false, childrenDrawer: false, placement: 'left'};
+  state = { 
+    visible: false, 
+    childrenDrawer: false, 
+    placement: 'left'
+  };
 
   showDrawer = () => {
     this.setState({

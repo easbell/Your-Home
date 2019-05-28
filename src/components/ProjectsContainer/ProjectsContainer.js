@@ -1,15 +1,17 @@
 import React, { Component } from 'react';
 import Project from '../Project/Project';
+import { connect } from 'react-redux';
 
 export class ProjectsContainer extends Component {
   
   renderProjects = () => {
-    return this.props.projects.map((project, i) => {
-      return <Project key={i} {...project}/>
+    return this.props.projects.map(project => {
+      return <Project key={project.id} {...project}/>
     });
   }
 
   render() {
+    console.log(this.props.projects)
     return (
       <div className='projects'>
         {this.renderProjects()}
@@ -18,4 +20,8 @@ export class ProjectsContainer extends Component {
   }
 }
 
-export default ProjectsContainer;
+export const mapStateToProps = state => ({
+  projects: state.projects
+});
+
+export default connect(mapStateToProps)(ProjectsContainer);
