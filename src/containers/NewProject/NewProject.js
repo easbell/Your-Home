@@ -84,7 +84,7 @@ const ProjectForm = Form.create({ name: 'form_in_modal' })(
           title: 'Create Project',
           content: <div>
                     <Card title="Review Project" className="card">
-                    <Table dataSource={dataSource} columns={columns} />
+                    <Table pagination={false} dataSource={dataSource} columns={columns} />
                     </Card>
                    </div>
         }
