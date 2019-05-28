@@ -5,8 +5,13 @@ import ProjectsContainer from '../../components/ProjectsContainer/ProjectsContai
 import { Link, Switch, Route } from 'react-router-dom';
 import ProjectDetails from '../ProjectDetails/ProjectDetails';
 import mockProjects from '../../mockProject';
+import { fetchAllProjects } from '../../thunks/fetchAllProjects';
+import { connect } from 'react-redux';
 
 class App extends Component {
+  componentDidMount = () => {
+    this.props.fetchAllProjects();
+  }
 
   renderProject = ({ match }) => {
     const project = mockProjects.data.projects.find(project => (project.id === parseInt(match.params.id)));
@@ -38,4 +43,8 @@ class App extends Component {
   }
 }
 
-export default App;
+export const mapDispatchToProps = dispatch => ({
+  fetchAllProjects: (projects) => dispatch(fetchAllProjects(projects))
+});
+
+export default connect(null, mapDispatchToProps)(App);

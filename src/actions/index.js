@@ -12,3 +12,8 @@ export const addProject = (project) => ({
   type: 'ADD_PROJECT',
   project
 });
+
+export const setProjects = (projects) => ({
+  type: 'SET_PROJECTS',
+  projects
+});
