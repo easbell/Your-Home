@@ -1,11 +1,14 @@
 import React from 'react';
 import { shallow } from 'enzyme';
-import NewRoom from './NewRoom';
+import { NewRoom } from './NewRoom';
 
 describe('NewRoom', () => {
   let wrapper;
+  let mockFn;
+
   beforeEach(() => {
-    wrapper = shallow(<NewRoom />)
+    mockFn = jest.fn();
+    wrapper = shallow(<NewRoom addNewRoom={mockFn}/>)
   });
 
   it('should match snapshot', () => {

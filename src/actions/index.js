@@ -27,3 +27,8 @@ export const addMaterial = (material) => ({
   type: 'ADD_MATERIAL',
   material
 });
+
+export const addRoom = (room) => ({
+  type: 'ADD_ROOM',
+  room
+});
