@@ -29,7 +29,12 @@ class Materials extends React.Component {
     });
   }
 
+  forceRender = () => {
+    this.setState({ expanded: this.state.expanded })
+  }
+
   render() {
+    const { roomId } = this.props
     return (
       <div>
         <div>
@@ -38,7 +43,9 @@ class Materials extends React.Component {
           </Collapse>
         </div>
         <div className='add-material-btn'>
-          <NewMaterial />
+          <NewMaterial roomId={roomId}
+                       forceRender={this.forceRender}
+          />
         </div>
       </div>
     );
