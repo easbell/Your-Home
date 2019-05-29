@@ -55,12 +55,19 @@ describe('Materials', () => {
   });
 
   it('should collect all categories when renderMaterialTypes is called', () => {
-    let result = wrapper.instance().renderMaterialTypes()
-    expect(result.length).toBe(2)
+    let result = wrapper.instance().renderMaterialTypes();
+    expect(result.length).toBe(2);
   });
 
   it('should render materials when renderMaterials is called', () => {
-    let result = wrapper.instance().renderMaterials('shower')
-    expect(result.length).toBe(2)
+    let result = wrapper.instance().renderMaterials('shower');
+    expect(result.length).toBe(2);
   });
+
+  it('should update state to be the same for purposes of forcing a rerender', () => {
+    wrapper.setState({ expanded: false });
+    let initialState = wrapper.state;
+    wrapper.instance().forceRender();
+    expect(wrapper.state).toBe(initialState);
+  })
 });

@@ -4,8 +4,10 @@ import { NewMaterial } from './NewMaterial';
 
 describe('NewMaterial', () => {
   let wrapper;
+  let mockFn;
   beforeEach(() => {
-    wrapper = shallow(<NewMaterial/>)
+    mockFn = jest.fn();
+    wrapper = shallow(<NewMaterial addNewMaterial={mockFn} forceRender={mockFn}/>)
   });
 
   it('should match snapshot', () => {
@@ -30,9 +32,9 @@ describe('NewMaterial', () => {
     expect(wrapper.state('visible')).toBe(false);
   });
   
-  it('should update state visible on handleCreate', () => {
-    wrapper.setState({ visible: true })
-    wrapper.instance().handleCreate();
+  it('should update state visible on handleCreate', async () => {
+    wrapper.setState({ visible: true });
+    await wrapper.instance().handleCreate();
     expect(wrapper.state('visible')).toBe(false);
   });
 

@@ -70,7 +70,7 @@ const CollectionCreateForm = Form.create({ name: 'form_in_modal' })(
   }
 );
 
-class NewMaterial extends React.Component {
+export class NewMaterial extends React.Component {
   state = { 
     visible: false,
     name: '',
@@ -96,14 +96,14 @@ class NewMaterial extends React.Component {
     this.setState({[e.target.name]: e.target.value});
   }
 
-  handleCreate = () => {
-    const { roomId } = this.props
+  handleCreate = async () => {
+    const { roomId } = this.props;
     const { name, type, brand, model, vendor, quantity, price, manual, notes } = this.state;
     const newMaterial = { name, type, brand, model, vendor, quantity, price, manual, notes };
-    console.log(newMaterial)
-    const body = addMaterialHelper(newMaterial, roomId)
-    this.props.addNewMaterial(body)
+    const body = addMaterialHelper(newMaterial, roomId);
+    await this.props.addNewMaterial(body);
     this.setState({ visible: false, name: '', type: '', brand: '', model: '', vendor: '', quantity: '', price: '', manual: '', notes: '' });
+    this.props.forceRender();
   }
 
   render() {

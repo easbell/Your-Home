@@ -16,7 +16,6 @@ export const addNewMaterial = (body) => {
         throw Error(response.statusText)
       }
       const data = await response.json()
-      console.log(data)
       dispatch(isLoading(false))
       dispatch(addMaterial(data.data.addRoomMaterial))
     } catch(error) {
