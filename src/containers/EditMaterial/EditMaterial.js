@@ -1,9 +1,10 @@
 import React from 'react';
+import { connect } from 'react-redux'
 import { Button, Modal, Form, Input } from 'antd';
 import { editMaterialHelper } from '../../utils/materialHelpers';
-import { editMaterial} from '../../thunks/editMaterial';
+import { fetchEditMaterial } from '../../thunks/fetchEditMaterial';
 
-export const CollectionCreateForm = Form.create({ name: 'form_in_modal' })(
+const CollectionCreateForm = Form.create({ name: 'form_in_modal' })(
   class extends React.Component {
     render() {
       const { visible, onCancel, onCreate, form, editMaterial } = this.props;
@@ -72,7 +73,7 @@ export const CollectionCreateForm = Form.create({ name: 'form_in_modal' })(
   }
 );
 
-class EditMaterial extends React.Component {
+export class EditMaterial extends React.Component {
   state = { 
     visible: false,
     name: '',
@@ -120,7 +121,7 @@ class EditMaterial extends React.Component {
       }
     })
     let body = editMaterialHelper(allItems, id);
-    editMaterial()
+    this.props.fetchEditMaterial(body)
     this.setState({ visible: false, name: '', type: '', brand: '', vendor: '', model: '', quantity: '', price: '', manual: '', notes: '' });
   }
 
@@ -143,7 +144,7 @@ class EditMaterial extends React.Component {
 }
 
 export const mapDispatchToProps = (dispatch) => ({
-  addNewMaterial: (material) => dispatch(addNewMaterial(material)),
+  fetchEditMaterial: (material) => dispatch(fetchEditMaterial(material)),
 })
 
-export default (null, mapDispatchToProps)(EditMaterial);
+export default connect(null, mapDispatchToProps)(EditMaterial);

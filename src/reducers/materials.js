@@ -24,7 +24,7 @@ const materials = (state = {}, action) => {
         return state
       }
     case 'EDIT_MATERIAL':
-      console.log(material)
+      console.log(action.material)
     default:
       return state
   }
