@@ -23,7 +23,6 @@ export const editProjectThunk = (id, name, address, description) => {
         throw Error(response.statusText)
       }
       const data = await response.json()
-      console.log(data.data.updateProject)
       dispatch(isLoading(false))
       dispatch(editProject(data.data.updateProject))
     } catch(error) {

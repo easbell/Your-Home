@@ -1,22 +1,22 @@
-import { fetchAllProjects } from '../fetchAllProjects';
-import { isLoading, setProjects, hasErrored } from '../../actions';
+import { editProjectThunk } from '../editProjectThunk';
+import { isLoading, hasErrored } from '../../actions';
 
-describe('fetchAllProjects', () => {
+describe('editProjectThunk', () => {
+  let mockProject;
   let mockDispatch;
-  let mockProjects;
   
   beforeEach(() => {
-    mockProjects = [{id: 1, name: 'my project' }, {id: 2, name: 'my new project' }]
+    mockProject = {data: {data: {updateProject: {name: 'my room' }}}}
     mockDispatch = jest.fn()
 
     window.fetch = jest.fn().mockImplementation(() => Promise.resolve({
       ok: true,
-      json: () => Promise.resolve(mockProjects)
+      json: () => Promise.resolve(mockProject)
     }))
   })
   
   it('calls dispatch with isLoading(true)', () => {
-    const thunk = fetchAllProjects()
+    const thunk = editProjectThunk()
     
     thunk(mockDispatch)
     
@@ -24,17 +24,11 @@ describe('fetchAllProjects', () => {
   })
   
   it('calls fetch', async () => {
-    const thunk = fetchAllProjects()
+    const thunk = editProjectThunk()
 
     await thunk(mockDispatch)
 
     expect(window.fetch).toHaveBeenCalled()
-  });
-
-  it.skip('dispatches setProjects action', async () => {
-    const thunk = fetchAllProjects();
-    await thunk(mockDispatch);
-    expect(mockDispatch).toHaveBeenCalledWith(setProjects(mockProjects))
   });
 
   it('should dispatch hasErrored with a message if the response is not ok', async () => {
@@ -43,7 +37,7 @@ describe('fetchAllProjects', () => {
       statusText: 'Something went wrong'
     }))
     
-    const thunk = fetchAllProjects()
+    const thunk = editProjectThunk()
     
     await thunk(mockDispatch)
     
@@ -51,7 +45,7 @@ describe('fetchAllProjects', () => {
   });
 
   it('should dispatch isLoading(false) if the response is ok', async () => {
-    const thunk = fetchAllProjects()
+    const thunk = editProjectThunk()
     
     await thunk(mockDispatch)
     
