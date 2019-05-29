@@ -7,33 +7,34 @@ class Materials extends React.Component {
   state = { expanded: false };
 
   renderMaterialTypes = () => {
-    let allCategories = [];
-    this.props.materials.forEach(material => {
-      if (!allCategories.includes(material.element_type)) {
-        allCategories.push(material.element_type)
-      }
-    });
-
-    return allCategories.map((category, i) => {
+    const { materials } = this.props
+    const types = Object.keys(materials)
+    
+    return types.map((type, i) => {
       const Panel = Collapse.Panel;
       return(
-        <Panel header={category} key={i}>
-          {this.renderMaterials(category)}
+        <Panel header={type} key={i}>
+          {this.renderMaterials(type)}
         </Panel>
       )
-    });
+    })
   }
 
   renderMaterials = (type) => {
-    let materials = this.props.materials.filter(material => (material.element_type === type));
-    return materials.map((material, i) => {
+    const { materials } = this.props
+    return materials[type].map((material, i) => {
       return(
         <Material {...material} key={i} />
       )
     });
   }
 
+  forceRender = () => {
+    this.setState({ expanded: this.state.expanded })
+  }
+
   render() {
+    const { roomId } = this.props
     return (
       <div>
         <div>
@@ -42,7 +43,9 @@ class Materials extends React.Component {
           </Collapse>
         </div>
         <div className='add-material-btn'>
-          <NewMaterial />
+          <NewMaterial roomId={roomId}
+                       forceRender={this.forceRender}
+          />
         </div>
       </div>
     );

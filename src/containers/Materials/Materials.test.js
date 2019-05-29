@@ -2,58 +2,51 @@ import React from 'react';
 import { shallow } from 'enzyme';
 import Materials from './Materials';
 
-describe('RoomItems', () => {
+
+describe('Materials', () => {
   let wrapper;
   let mockMaterials;
   
   beforeEach(() => {
-    mockMaterials = [
-      {
-          "id": 1,
-          "element_type": "Flooring",
-          "material": {
-              "id": 1,
-              "name": "Material 1",
-              "model_number": "abc1",
-              "brand": "Kenmoore",
-              "vendor": "HD",
-              "manual_url": null,
-              "notes": null,
-              "quantity": null,
-              "unit_price": null
-          }
-      },
-      {
-          "id": 2,
-          "element_type": "Flooring",
-          "material": {
-              "id": 2,
-              "name": "Material 2",
-              "model_number": "abc2",
-              "brand": "Kenmoore",
-              "vendor": "HD",
-              "manual_url": null,
-              "notes": null,
-              "quantity": null,
-              "unit_price": null
-          }
-      },
-      {
-        "id": 3,
-        "element_type": "Fixtures",
-        "material": {
-            "id": 3,
-            "name": "Material A",
-            "model_number": "abc1",
-            "brand": "GE",
-            "vendor": "HD",
-            "manual_url": null,
-            "notes": null,
-            "quantity": null,
-            "unit_price": null
+    mockMaterials = {
+      shower: [
+        {
+          brand: "Kenmoore",
+          id: 1,
+          manual_url: null,
+          model_number: "abc1",
+          name: "Material 1",
+          notes: null,
+          quantity: null,
+          unit_price: null,
+          vendor: "HD"
+        },
+        {
+          brand: "Best brand",
+          id: 2,
+          manual_url: null,
+          model_number: "1234aa",
+          name: "Material 2",
+          notes: null,
+          quantity: null,
+          unit_price: null,
+          vendor: "HD"
         }
+      ],
+      sink: [
+        {
+          brand: "Kenmoore",
+          id: 3,
+          manual_url: null,
+          model_number: "hejso125",
+          name: "Material 3",
+          notes: null,
+          quantity: null,
+          unit_price: null,
+          vendor: "HD"
+        }
+      ]
     }
-  ]
     wrapper = shallow(<Materials materials={mockMaterials} />)
   });
 
@@ -62,12 +55,19 @@ describe('RoomItems', () => {
   });
 
   it('should collect all categories when renderMaterialTypes is called', () => {
-    let result = wrapper.instance().renderMaterialTypes()
-    expect(result.length).toBe(2)
+    let result = wrapper.instance().renderMaterialTypes();
+    expect(result.length).toBe(2);
   });
 
   it('should render materials when renderMaterials is called', () => {
-    let result = wrapper.instance().renderMaterials('Flooring')
-    expect(result.length).toBe(2)
+    let result = wrapper.instance().renderMaterials('shower');
+    expect(result.length).toBe(2);
   });
+
+  it('should update state to be the same for purposes of forcing a rerender', () => {
+    wrapper.setState({ expanded: false });
+    let initialState = wrapper.state;
+    wrapper.instance().forceRender();
+    expect(wrapper.state).toBe(initialState);
+  })
 });

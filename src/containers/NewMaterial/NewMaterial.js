@@ -1,4 +1,7 @@
 import React from 'react';
+import { connect } from 'react-redux'
+import { addNewMaterial} from '../../thunks/addNewMaterial';
+import { addMaterialHelper } from '../../utils/addMaterialHelper';
 import { Button, Modal, Form, Input } from 'antd';
 
 const CollectionCreateForm = Form.create({ name: 'form_in_modal' })(
@@ -19,6 +22,11 @@ const CollectionCreateForm = Form.create({ name: 'form_in_modal' })(
               {getFieldDecorator('name', {
                 rules: [{ required: true, message: 'Please input the name of the material!' }],
               })(<Input onChange={onChange} name='name' />)}
+            </Form.Item>
+            <Form.Item label="Type">
+              {getFieldDecorator('type', {
+                rules: [{ required: true, message: 'Please input the type of the material!' }],
+              })(<Input onChange={onChange} name='type' />)}
             </Form.Item>
             <Form.Item label="Brand">
               {getFieldDecorator('brand', {
@@ -62,10 +70,11 @@ const CollectionCreateForm = Form.create({ name: 'form_in_modal' })(
   }
 );
 
-class NewMaterial extends React.Component {
+export class NewMaterial extends React.Component {
   state = { 
     visible: false,
     name: '',
+    type: '',
     brand: '',
     model: '',
     vendor: '',
@@ -87,11 +96,14 @@ class NewMaterial extends React.Component {
     this.setState({[e.target.name]: e.target.value});
   }
 
-  handleCreate = () => {
-    const { name, brand, model, vendor, quantity, price, manual, notes } = this.state;
-    const newMaterial = { name, brand, model, vendor, quantity, price, manual, notes };
-    console.log(newMaterial);
-    this.setState({ visible: false});
+  handleCreate = async () => {
+    const { roomId } = this.props;
+    const { name, type, brand, model, vendor, quantity, price, manual, notes } = this.state;
+    const newMaterial = { name, type, brand, model, vendor, quantity, price, manual, notes };
+    const body = addMaterialHelper(newMaterial, roomId);
+    await this.props.addNewMaterial(body);
+    this.setState({ visible: false, name: '', type: '', brand: '', model: '', vendor: '', quantity: '', price: '', manual: '', notes: '' });
+    this.props.forceRender();
   }
 
   render() {
@@ -111,4 +123,8 @@ class NewMaterial extends React.Component {
   }
 }
 
-export default NewMaterial;
+export const mapDispatchToProps = (dispatch) => ({
+  addNewMaterial: (material) => dispatch(addNewMaterial(material)),
+})
+
+export default connect(null, mapDispatchToProps)(NewMaterial);

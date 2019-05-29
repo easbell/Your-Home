@@ -14,4 +14,11 @@ describe('projects', () => {
     const result = projects(undefined, mockAction)
     expect(result).toEqual([mockProject])
   });
+
+  it('should return an array if the action type is SET_PROJECTS', () => {
+    const mockProjects = [{project: {name: 'project'}}, {project: {name: 'project'}}];
+    const mockAction = actions.setProjects(mockProjects)
+    const result = projects(undefined, mockAction)
+    expect(result).toEqual(mockProjects)
+  });
 });

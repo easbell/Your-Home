@@ -7,7 +7,7 @@ export const fetchAllProjects = () => {
       dispatch(isLoading(true));
       const response = await fetch(url, {
         body: JSON.stringify({
-          "query": "query { projects { id name description address rooms { name type description }}}"
+          "query": "query { projects { id name description address rooms { id name type description }}}"
           }),
         method: 'POST',
         headers: {

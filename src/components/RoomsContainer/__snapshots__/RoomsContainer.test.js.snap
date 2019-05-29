@@ -4,7 +4,7 @@ exports[`RoomsContainer should match snapshot 1`] = `
 <div
   className="rooms"
 >
-  <Room
+  <ConnectFunction
     description="Northeast living room"
     key="0"
     name="Living Room 1"
@@ -29,7 +29,7 @@ exports[`RoomsContainer should match snapshot 1`] = `
     }
     type="Living Room"
   />
-  <Room
+  <ConnectFunction
     description="Big Kitchen"
     key="1"
     name="Room 2"
