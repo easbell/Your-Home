@@ -39,7 +39,7 @@ const CollectionCreateForm = Form.create({ name: 'form_in_modal' })(
   }
 );
 
-class NewRoom extends React.Component {
+export class NewRoom extends React.Component {
   state = { 
     visible: false,
     type: '',
