@@ -12,7 +12,6 @@ const projects = (state = [], action) => {
     case 'DELETE_PROJECT':
       return state.filter(project => project.id !== action.id)
     case 'EDIT_PROJECT':
-      console.log(action.project)
       state = state.filter(project => project.id !== action.project.id)
       return [...state, action.project]
     case 'DELETE_ROOM':
