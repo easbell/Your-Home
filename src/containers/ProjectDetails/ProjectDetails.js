@@ -16,9 +16,11 @@ class ProjectDetails extends React.Component {
             <p>{address}</p>
             <p>{description}</p>
           </div>
-          <EditProject className='edit-project-btn' name={name} address={address} description={description}/>
+          <EditProject className='edit-project-btn' id={id} name={name} address={address} description={description}/>
         </div>
-        <RoomsContainer rooms={rooms}/>
+        {!rooms === undefined &&
+          <RoomsContainer rooms={rooms}/>
+        }
       </div>
     );
   }

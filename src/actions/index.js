@@ -23,6 +23,11 @@ export const deleteAProject = (id) => ({
   id
 });
 
+export const editProject = (project) => ({
+  type: 'EDIT_PROJECT',
+  project
+});
+
 export const setMaterials = (materials) => ({
   type: 'SET_MATERIALS',
   materials

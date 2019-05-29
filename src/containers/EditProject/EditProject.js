@@ -1,5 +1,7 @@
 import React from 'react';
 import { Button, Modal, Form, Input } from 'antd';
+import { editProjectThunk } from '../../thunks/editProjectThunk';
+import { connect } from 'react-redux';
 
 const CollectionCreateForm = Form.create({ name: 'form_in_modal' })(
   class extends React.Component {
@@ -60,9 +62,18 @@ class EditProject extends React.Component {
   }
 
   handleCreate = () => {
-    const { name, address, description } = this.state;
-    const updatedProject = { name, address, description };
-    console.log(updatedProject);
+    const { id } = this.props;
+    let allItems = {
+      name: this.props.name,
+      address: this.props.address,
+      description: this.props.description
+    }
+    Object.keys(allItems).forEach(item => {
+      if(this.state[item].length > 0) {
+        allItems[item] = this.state[item]
+      }
+    })
+    this.props.editProjectThunk(id, allItems.name, allItems.address, allItems.description);
     this.setState({ visible: false});
   }
 
@@ -87,4 +98,8 @@ class EditProject extends React.Component {
   }
 }
 
-export default EditProject;
+export const mapDispatchToProps = dispatch => ({
+  editProjectThunk: (id, name, address, description) => dispatch(editProjectThunk(id, name, address, description))
+})
+
+export default connect(null, mapDispatchToProps)(EditProject);
