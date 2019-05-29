@@ -1,6 +1,6 @@
 import React from 'react';
 import { shallow } from 'enzyme';
-import NewMaterial from './NewMaterial';
+import { NewMaterial } from './NewMaterial';
 
 describe('NewMaterial', () => {
   let wrapper;

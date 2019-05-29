@@ -1,4 +1,7 @@
 import React from 'react';
+import { connect } from 'react-redux'
+import { addNewMaterial} from '../../thunks/addNewMaterial';
+import { addMaterialHelper } from '../../utils/addMaterialHelper';
 import { Button, Modal, Form, Input } from 'antd';
 
 const CollectionCreateForm = Form.create({ name: 'form_in_modal' })(
@@ -19,6 +22,11 @@ const CollectionCreateForm = Form.create({ name: 'form_in_modal' })(
               {getFieldDecorator('name', {
                 rules: [{ required: true, message: 'Please input the name of the material!' }],
               })(<Input onChange={onChange} name='name' />)}
+            </Form.Item>
+            <Form.Item label="Type">
+              {getFieldDecorator('type', {
+                rules: [{ required: true, message: 'Please input the type of the material!' }],
+              })(<Input onChange={onChange} name='type' />)}
             </Form.Item>
             <Form.Item label="Brand">
               {getFieldDecorator('brand', {
@@ -66,6 +74,7 @@ class NewMaterial extends React.Component {
   state = { 
     visible: false,
     name: '',
+    type: '',
     brand: '',
     model: '',
     vendor: '',
@@ -88,9 +97,13 @@ class NewMaterial extends React.Component {
   }
 
   handleCreate = () => {
-    const { name, brand, model, vendor, quantity, price, manual, notes } = this.state;
-    const newMaterial = { name, brand, model, vendor, quantity, price, manual, notes };
-    this.setState({ visible: false});
+    const { roomId } = this.props
+    const { name, type, brand, model, vendor, quantity, price, manual, notes } = this.state;
+    const newMaterial = { name, type, brand, model, vendor, quantity, price, manual, notes };
+    console.log(newMaterial)
+    const body = addMaterialHelper(newMaterial, roomId)
+    // this.props.addNewMaterial(body)
+    this.setState({ visible: false, name: '', type: '', brand: '', model: '', vendor: '', quantity: '', price: '', manual: '', notes: '' });
   }
 
   render() {
@@ -110,4 +123,8 @@ class NewMaterial extends React.Component {
   }
 }
 
-export default NewMaterial;
+export const mapDispatchToProps = (dispatch) => ({
+  addNewMaterial: (material) => dispatch(addNewMaterial(material)),
+})
+
+export default connect(null, mapDispatchToProps)(NewMaterial);

@@ -1,4 +1,4 @@
-const materials = (state = [], action) => {
+const materials = (state = {}, action) => {
   switch(action.type) {
     case 'SET_MATERIALS':
       return action.materials

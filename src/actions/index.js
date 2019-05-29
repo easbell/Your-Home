@@ -21,4 +21,9 @@ export const setProjects = (projects) => ({
 export const setMaterials = (materials) => ({
   type: 'SET_MATERIALS',
   materials
-})
+});
+
+export const addMaterial = (material) => ({
+  type: 'ADD_MATERIAL',
+  material
+});

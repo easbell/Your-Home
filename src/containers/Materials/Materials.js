@@ -30,6 +30,7 @@ class Materials extends React.Component {
   }
 
   render() {
+    const { roomId } = this.props
     return (
       <div>
         <div>
@@ -38,7 +39,7 @@ class Materials extends React.Component {
           </Collapse>
         </div>
         <div className='add-material-btn'>
-          <NewMaterial />
+          <NewMaterial roomId={roomId} />
         </div>
       </div>
     );
