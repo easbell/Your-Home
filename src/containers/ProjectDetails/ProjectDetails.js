@@ -10,15 +10,13 @@ class ProjectDetails extends React.Component {
     return(
       <div>
         <div className='project-page'>
-          <h2>{name}</h2>
-          <p>{address}</p>
-          <p>{description}</p>
-          <div className='edit-project-btn'>
-            <EditProject name={name} address={address} description={description}/>
+          <NewRoom id={id} className='add-room-btn'/>
+          <div className='basic'>
+            <h2>{name}</h2>
+            <p>{address}</p>
+            <p>{description}</p>
           </div>
-          <div className='add-room-btn'>
-            <NewRoom id={id} />
-          </div>
+          <EditProject className='edit-project-btn' name={name} address={address} description={description}/>
         </div>
         <RoomsContainer rooms={rooms}/>
       </div>

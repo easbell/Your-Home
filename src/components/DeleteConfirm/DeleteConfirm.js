@@ -5,7 +5,7 @@ import { Modal, Button } from 'antd';
 // I'd imagine we will also want to pass in an id.
 
 class DeleteConfirm extends Component {
-  
+
   showConfirm = (type) => {
     const confirm = Modal.confirm;
     confirm({

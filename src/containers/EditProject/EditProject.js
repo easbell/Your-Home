@@ -70,8 +70,8 @@ class EditProject extends React.Component {
     const {name, address, description } = this.props;
     return (
       <div>
-        <Button type="primary" onClick={this.showModal}>
-          <i className="fas fa-pen"></i>
+        <Button type="primary" className='header-btn' onClick={this.showModal}>
+          Edit Room <i className="project-edit fas fa-pen"></i>
         </Button>
         <CollectionCreateForm
           visible={this.state.visible}

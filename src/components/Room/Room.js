@@ -32,10 +32,10 @@ export class Room extends React.Component {
           ]}
           bordered
           renderItem={item => (
-            <List.Item key={item.id} actions={[
+            <List.Item key={item.id} className='room-item'actions={[
               <Button type='link' onClick={this.showDrawer}>View Materials</Button>,
               <EditRoom {...this.props}/>,
-              <DeleteConfirm type="room" />
+              <DeleteConfirm type="room" id={item.id} />
             ]}>
               <List.Item.Meta
                 title={item.name}

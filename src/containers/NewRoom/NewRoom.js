@@ -69,7 +69,7 @@ export class NewRoom extends React.Component {
   render() {
     return (
       <div>
-        <Button type="primary" onClick={this.showModal}>
+        <Button type="primary" className='header-btn' onClick={this.showModal}>
           Create New Room
         </Button>
         <CollectionCreateForm
