@@ -3,16 +3,17 @@ import Room from '../Room/Room';
 
 export class RoomsContainer extends Component {
   
-  renderRooms = () => {
+  renderRooms = (projectId) => {
     return this.props.rooms.map((room, i) => {
-      return <Room key={i} {...room} />
+      return <Room key={i} {...room} projectId={projectId}/>
     });
   }
 
   render() {
+    const {projectId} = this.props
     return (
       <div className='rooms'>
-        {this.renderRooms()}
+        {this.renderRooms(projectId)}
       </div>
     );
   }

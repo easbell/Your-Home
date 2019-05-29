@@ -20,7 +20,7 @@ class ProjectDetails extends React.Component {
             <NewRoom id={id} />
           </div>
         </div>
-        <RoomsContainer rooms={rooms}/>
+        <RoomsContainer rooms={rooms} projectId={id}/>
       </div>
     );
   }

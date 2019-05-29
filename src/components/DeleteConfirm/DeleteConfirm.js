@@ -1,26 +1,31 @@
 import React, { Component } from 'react';
 import { Modal, Button } from 'antd';
-import { deleteProject } from '../../thunks/fetchAllProjects';
+import { deleteProject, deleteRoom } from '../../thunks/fetchAllProjects';
 import { connect } from 'react-redux';
 
 export class DeleteConfirm extends Component {
   
-  showConfirm(type, id, deleteProject) {
+  showConfirm(type, id, deleteProject, projectId, deleteRoom) {
     const confirm = Modal.confirm;
     confirm({
       title: 'Are you sure you want to delete this item and all contents within?',
       content: 'Click OK to confirm deletion.',
       onOk() {
-        deleteProject(id)
+        if(type === 'project') {
+          deleteProject(id)
+        }
+        if(type === 'room') {
+          deleteRoom(id, projectId)
+        }
       },
       onCancel() {},
     });
   }
 
   render() {
-    const {id, type, deleteProject} = this.props
+    const {id, type, deleteProject, projectId, deleteRoom} = this.props
     return (
-      <Button onClick={() => this.showConfirm(type, id, deleteProject)} className='confirm-btn' type="link">
+      <Button onClick={() => this.showConfirm(type, id, deleteProject, projectId, deleteRoom)} className='confirm-btn' type="link">
         <i className="fas fa-trash-alt"></i>
       </Button>
     );
@@ -28,7 +33,8 @@ export class DeleteConfirm extends Component {
 }
 
 export const mapDispatchToProps = dispatch => ({
-  deleteProject: (id) => dispatch(deleteProject(id))
+  deleteProject: (id) => dispatch(deleteProject(id)),
+  deleteRoom: (id, projectId) => dispatch(deleteRoom(id, projectId))
 })
 
 export const mapStateToProps = state => ({

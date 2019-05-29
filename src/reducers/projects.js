@@ -1,4 +1,4 @@
-import { addRoomHelper } from '../utils/addRoomHelper';
+import { addRoomHelper, deleteRoomHelper } from '../utils/addRoomHelper';
 
 const projects = (state = [], action) => {
   switch(action.type) {
@@ -11,6 +11,9 @@ const projects = (state = [], action) => {
       return [...state, action.project]
     case 'DELETE_PROJECT':
       return state.filter(project => project.id !== action.id)
+    case 'DELETE_ROOM':
+      state = deleteRoomHelper(action.id, action.projectId, state)
+      return state
     default:
       return state
   }
