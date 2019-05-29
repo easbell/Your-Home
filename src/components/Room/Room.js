@@ -20,7 +20,7 @@ export class Room extends React.Component {
   }
 
   render() {
-    const { name, type, description, materials } = this.props;
+    const { name, type, description, materials, id } = this.props;
     return (
       <div className='room'>
         <List
@@ -53,6 +53,7 @@ export class Room extends React.Component {
         >
           <Materials type={type}
                      materials={materials}
+                     roomId={id}
           />
         </Drawer>
       </div>

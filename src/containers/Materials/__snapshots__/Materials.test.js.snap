@@ -65,7 +65,9 @@ exports[`Materials should match snapshot 1`] = `
   <div
     className="add-material-btn"
   >
-    <NewMaterial />
+    <ConnectFunction
+      forceRender={[Function]}
+    />
   </div>
 </div>
 `;
