@@ -25,10 +25,6 @@ exports[`Project should match snapshot 1`] = `
       >
         <p />
         <p />
-        <p>
-          2
-           Rooms
-        </p>
       </div>
     </div>
   </Link>

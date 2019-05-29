@@ -22,3 +22,8 @@ export const setMaterials = (materials) => ({
   type: 'SET_MATERIALS',
   materials
 })
+
+export const addRoom = (room) => ({
+  type: 'ADD_ROOM',
+  room
+})

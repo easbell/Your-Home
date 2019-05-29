@@ -28,7 +28,9 @@ exports[`ProjectDetails should match snapshot 1`] = `
         <div
           className="add-room-btn"
         >
-          <NewRoom />
+          <ConnectFunction
+            id={1}
+          />
         </div>
       </div>
       <RoomsContainer
