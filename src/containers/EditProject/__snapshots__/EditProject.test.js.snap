@@ -4,14 +4,16 @@ exports[`EditProject should match snapshot 1`] = `
 <div>
   <Button
     block={false}
+    className="header-btn"
     ghost={false}
     htmlType="button"
     loading={false}
     onClick={[Function]}
     type="primary"
   >
+    Edit Project 
     <i
-      className="fas fa-pen"
+      className="project-edit fas fa-pen"
     />
   </Button>
   <Form(Component)

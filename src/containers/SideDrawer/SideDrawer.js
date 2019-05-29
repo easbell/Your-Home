@@ -25,7 +25,7 @@ export class SideDrawer extends React.Component {
   renderProjects = () => {
     return this.props.projects.map(project => (
       <Link to={`/projects/${project.id}`} onClick={this.onClose} key={'link'+project.id}>
-        <Button type="default" key={project.id} block>{project.name}</Button>
+        <Button type="default" key={project.id} block className='side-drawer-btn'>{project.name}</Button>
       </Link>
     ))
   }

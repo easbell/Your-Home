@@ -1,11 +1,14 @@
 import React from 'react';
 import { shallow } from 'enzyme';
-import EditProject from './EditProject';
+import { EditProject } from './EditProject';
 
 describe('EditProject', () => {
   let wrapper;
+  let mockFn;
+
   beforeEach(() => {
-    wrapper = shallow(<EditProject/>)
+    mockFn = jest.fn();
+    wrapper = shallow(<EditProject editProjectThunk={mockFn}/>)
   });
 
   it('should match snapshot', () => {

@@ -11,6 +11,9 @@ const projects = (state = [], action) => {
       return [...state, action.project]
     case 'DELETE_PROJECT':
       return state.filter(project => project.id !== action.id)
+    case 'EDIT_PROJECT':
+      state = state.filter(project => project.id !== action.project.id)
+      return [...state, action.project]
     case 'DELETE_ROOM':
       state = deleteRoomHelper(action.id, action.projectId, state)
       return state

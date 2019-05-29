@@ -1,5 +1,4 @@
 import { isLoading, hasErrored, addRoom } from '../actions';
-import { fetchAllProjects } from './fetchAllProjects';
 
 export const addNewRoom = (id, name, description, type) => {
   return async (dispatch) => {
@@ -20,7 +19,6 @@ export const addNewRoom = (id, name, description, type) => {
       console.log(data.data.addProjectRoom);
       dispatch(isLoading(false));
       dispatch(addRoom(data.data.addProjectRoom));
-      fetchAllProjects();
     } catch(error) {
       dispatch(hasErrored(error.message))
     }

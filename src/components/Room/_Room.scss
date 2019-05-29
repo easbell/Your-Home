@@ -1,7 +1,12 @@
 .room {
   width: 45%;
+  margin-bottom: 45px;
 }
 
 .room:nth-child(odd) {  
   margin-right: 10%;
+}
+
+.room-item {
+  height: 80px;
 }

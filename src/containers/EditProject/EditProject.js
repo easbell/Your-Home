@@ -1,5 +1,7 @@
 import React from 'react';
 import { Button, Modal, Form, Input } from 'antd';
+import { editProjectThunk } from '../../thunks/editProjectThunk';
+import { connect } from 'react-redux';
 
 const CollectionCreateForm = Form.create({ name: 'form_in_modal' })(
   class extends React.Component {
@@ -39,7 +41,7 @@ const CollectionCreateForm = Form.create({ name: 'form_in_modal' })(
   }
 );
 
-class EditProject extends React.Component {
+export class EditProject extends React.Component {
   state = { 
     visible: false,
     name: '',
@@ -60,9 +62,18 @@ class EditProject extends React.Component {
   }
 
   handleCreate = () => {
-    const { name, address, description } = this.state;
-    const updatedProject = { name, address, description };
-    console.log(updatedProject);
+    const { id } = this.props;
+    let allItems = {
+      name: this.props.name,
+      address: this.props.address,
+      description: this.props.description
+    }
+    Object.keys(allItems).forEach(item => {
+      if(this.state[item].length > 0) {
+        allItems[item] = this.state[item]
+      }
+    })
+    this.props.editProjectThunk(id, allItems.name, allItems.address, allItems.description);
     this.setState({ visible: false});
   }
 
@@ -70,8 +81,8 @@ class EditProject extends React.Component {
     const {name, address, description } = this.props;
     return (
       <div>
-        <Button type="primary" onClick={this.showModal}>
-          <i className="fas fa-pen"></i>
+        <Button type="primary" className='header-btn' onClick={this.showModal}>
+          Edit Project <i className="project-edit fas fa-pen"></i>
         </Button>
         <CollectionCreateForm
           visible={this.state.visible}
@@ -87,4 +98,8 @@ class EditProject extends React.Component {
   }
 }
 
-export default EditProject;
+export const mapDispatchToProps = dispatch => ({
+  editProjectThunk: (id, name, address, description) => dispatch(editProjectThunk(id, name, address, description))
+})
+
+export default connect(null, mapDispatchToProps)(EditProject);

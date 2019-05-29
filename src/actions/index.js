@@ -23,6 +23,11 @@ export const deleteAProject = (id) => ({
   id
 });
 
+export const editProject = (project) => ({
+  type: 'EDIT_PROJECT',
+  project
+});
+
 export const deleteARoom = (id, projectId) => ({
   type: 'DELETE_ROOM',
   id,

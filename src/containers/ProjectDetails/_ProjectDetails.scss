@@ -1,26 +1,25 @@
 .project-page {
   margin-bottom: 40px;
-  position: relative;
-  text-align: center;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
 
+  .basic {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  
   h2 {
     font-size: 200%;
   }
 
-  .edit-project-btn {
-    position: absolute;
-    left: 88%;
-    top: 10%;
+  .header-btn {
+    width: 240px;
   }
 
   p {
     margin-bottom: 8px;
-  }
-
-  .add-room-btn {
-    position: absolute;
-    bottom: 10%;
-    left: 10%;
   }
 
 }

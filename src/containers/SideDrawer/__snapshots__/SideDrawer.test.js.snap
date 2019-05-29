@@ -24,6 +24,7 @@ exports[`SideDrawer should match snapshot 1`] = `
     >
       <Button
         block={true}
+        className="side-drawer-btn"
         ghost={false}
         htmlType="button"
         loading={false}
@@ -37,6 +38,7 @@ exports[`SideDrawer should match snapshot 1`] = `
     >
       <Button
         block={true}
+        className="side-drawer-btn"
         ghost={false}
         htmlType="button"
         loading={false}
