@@ -20,7 +20,7 @@ export class Room extends React.Component {
   }
 
   render() {
-    const { name, type, description, materials, id } = this.props;
+    const { name, type, description, materials, id, projectId } = this.props;
     return (
       <div className='room'>
         <List
@@ -35,7 +35,7 @@ export class Room extends React.Component {
             <List.Item key={item.id} actions={[
               <Button type='link' onClick={this.showDrawer}>View Materials</Button>,
               <EditRoom {...this.props}/>,
-              <DeleteConfirm type="room" />
+              <DeleteConfirm type="room" id={id} projectId={projectId}/>
             ]}>
               <List.Item.Meta
                 title={item.name}
