@@ -1,5 +1,7 @@
 import React from 'react';
 import { Button, Modal, Form, Input } from 'antd';
+import { editMaterialHelper } from '../../utils/materialHelpers';
+import { editMaterial} from '../../thunks/editMaterial';
 
 export const CollectionCreateForm = Form.create({ name: 'form_in_modal' })(
   class extends React.Component {
@@ -22,6 +24,11 @@ export const CollectionCreateForm = Form.create({ name: 'form_in_modal' })(
               {getFieldDecorator('name', {
                 rules: [{ required: false }],
               })(<Input onChange={editMaterial} name='name' placeholder={name} />)}
+            </Form.Item>
+            <Form.Item label="Type">
+              {getFieldDecorator('type', {
+                rules: [{ required: false }],
+              })(<Input onChange={editMaterial} name='type' placeholder={name} />)}
             </Form.Item>
             <Form.Item label="Brand">
               {getFieldDecorator('brand', {
@@ -69,6 +76,7 @@ class EditMaterial extends React.Component {
   state = { 
     visible: false,
     name: '',
+    type: '',
     brand: '',
     vendor: '',
     model: '',
@@ -91,10 +99,29 @@ class EditMaterial extends React.Component {
   }
 
   handleCreate = () => {
-    const { name, brand, vendor, model, quantity, price, manual, notes } = this.state;
-    const updatedMaterials = { name, brand, vendor, model, quantity, price, manual, notes };
-    console.log(updatedMaterials);
-    this.setState({ visible: false});
+    console.log(this.props)
+    const { id } = this.props
+    let items = [ 'name', 'type', 'brand', 'vendor', 'model', 'quantity', 'price', 'manual', 'notes' ]
+    let allItems = {
+      name: this.props.name,
+      type: this.props.type,
+      brand: this.props.brand,
+      vendor: this.props.vendor,
+      model: this.props.model_umber,
+      quantity: this.props.quantity,
+      price: this.props.unit_price,
+      manual_url: this.props.manual_url,
+      notes: this.props.notes
+    }
+
+    items.forEach(item => {
+      if (this.state[item].length > 0) {
+        allItems[item] = this.state[item]
+      }
+    })
+    let body = editMaterialHelper(allItems, id);
+    editMaterial()
+    this.setState({ visible: false, name: '', type: '', brand: '', vendor: '', model: '', quantity: '', price: '', manual: '', notes: '' });
   }
 
   render() {
@@ -115,4 +142,8 @@ class EditMaterial extends React.Component {
   }
 }
 
-export default EditMaterial;
+export const mapDispatchToProps = (dispatch) => ({
+  addNewMaterial: (material) => dispatch(addNewMaterial(material)),
+})
+
+export default (null, mapDispatchToProps)(EditMaterial);

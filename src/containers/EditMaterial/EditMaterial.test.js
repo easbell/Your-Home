@@ -1,6 +1,6 @@
 import React from 'react';
 import { shallow } from 'enzyme';
-import EditMaterial from './EditMaterial';
+import { EditMaterial } from './EditMaterial';
 import { CollectionCreateForm } from './EditMaterial';
 
 describe('EditMaterial', () => {

@@ -23,6 +23,8 @@ const materials = (state = {}, action) => {
         state[type] = [newMaterial]
         return state
       }
+    case 'EDIT_MATERIAL':
+      console.log(material)
     default:
       return state
   }

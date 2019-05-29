@@ -24,7 +24,7 @@ class Materials extends React.Component {
     const { materials } = this.props
     return materials[type].map((material, i) => {
       return(
-        <Material {...material} key={i} />
+        <Material {...material} type={type} key={i} forceRender={this.forceRender} />
       )
     });
   }

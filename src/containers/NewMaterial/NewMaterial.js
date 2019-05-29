@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux'
 import { addNewMaterial} from '../../thunks/addNewMaterial';
-import { addMaterialHelper } from '../../utils/addMaterialHelper';
+import { addMaterialHelper } from '../../utils/materialHelpers';
 import { Button, Modal, Form, Input } from 'antd';
 
 const CollectionCreateForm = Form.create({ name: 'form_in_modal' })(
