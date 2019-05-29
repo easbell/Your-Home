@@ -17,3 +17,8 @@ export const setProjects = (projects) => ({
   type: 'SET_PROJECTS',
   projects
 });
+
+export const deleteAProject = (id) => ({
+  type: 'DELETE_PROJECT',
+  id
+})

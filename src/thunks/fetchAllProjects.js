@@ -1,4 +1,4 @@
-import { isLoading, hasErrored, setProjects } from '../actions';
+import { isLoading, hasErrored, setProjects, deleteAProject } from '../actions';
 
 export const fetchAllProjects = () => {
   return async (dispatch) => {
@@ -43,6 +43,7 @@ export const deleteProject = (id) => {
         throw Error(response.statusText)
       }
       const data = await response.json()
+      dispatch(deleteAProject(id))
       dispatch(isLoading(false))
     } catch(error) {
       dispatch(hasErrored(error.message))
