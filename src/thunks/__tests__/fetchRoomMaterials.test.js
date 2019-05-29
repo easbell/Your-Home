@@ -1,22 +1,22 @@
-import { fetchAllProjects } from './fetchAllProjects';
-import { isLoading, setProjects, hasErrored } from '../actions';
+import { fetchRoomMaterials } from '../fetchRoomMaterials';
+import { isLoading, setMaterials, hasErrored } from '../../actions';
 
-describe('fetchAllProjects', () => {
+describe('fetchAllMaterials', () => {
   let mockDispatch;
-  let mockProjects;
+  let mockMaterials;
   
   beforeEach(() => {
-    mockProjects = [{id: 1, name: 'my project' }, {id: 2, name: 'my new project' }]
+    mockMaterials = { shower: [{id: 3, name: 'white shower'}], sink: [{id: 4, name: 'red sink'}]}
     mockDispatch = jest.fn()
 
     window.fetch = jest.fn().mockImplementation(() => Promise.resolve({
       ok: true,
-      json: () => Promise.resolve(mockProjects)
+      json: () => Promise.resolve(mockMaterials)
     }))
   })
   
   it('calls dispatch with isLoading(true)', () => {
-    const thunk = fetchAllProjects()
+    const thunk = fetchRoomMaterials()
     
     thunk(mockDispatch)
     
@@ -24,17 +24,17 @@ describe('fetchAllProjects', () => {
   })
   
   it('calls fetch', async () => {
-    const thunk = fetchAllProjects()
+    const thunk = fetchRoomMaterials()
 
     await thunk(mockDispatch)
 
     expect(window.fetch).toHaveBeenCalled()
   });
 
-  it.skip('dispatches setProjects action', async () => {
-    const thunk = fetchAllProjects();
+  it.skip('dispatches setMaterials action', async () => {
+    const thunk = fetchRoomMaterials();
     await thunk(mockDispatch);
-    expect(mockDispatch).toHaveBeenCalledWith(setProjects(mockProjects))
+    expect(mockDispatch).toHaveBeenCalledWith(setMaterials(mockMaterials))
   });
 
   it('should dispatch hasErrored with a message if the response is not ok', async () => {
@@ -43,7 +43,7 @@ describe('fetchAllProjects', () => {
       statusText: 'Something went wrong'
     }))
     
-    const thunk = fetchAllProjects()
+    const thunk = fetchRoomMaterials()
     
     await thunk(mockDispatch)
     
@@ -51,7 +51,7 @@ describe('fetchAllProjects', () => {
   });
 
   it('should dispatch isLoading(false) if the response is ok', async () => {
-    const thunk = fetchAllProjects()
+    const thunk = fetchRoomMaterials()
     
     await thunk(mockDispatch)
     

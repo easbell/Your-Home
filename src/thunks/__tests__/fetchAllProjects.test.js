@@ -1,22 +1,22 @@
-import { addNewMaterial } from './addNewMaterial';
-import { isLoading, addMaterial, hasErrored } from '../actions';
+import { fetchAllProjects } from '../fetchAllProjects';
+import { isLoading, setProjects, hasErrored } from '../../actions';
 
-describe('addNewMaterial', () => {
-  let mockProject;
+describe('fetchAllProjects', () => {
   let mockDispatch;
+  let mockProjects;
   
   beforeEach(() => {
-    mockProject = {createMaterial: {name: 'my project' }}
+    mockProjects = [{id: 1, name: 'my project' }, {id: 2, name: 'my new project' }]
     mockDispatch = jest.fn()
 
     window.fetch = jest.fn().mockImplementation(() => Promise.resolve({
       ok: true,
-      json: () => Promise.resolve(mockMaterial)
+      json: () => Promise.resolve(mockProjects)
     }))
   })
   
   it('calls dispatch with isLoading(true)', () => {
-    const thunk = addNewMaterial()
+    const thunk = fetchAllProjects()
     
     thunk(mockDispatch)
     
@@ -24,17 +24,17 @@ describe('addNewMaterial', () => {
   })
   
   it('calls fetch', async () => {
-    const thunk = addNewMaterial()
+    const thunk = fetchAllProjects()
 
     await thunk(mockDispatch)
 
     expect(window.fetch).toHaveBeenCalled()
   });
 
-  it.skip('dispatches setMaterial action', async () => {
-    const thunk = addNewMaterial();
+  it.skip('dispatches setProjects action', async () => {
+    const thunk = fetchAllProjects();
     await thunk(mockDispatch);
-    expect(mockDispatch).toHaveBeenCalledWith(addProject(mockMaterial))
+    expect(mockDispatch).toHaveBeenCalledWith(setProjects(mockProjects))
   });
 
   it('should dispatch hasErrored with a message if the response is not ok', async () => {
@@ -43,20 +43,15 @@ describe('addNewMaterial', () => {
       statusText: 'Something went wrong'
     }))
     
-    const thunk = addNewMaterial()
+    const thunk = fetchAllProjects()
     
     await thunk(mockDispatch)
     
     expect(mockDispatch).toHaveBeenCalledWith(hasErrored('Something went wrong'))
   });
 
-  it.skip('should dispatch isLoading(false) if the response is ok', async () => {
-    // window.fetch = jest.fn().mockImplementation(() => Promise.resolve({
-    //   ok: true,
-    //   statusText: 'Something went wrong'
-    // }))
-    
-    const thunk = addNewMaterial()
+  it('should dispatch isLoading(false) if the response is ok', async () => {
+    const thunk = fetchAllProjects()
     
     await thunk(mockDispatch)
     
