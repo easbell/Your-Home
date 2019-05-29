@@ -41,7 +41,7 @@ const CollectionCreateForm = Form.create({ name: 'form_in_modal' })(
   }
 );
 
-class EditProject extends React.Component {
+export class EditProject extends React.Component {
   state = { 
     visible: false,
     name: '',

@@ -4,6 +4,7 @@ exports[`NewRoom should match snapshot 1`] = `
 <div>
   <Button
     block={false}
+    className="header-btn"
     ghost={false}
     htmlType="button"
     loading={false}
