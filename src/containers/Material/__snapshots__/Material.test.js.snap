@@ -44,7 +44,7 @@ exports[`Material should match snapshot 1`] = `
         }
       }
     />
-    <DeleteConfirm
+    <ConnectFunction
       type="material"
     />
   </div>
