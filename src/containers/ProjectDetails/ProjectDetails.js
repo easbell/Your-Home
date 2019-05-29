@@ -6,7 +6,7 @@ import EditProject from '../EditProject/EditProject';
 class ProjectDetails extends React.Component {
 
   renderDetails = () => {
-    const { name, address, description, rooms } = this.props.project;
+    const { name, address, description, rooms, id } = this.props.project;
     return(
       <div>
         <div className='project-page'>
@@ -17,7 +17,7 @@ class ProjectDetails extends React.Component {
             <EditProject name={name} address={address} description={description}/>
           </div>
           <div className='add-room-btn'>
-            <NewRoom />
+            <NewRoom id={id} />
           </div>
         </div>
         <RoomsContainer rooms={rooms}/>

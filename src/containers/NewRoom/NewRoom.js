@@ -1,5 +1,7 @@
 import React from 'react';
 import { Button, Modal, Form, Input } from 'antd';
+import { addNewRoom } from '../../thunks/addNewRoom';
+import { connect } from 'react-redux';
 
 const CollectionCreateForm = Form.create({ name: 'form_in_modal' })(
   class extends React.Component {
@@ -59,8 +61,8 @@ class NewRoom extends React.Component {
 
   handleCreate = () => {
     const { name, type, description } = this.state;
-    const newRoom = { name, type, description };
-    console.log(newRoom);
+    const { id } = this.props;
+    this.props.addNewRoom(id, name, description, type);
     this.setState({ visible: false});
   }
 
@@ -81,4 +83,8 @@ class NewRoom extends React.Component {
   }
 }
 
-export default NewRoom;
+export const mapDispatchToProps = dispatch => ({
+  addNewRoom: (id, name, description, type) => dispatch(addNewRoom(id, name, description, type))
+});
+
+export default connect(null, mapDispatchToProps)(NewRoom);

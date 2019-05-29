@@ -16,7 +16,7 @@ const Project = (props) => {
           <div className='project-description'>
             <p>{address}</p>
             <p>{description}</p>
-            <p>{rooms.length} Rooms</p>
+            {/* <p>{rooms.length} Rooms</p> */}
           </div>
         </div>
       </Link>
