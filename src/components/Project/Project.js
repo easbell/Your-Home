@@ -21,7 +21,7 @@ const Project = (props) => {
         </div>
       </Link>
       <div className='project-delete'>
-        <DeleteConfirm type="project"/>
+        <DeleteConfirm type="project" id={id}/>
       </div>
     </div>
   );
