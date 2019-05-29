@@ -1,20 +1,9 @@
 export const addMaterialHelper = (material, id) => {
   console.log(material, id)
+  const { name, type, brand, model, vendor, quantity, price, manual, notes } = material;
 
-  // let rooms = roomBuilder(project.rooms);
-  // return {"query": `mutation { createProject (project: {name: "${project.name}", description: "${project.description}", address: "${project.address}"}, rooms: [${rooms}]) {id name description address rooms {id name type}}}`}
+  return { "query": `mutation{addRoomMaterial(room_id: "${id}", element_type: "${type}", material: {name: "${name}", brand: "${brand}", model_number: "${model}", quantity: ${quantity}, unit_price: ${price}, manual_url: "${manual}", notes: "${notes}", vendor: "${vendor}"}) {id element_type room{id name} material{id name brand model_number unit_price vendor quantity manual_url notes}}}`}
 }
 
-// const roomBuilder = (rooms) => {
-//   let roomString = ``
-//   let allRooms = []
-//   rooms.forEach(room => {
-//     roomString += `{name: "${room.name}", type: "${room.type}"}, `
-//   })
-//   allRooms.push(roomString)
-//   return allRooms;
-// }
-
-
-// { "query":"mutation{addRoomMaterial(room_id: 1, element_type: \"Flooring\", material: {name: \"new material\", vendor: \"some company\"}) {id element_type room{id name} material{id name vendor quantity}}}"
-// }
+// perhaps will want a materialBuilder if 
+// not all fields will be filled out

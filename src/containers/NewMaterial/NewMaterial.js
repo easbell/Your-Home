@@ -102,7 +102,7 @@ class NewMaterial extends React.Component {
     const newMaterial = { name, type, brand, model, vendor, quantity, price, manual, notes };
     console.log(newMaterial)
     const body = addMaterialHelper(newMaterial, roomId)
-    // this.props.addNewMaterial(body)
+    this.props.addNewMaterial(body)
     this.setState({ visible: false, name: '', type: '', brand: '', model: '', vendor: '', quantity: '', price: '', manual: '', notes: '' });
   }
 
