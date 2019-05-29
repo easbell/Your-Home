@@ -31,7 +31,7 @@ exports[`Project should match snapshot 1`] = `
   <div
     className="project-delete"
   >
-    <DeleteConfirm
+    <ConnectFunction
       type="project"
     />
   </div>
