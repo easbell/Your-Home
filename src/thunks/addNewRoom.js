@@ -16,7 +16,6 @@ export const addNewRoom = (id, name, description, type) => {
         throw Error(response.statusText)
       }
       const data = await response.json();
-      console.log(data.data.addProjectRoom);
       dispatch(isLoading(false));
       dispatch(addRoom(data.data.addProjectRoom));
     } catch(error) {

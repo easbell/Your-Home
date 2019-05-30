@@ -1,22 +1,22 @@
-import { addNewMaterial } from './addNewMaterial';
-import { isLoading, addMaterial, hasErrored } from '../actions';
+import { editProjectThunk } from '../editProjectThunk';
+import { isLoading, hasErrored } from '../../actions';
 
-describe('addNewMaterial', () => {
+describe('editProjectThunk', () => {
   let mockProject;
   let mockDispatch;
   
   beforeEach(() => {
-    mockProject = {createMaterial: {name: 'my project' }}
+    mockProject = {data: {data: {updateProject: {name: 'my room' }}}}
     mockDispatch = jest.fn()
 
     window.fetch = jest.fn().mockImplementation(() => Promise.resolve({
       ok: true,
-      json: () => Promise.resolve(mockMaterial)
+      json: () => Promise.resolve(mockProject)
     }))
   })
   
   it('calls dispatch with isLoading(true)', () => {
-    const thunk = addNewMaterial()
+    const thunk = editProjectThunk()
     
     thunk(mockDispatch)
     
@@ -24,17 +24,11 @@ describe('addNewMaterial', () => {
   })
   
   it('calls fetch', async () => {
-    const thunk = addNewMaterial()
+    const thunk = editProjectThunk()
 
     await thunk(mockDispatch)
 
     expect(window.fetch).toHaveBeenCalled()
-  });
-
-  it.skip('dispatches setMaterial action', async () => {
-    const thunk = addNewMaterial();
-    await thunk(mockDispatch);
-    expect(mockDispatch).toHaveBeenCalledWith(addProject(mockMaterial))
   });
 
   it('should dispatch hasErrored with a message if the response is not ok', async () => {
@@ -43,20 +37,15 @@ describe('addNewMaterial', () => {
       statusText: 'Something went wrong'
     }))
     
-    const thunk = addNewMaterial()
+    const thunk = editProjectThunk()
     
     await thunk(mockDispatch)
     
     expect(mockDispatch).toHaveBeenCalledWith(hasErrored('Something went wrong'))
   });
 
-  it.skip('should dispatch isLoading(false) if the response is ok', async () => {
-    // window.fetch = jest.fn().mockImplementation(() => Promise.resolve({
-    //   ok: true,
-    //   statusText: 'Something went wrong'
-    // }))
-    
-    const thunk = addNewMaterial()
+  it('should dispatch isLoading(false) if the response is ok', async () => {
+    const thunk = editProjectThunk()
     
     await thunk(mockDispatch)
     
