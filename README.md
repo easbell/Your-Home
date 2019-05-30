@@ -30,7 +30,11 @@ One of our project collaborators used to work at a small home builder in Denver,
 - `npm test` to run the test suite
 
 ## Contributers
-- [Elizabeth Asbell](https://github.com/easbell) [LinkedIn](https://www.linkedin.com/in/easbell/)
-- [Edgar Munoz](https://github.com/criteriamor) [LinkedIn](https://www.linkedin.com/in/edgaremunoz/)
-- [Mason France](https://github.com/francepack) [LinkedIn](https://www.linkedin.com/in/masonfrance/)
-- [Zachary Nager](https://github.com/nagerz) [LinkedIn](https://www.linkedin.com/in/nagerz/)
+- [Elizabeth Asbell](https://github.com/easbell) 
+  - [LinkedIn](https://www.linkedin.com/in/easbell/)
+- [Edgar Munoz](https://github.com/criteriamor) 
+  - [LinkedIn](https://www.linkedin.com/in/edgaremunoz/)
+- [Mason France](https://github.com/francepack) 
+  - [LinkedIn](https://www.linkedin.com/in/masonfrance/)
+- [Zachary Nager](https://github.com/nagerz) 
+  - [LinkedIn](https://www.linkedin.com/in/nagerz/)
