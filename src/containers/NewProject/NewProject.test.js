@@ -3,6 +3,8 @@ import { shallow } from 'enzyme';
 import { NewProject, mapDispatchToProps, ProjectForm } from './NewProject';
 import { addNewProject } from '../../thunks/addNewProject';
 
+jest.mock('../../thunks/addNewProject');
+
 describe('App', () => {
   let wrapper;
   let mockFn;
@@ -70,7 +72,7 @@ describe('App', () => {
   });
 
   describe('mapDispatchToProps', () => {
-    it.skip('should dispatch addProject when addProject is called', () => {
+    it('should dispatch addNewProject', () => {
       const mockDispatch = jest.fn();
       const actionToDispatch = addNewProject();
 

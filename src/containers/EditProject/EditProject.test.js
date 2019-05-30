@@ -1,6 +1,9 @@
 import React from 'react';
 import { shallow } from 'enzyme';
-import { EditProject } from './EditProject';
+import { EditProject, mapDispatchToProps } from './EditProject';
+import { editProjectThunk } from '../../thunks/editProjectThunk';
+
+jest.mock('../../thunks/editProjectThunk');
 
 describe('EditProject', () => {
   let wrapper;
@@ -39,4 +42,11 @@ describe('EditProject', () => {
     expect(wrapper.state('visible')).toBe(false);
   });
 
+  it('should call correct props in mapDispatchToProps', () => {
+    const mockDispatch = jest.fn()
+    const actionToDispatch = editProjectThunk()
+    const mappedProps = mapDispatchToProps(mockDispatch)
+    mappedProps.editProjectThunk()
+    expect(mockDispatch).toHaveBeenCalledWith(actionToDispatch)
+  });
 });

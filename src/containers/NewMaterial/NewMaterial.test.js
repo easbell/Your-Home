@@ -1,6 +1,9 @@
 import React from 'react';
 import { shallow } from 'enzyme';
-import { NewMaterial } from './NewMaterial';
+import { NewMaterial, mapDispatchToProps } from './NewMaterial';
+import { addNewMaterial } from '../../thunks/addNewMaterial';
+
+jest.mock('../../thunks/addNewMaterial');
 
 describe('NewMaterial', () => {
   let wrapper;
@@ -36,6 +39,16 @@ describe('NewMaterial', () => {
     wrapper.setState({ visible: true });
     await wrapper.instance().handleCreate();
     expect(wrapper.state('visible')).toBe(false);
+  });
+
+  it('should dispatch addNewMaterial', () => {
+    const mockDispatch = jest.fn();
+    const actionToDispatch = addNewMaterial();
+
+    const mappedProps = mapDispatchToProps(mockDispatch);
+    mappedProps.addNewMaterial();
+
+    expect(mockDispatch).toHaveBeenCalledWith(actionToDispatch);
   });
 
 });
