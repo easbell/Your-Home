@@ -1,6 +1,9 @@
 import React from 'react';
 import { shallow } from 'enzyme';
-import { NewRoom } from './NewRoom';
+import { NewRoom, mapDispatchToProps } from './NewRoom';
+import { addNewRoom } from '../../thunks/addNewRoom';
+
+jest.mock('../../thunks/addNewRoom');
 
 describe('NewRoom', () => {
   let wrapper;
@@ -37,6 +40,16 @@ describe('NewRoom', () => {
     wrapper.setState({ visible: true })
     wrapper.instance().handleCreate();
     expect(wrapper.state('visible')).toBe(false);
+  });
+
+  it('should dispatch addNewRoom', () => {
+    const mockDispatch = jest.fn();
+    const actionToDispatch = addNewRoom();
+
+    const mappedProps = mapDispatchToProps(mockDispatch);
+    mappedProps.addNewRoom();
+
+    expect(mockDispatch).toHaveBeenCalledWith(actionToDispatch);
   });
   
 });
