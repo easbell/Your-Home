@@ -1,4 +1,5 @@
 import React from 'react';
+import { connect } from 'react-redux';
 import { Collapse } from 'antd';
 import NewMaterial from '../NewMaterial/NewMaterial';
 import Material from '../Material/Material';
@@ -8,9 +9,9 @@ class Materials extends React.Component {
 
   renderMaterialTypes = () => {
     const { materials } = this.props
-    const types = Object.keys(materials)
-    
+    const types = Object.keys(materials)    
     return types.map((type, i) => {
+      console.log(type)
       const Panel = Collapse.Panel;
       return(
         <Panel header={type} key={i}>
@@ -22,9 +23,9 @@ class Materials extends React.Component {
 
   renderMaterials = (type) => {
     const { materials } = this.props
-    return materials[type].map((material, i) => {
+    return materials[type].map(material => {
       return(
-        <Material {...material} type={type} key={i} forceRender={this.forceRender} />
+        <Material {...material} type={type} key={material.id} forceRender={this.forceRender} />
       )
     });
   }

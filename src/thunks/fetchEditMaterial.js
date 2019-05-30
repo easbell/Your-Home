@@ -1,12 +1,14 @@
 import { isLoading, hasErrored, editMaterial } from '../actions';
 
-export const fetchEditMaterial = (body) => {
+export const fetchEditMaterial = (request) => {
   return async (dispatch) => {
+    console.log(request.body)
+
     const url = "https://hometrackr.herokuapp.com//api/v1/graphql"
     try {
       dispatch(isLoading(true));
       const response = await fetch(url, {
-        body: JSON.stringify(body),
+        body: JSON.stringify(request.body),
         method: 'POST',
         headers: {
           'Content-Type': 'application/json'
@@ -16,10 +18,9 @@ export const fetchEditMaterial = (body) => {
         throw Error(response.statusText)
       }
       const data = await response.json()
-      dispatch(isLoading(false))
       console.log(data)
-      console.log(data.data.updateProjectMaterial)
-      dispatch(editMaterial(data.data.updateProjectMaterial))
+      dispatch(isLoading(false))
+      dispatch(editMaterial(data.data.updateProjectMaterial, request.oldType))
     } catch(error) {
       dispatch(hasErrored(error.message))
     }

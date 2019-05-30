@@ -4,15 +4,14 @@ import DeleteConfirm from '../../components/DeleteConfirm/DeleteConfirm';
 import MaterialDetails from '../../components/MaterialDetails/MaterialDetails';
 
 class Material extends Component {
-
   render() {
-    const { brand, name } = this.props
+    const { id, brand, name } = this.props
     return (
-      <div key={name} className='material'>
+      <div key={id} className='material'>
         <p>{name}, {brand}</p>
         <div className='material-control'>
           <MaterialDetails {...this.props}/>
-          <EditMaterial {...this.props} forceRender={this.forceRender}/>
+          <EditMaterial {...this.props}/>
           <DeleteConfirm type="material"/>
         </div>
       </div>

@@ -3,18 +3,20 @@ const materials = (state = {}, action) => {
     case 'SET_MATERIALS':
       return action.materials
     case 'ADD_MATERIAL':
-      const type = action.material.element_type
-      const { id, name, brand, model_number, unit_price, vendor, quantity, manual_url, notes } = action.material.material
+      let { id, name, brand, model_number, unit_price, vendor, quantity, manual_url, notes, roomMaterials } = action.material.material
+      let type = action.material.element_type
       const newMaterial = {
-        id: id,
-        name: name,
-        brand: brand,
-        model_number: model_number,
-        unit_price: unit_price,
-        vendor: vendor,
-        quantity: quantity,
-        manual_url: manual_url,
-        notes: notes,
+        id,
+        name,
+        brand,
+        model_number,
+        unit_price,
+        vendor,
+        quantity,
+        manual_url,
+        notes,
+        roomMaterials: [{ id: action.material.id, element_type: action.material.element_type }]
+
       }
       if (state[type]) {
         state[type] = [...state[type], newMaterial]
@@ -24,7 +26,39 @@ const materials = (state = {}, action) => {
         return state
       }
     case 'EDIT_MATERIAL':
-      console.log(action.material)
+      let oldType = action.oldType
+      let newType = action.material.element_type
+      // let { id, name, brand, model_number, unit_price, vendor, quantity, manual_url, notes } = action.material.material
+      const updatedMaterial = {
+        id: action.material.material.id,
+        name: action.material.material.name,
+        brand: action.material.material.brand,
+        model_number: action.material.material.model_number,
+        unit_price: action.material.material.unit_price,
+        vendor: action.material.material.vendor,
+        quantity: action.material.material.quantity,
+        manual_url: action.material.material.manual_url,
+        notes: action.material.material.notes,
+        roomMaterials: [{ id: action.material.id, element_type: action.material.element_type }]
+      }
+
+      if (oldType === newType) {
+        let oldMaterial = state[newType].find(material => material.id === updatedMaterial.id)
+        let i = state[newType].indexOf(oldMaterial)
+        state[newType].splice(i, 1, updatedMaterial)
+        return state
+      } else {
+        let oldMaterial = state[oldType].find(material => material.id === updatedMaterial.id)
+        let i = state[oldType].indexOf(oldMaterial)
+        state[oldType].splice(i, 1)
+        if (!state[newType]) {
+          state[newType] = updatedMaterial
+          return state
+        } else {
+          state[newType] = [...state[newType], updatedMaterial]
+          return state
+        }
+      }
     default:
       return state
   }

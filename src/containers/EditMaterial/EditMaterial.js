@@ -8,7 +8,7 @@ const CollectionCreateForm = Form.create({ name: 'form_in_modal' })(
   class extends React.Component {
     render() {
       const { visible, onCancel, onCreate, form, editMaterial } = this.props;
-      const { brand, manual_url, model_number, name, notes, quantity, unit_price, vendor} = this.props.materials;
+      const { brand, manual_url, type, model_number, name, notes, quantity, unit_price, vendor} = this.props.materials;
       const { getFieldDecorator } = form;
       return (
         <Modal
@@ -29,7 +29,7 @@ const CollectionCreateForm = Form.create({ name: 'form_in_modal' })(
             <Form.Item label="Type">
               {getFieldDecorator('type', {
                 rules: [{ required: false }],
-              })(<Input onChange={editMaterial} name='type' placeholder={name} />)}
+              })(<Input onChange={editMaterial} name='type' placeholder={type} />)}
             </Form.Item>
             <Form.Item label="Brand">
               {getFieldDecorator('brand', {
@@ -99,20 +99,21 @@ export class EditMaterial extends React.Component {
     this.setState({[e.target.name]: e.target.value});
   }
 
-  handleCreate = () => {
+  handleCreate = async () => {
     console.log(this.props)
-    const { id } = this.props
+    const { id } = this.props.roomMaterials[0];
     let items = [ 'name', 'type', 'brand', 'vendor', 'model', 'quantity', 'price', 'manual', 'notes' ]
     let allItems = {
       name: this.props.name,
       type: this.props.type,
       brand: this.props.brand,
       vendor: this.props.vendor,
-      model: this.props.model_umber,
+      model: this.props.model_number,
       quantity: this.props.quantity,
       price: this.props.unit_price,
-      manual_url: this.props.manual_url,
-      notes: this.props.notes
+      manual: this.props.manual_url,
+      notes: this.props.notes,
+      roomMaterials: this.props.roomMaterials
     }
 
     items.forEach(item => {
@@ -120,9 +121,11 @@ export class EditMaterial extends React.Component {
         allItems[item] = this.state[item]
       }
     })
+    const oldMaterialType = this.props.type
     let body = editMaterialHelper(allItems, id);
-    this.props.fetchEditMaterial(body)
+    await this.props.fetchEditMaterial({body: body, oldType: oldMaterialType});
     this.setState({ visible: false, name: '', type: '', brand: '', vendor: '', model: '', quantity: '', price: '', manual: '', notes: '' });
+    this.props.forceRender();
   }
 
   render() {

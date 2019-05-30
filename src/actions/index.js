@@ -33,9 +33,10 @@ export const addMaterial = (material) => ({
   material
 });
 
-export const editMaterial = (material) => ({
+export const editMaterial = (material, oldType) => ({
   type: 'EDIT_MATERIAL',
-  material
+  material,
+  oldType
 })
 
 export const addRoom = (room) => ({
