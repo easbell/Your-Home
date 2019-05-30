@@ -28,7 +28,6 @@ const materials = (state = {}, action) => {
     case 'EDIT_MATERIAL':
       let oldType = action.oldType
       let newType = action.material.element_type
-      // let { id, name, brand, model_number, unit_price, vendor, quantity, manual_url, notes } = action.material.material
       const updatedMaterial = {
         id: action.material.material.id,
         name: action.material.material.name,
@@ -52,7 +51,7 @@ const materials = (state = {}, action) => {
         let i = state[oldType].indexOf(oldMaterial)
         state[oldType].splice(i, 1)
         if (!state[newType]) {
-          state[newType] = updatedMaterial
+          state[newType] = [updatedMaterial]
           return state
         } else {
           state[newType] = [...state[newType], updatedMaterial]

@@ -1,5 +1,4 @@
 import React from 'react';
-import { connect } from 'react-redux';
 import { Collapse } from 'antd';
 import NewMaterial from '../NewMaterial/NewMaterial';
 import Material from '../Material/Material';
@@ -11,7 +10,6 @@ class Materials extends React.Component {
     const { materials } = this.props
     const types = Object.keys(materials)    
     return types.map((type, i) => {
-      console.log(type)
       const Panel = Collapse.Panel;
       return(
         <Panel header={type} key={i}>

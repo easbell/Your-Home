@@ -100,7 +100,6 @@ export class EditMaterial extends React.Component {
   }
 
   handleCreate = async () => {
-    console.log(this.props)
     const { id } = this.props.roomMaterials[0];
     let items = [ 'name', 'type', 'brand', 'vendor', 'model', 'quantity', 'price', 'manual', 'notes' ]
     let allItems = {
