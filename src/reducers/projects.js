@@ -1,4 +1,4 @@
-import { addRoomHelper, deleteRoomHelper } from '../utils/addRoomHelper';
+import { addRoomHelper, deleteRoomHelper, editRoomHelper } from '../utils/addRoomHelper';
 
 const projects = (state = [], action) => {
   switch(action.type) {

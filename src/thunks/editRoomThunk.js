@@ -1,6 +1,7 @@
-import { isLoading, hasErrored, editProject } from '../actions';
+import { isLoading, hasErrored } from '../actions';
 
-export const editRoomThunk = (id, name, type, description) => {
+export const editRoomThunk = (id, name, type, description, projectId) => {
+  console.log(projectId)
   return async (dispatch) => {
     const url = "https://hometrackr.herokuapp.com//api/v1/graphql"
     try {
@@ -17,10 +18,8 @@ export const editRoomThunk = (id, name, type, description) => {
       if(!response.ok) {
         throw Error(response.statusText)
       }
-      const data = await response.json()
+      await response.json()
       dispatch(isLoading(false))
-      console.log(data)
-      // dispatch(editRoom(data.data.updateProject))
     } catch(error) {
       dispatch(hasErrored(error.message))
     }

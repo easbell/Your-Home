@@ -1,6 +1,7 @@
 import React from 'react';
 import { Button, Modal, Form, Input } from 'antd';
 import { editRoomThunk } from '../../thunks/editRoomThunk';
+import { fetchAllProjects } from '../../thunks/fetchAllProjects';
 import { connect } from 'react-redux';
 
 const CollectionCreateForm = Form.create({ name: 'form_in_modal' })(
@@ -41,7 +42,7 @@ const CollectionCreateForm = Form.create({ name: 'form_in_modal' })(
   }
 );
 
-class EditRoom extends React.Component {
+export class EditRoom extends React.Component {
   state = { 
     visible: false,
     type: '',
@@ -61,7 +62,7 @@ class EditRoom extends React.Component {
     this.setState({[e.target.name]: e.target.value});
   }
 
-  handleCreate = () => {
+  handleCreate = async () => {
     const { id } = this.props;
     let allItems = {
       name: this.props.name,
@@ -73,11 +74,13 @@ class EditRoom extends React.Component {
         allItems[item] = this.state[item]
       }
     })
-    this.props.editRoomThunk(id, allItems.name, allItems.type, allItems.description);
+    await this.props.editRoomThunk(id, allItems.name, allItems.type, allItems.description);
+    this.props.fetchAllProjects();
     this.setState({ visible: false});
   }
 
   render() {
+    console.log(this.props)
     return (
       <div className="edit-room-btn">
         <Button onClick={this.showModal} size="small" type="link">
@@ -98,7 +101,8 @@ class EditRoom extends React.Component {
 }
 
 export const mapDispatchToProps = dispatch => ({
-  editRoomThunk: (id, name, address, description) => dispatch(editRoomThunk(id, name, address, description))
+  editRoomThunk: (id, name, address, description) => dispatch(editRoomThunk(id, name, address, description)),
+  fetchAllProjects: () => dispatch(fetchAllProjects())
 })
 
 export default connect(null, mapDispatchToProps)(EditRoom);
