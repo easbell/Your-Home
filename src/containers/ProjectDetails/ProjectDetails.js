@@ -6,7 +6,6 @@ import EditProject from '../EditProject/EditProject';
 class ProjectDetails extends React.Component {
 
   renderDetails = () => {
-    console.log(this.props.project.rooms)
     const { name, address, description, rooms, id } = this.props.project;
     return(
       <div>

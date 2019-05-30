@@ -10,7 +10,6 @@ export class RoomsContainer extends Component {
   }
 
   render() {
-    console.log(this.props)
     const {projectId} = this.props
     return (
       <div className='rooms'>

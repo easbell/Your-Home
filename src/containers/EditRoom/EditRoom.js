@@ -80,7 +80,6 @@ export class EditRoom extends React.Component {
   }
 
   render() {
-    console.log(this.props)
     return (
       <div className="edit-room-btn">
         <Button onClick={this.showModal} size="small" type="link">

@@ -93,7 +93,6 @@ class EditMaterial extends React.Component {
   handleCreate = () => {
     const { name, brand, vendor, model, quantity, price, manual, notes } = this.state;
     const updatedMaterials = { name, brand, vendor, model, quantity, price, manual, notes };
-    console.log(updatedMaterials);
     this.setState({ visible: false});
   }
 
