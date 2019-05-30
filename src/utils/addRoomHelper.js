@@ -1,6 +1,4 @@
 export const addRoomHelper = (room, state) => {
-  console.log(room.project.id)
-  console.log(state)
   let newState = []
   state.forEach(project => {
     if(project.id === room.project.id) {
@@ -10,7 +8,6 @@ export const addRoomHelper = (room, state) => {
       newState.push(project)
     }
   })
-  console.log('new state', newState)
   return newState
 }
 
@@ -28,8 +25,8 @@ export const deleteRoomHelper = (id, projectId, state) => {
   return newState
 }
 
-export const editRoomHelper = (id, projectId, state) => {
-  console.log(id, projectId, state)
+// export const editRoomHelper = (id, projectId, state) => {
+//   console.log(id, projectId, state)
   // let newState = []
   // state.forEach(project => {
   //   if(project.id === projectId) {
@@ -41,4 +38,4 @@ export const editRoomHelper = (id, projectId, state) => {
   //   }
   // })
   // return newState
-}
+// }
