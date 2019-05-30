@@ -1,8 +1,10 @@
 import React from 'react';
 import { shallow } from 'enzyme';
 import { App } from './App';
-import { setProjects } from '../../actions';
+import { fetchAllProjects } from '../../thunks/fetchAllProjects';
 import { mapStateToProps, mapDispatchToProps } from './App';
+
+jest.mock('../../thunks/fetchAllProjects')
 
 describe('App', () => {
   let wrapper;
@@ -31,12 +33,12 @@ describe('App', () => {
     expect(mockProps).toEqual(expected)
   });
 
-  it.skip('should mapDispatchToProps', () => {
+  it('should mapDispatchToProps', () => {
     const mockProjects = [{ name: 'mockProject1', id: '1', materials: [{}, {}]}, { name: 'mockProject2', id: '2', materials: [{}, {}]}, { name: 'mockProject3', id: '3', materials: [{}, {}]}]
     const mockDispatch = jest.fn()
-    const actionToDispatch = setProjects(mockProjects)
+    const actionToDispatch = fetchAllProjects(mockProjects)
     const mappedProps = mapDispatchToProps(mockDispatch)
-    mappedProps.setProjects(mockProjects)
+    mappedProps.fetchAllProjects(mockProjects)
     expect(mockDispatch).toHaveBeenCalledWith(actionToDispatch)
   });
 

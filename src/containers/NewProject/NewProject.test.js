@@ -27,6 +27,12 @@ describe('App', () => {
     expect(wrapper.state('name')).toBe('name');
   });
 
+  it('should setState on deleteRoomItem', () => {
+    wrapper.setState({ rooms: [{id: 1}]});
+    wrapper.instance().deleteRoomItem({target: {name: 2}});
+    expect(wrapper.state('rooms')).toEqual([{id: 1}])
+  });
+
   it('should setState on nextField', () => {
     wrapper.setState({ current: 0 });
     wrapper.instance().nextField();

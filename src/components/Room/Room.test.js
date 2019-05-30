@@ -3,6 +3,9 @@ import { shallow } from 'enzyme';
 import { Room } from './Room';
 import { setMaterials } from '../../actions';
 import { mapStateToProps, mapDispatchToProps } from './Room';
+import { fetchRoomMaterials } from '../../thunks/fetchRoomMaterials';
+
+jest.mock('../../thunks/fetchRoomMaterials')
 
 describe('Room', () => {
   let wrapper;
@@ -17,9 +20,9 @@ describe('Room', () => {
     expect(wrapper).toMatchSnapshot();
   });
 
-  it.skip('should gather materials when showDrawer is called', async () => {
-    await wrapper.instance().showDrawer();
-    expect(wrapper.props.fetchRoomMaterials).toHaveBeenCalled()
+  it('should gather materials when showDrawer is called', () => {
+    wrapper.instance().showDrawer();
+    expect(mockFn).toHaveBeenCalled()
   });
 
   it('should setState on showDrawer', async () => {
@@ -48,12 +51,12 @@ describe('Room', () => {
     expect(mockProps).toEqual(expected)
   });
 
-  it.skip('should mapDispatchToProps', () => {
+  it('should mapDispatchToProps', () => {
     const mockMaterials = { shower: [], sink: []}
     const mockDispatch = jest.fn()
-    const actionToDispatch = setMaterials(mockMaterials)
+    const actionToDispatch = fetchRoomMaterials(mockMaterials)
     const mappedProps = mapDispatchToProps(mockDispatch)
-    mappedProps.setMaterials(mockMaterials)
+    mappedProps.fetchRoomMaterials(mockMaterials)
     expect(mockDispatch).toHaveBeenCalledWith(actionToDispatch)
   });
 

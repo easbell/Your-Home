@@ -9,10 +9,13 @@ describe('materials reducer', () => {
   });
 
   it.skip('should return an object if the action type is ADD_MATERIAL', () => {
-    const mockMaterial = {material: {element_type: 'cool', material: [{name: 'yellow sink', id: 3,  brand: 'best brand', model_number: 'abc', unit_price: 12, vendor: 'Pat', quantity: 33, manual_url: 'no', notes: 'be careful'}]}};
+    const mockMaterial = {material: {element_type: 'cool', material: [{name:
+    'yellow sink', id: 3,  brand: 'best brand', model_number: 'abc',
+    unit_price: 12, vendor: 'Pat', quantity: 33, manual_url: 'no', notes: ''}]}};
     const mockAction = actions.addMaterial(mockMaterial)
+    const mockState = { type: mockAction.material.type}
     const result = materials(undefined, mockAction)
-    expect(result).toEqual(mockMaterial)
+    expect(result).toEqual(mockState)
   });
 
   it('should return an object if the action type is SET_MATERIALS', () => {
