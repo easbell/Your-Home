@@ -1,8 +1,3 @@
-// { "query":"mutation{updateProject(project: {id: 2, name: \"Updated House\", city: \"Different City\"}) {id name city state}}"
-// }
-
-// name, address, description
-
 import { isLoading, hasErrored, editProject } from '../actions';
 
 export const editProjectThunk = (id, name, address, description) => {
@@ -12,7 +7,7 @@ export const editProjectThunk = (id, name, address, description) => {
       dispatch(isLoading(true));
       const response = await fetch(url, {
         body: JSON.stringify({
-          "query": `mutation {updateProject (project: {id: "${id}", name: "${name}", address: "${address}", description: "${description}"}) {id name address description}}`
+          "query": `mutation {updateProject (project: {id: "${id}", name: "${name}", address: "${address}", description: "${description}"}) {id name address description rooms { id name type description }}}`
           }),
         method: 'POST',
         headers: {

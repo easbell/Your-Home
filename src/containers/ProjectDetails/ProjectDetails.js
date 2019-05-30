@@ -6,6 +6,7 @@ import EditProject from '../EditProject/EditProject';
 class ProjectDetails extends React.Component {
 
   renderDetails = () => {
+    console.log(this.props.project.rooms)
     const { name, address, description, rooms, id } = this.props.project;
     return(
       <div>
@@ -18,9 +19,7 @@ class ProjectDetails extends React.Component {
           </div>
           <EditProject className='edit-project-btn' id={id} name={name} address={address} description={description}/>
         </div>
-        {!rooms === undefined &&
-          <RoomsContainer rooms={rooms} projectId={id}/>
-        }
+      <RoomsContainer rooms={rooms} projectId={id}/>
       </div>
     );
   }

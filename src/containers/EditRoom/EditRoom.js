@@ -60,13 +60,22 @@ class EditRoom extends React.Component {
   }
 
   handleCreate = () => {
-    const { name, type, description } = this.state;
-    const updatedProject = { name, type, description };
-    console.log(updatedProject);
+    const { id } = this.props;
+    let allItems = {
+      name: this.props.name,
+      type: this.props.type,
+      description: this.props.description
+    }
+    Object.keys(allItems).forEach(item => {
+      if(this.state[item].length > 0) {
+        allItems[item] = this.state[item]
+      }
+    })
     this.setState({ visible: false});
   }
 
   render() {
+    console.log(this.props)
     return (
       <div className="edit-room-btn">
         <Button onClick={this.showModal} size="small" type="link">
