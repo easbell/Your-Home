@@ -10,7 +10,7 @@
       "src/**/*.{js,jsx}",
       "!src/index.js",
       "!src/reducers/index.js",
-      "!src/mockProject.js"
+      "src/utils/*.{js, jsx}"
     ]
   },
   "dependencies": {

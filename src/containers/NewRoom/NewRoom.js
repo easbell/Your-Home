@@ -62,6 +62,7 @@ export class NewRoom extends React.Component {
   handleCreate = () => {
     const { name, type, description } = this.state;
     const { id } = this.props;
+    const bosy = addNewRoom()
     this.props.addNewRoom(id, name, description, type);
     this.setState({ visible: false});
   }

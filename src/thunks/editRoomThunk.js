@@ -1,7 +1,6 @@
 import { isLoading, hasErrored } from '../actions';
 
-export const editRoomThunk = (id, name, type, description, projectId) => {
-  console.log(projectId)
+export const editRoomThunk = (id, name, type, description) => {
   return async (dispatch) => {
     const url = "https://hometrackr.herokuapp.com//api/v1/graphql"
     try {

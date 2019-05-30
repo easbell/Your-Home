@@ -1,9 +1,5 @@
 export const addMaterialHelper = (material, id) => {
-  console.log(material, id)
   const { name, type, brand, model, vendor, quantity, price, manual, notes } = material;
 
   return { "query": `mutation{addRoomMaterial(room_id: "${id}", element_type: "${type}", material: {name: "${name}", brand: "${brand}", model_number: "${model}", quantity: ${quantity}, unit_price: ${price}, manual_url: "${manual}", notes: "${notes}", vendor: "${vendor}"}) {id element_type room{id name} material{id name brand model_number unit_price vendor quantity manual_url notes}}}`}
 }
-
-// perhaps will want a materialBuilder if 
-// not all fields will be filled out
