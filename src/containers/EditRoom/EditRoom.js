@@ -1,5 +1,7 @@
 import React from 'react';
 import { Button, Modal, Form, Input } from 'antd';
+import { editRoomThunk } from '../../thunks/editRoomThunk';
+import { connect } from 'react-redux';
 
 const CollectionCreateForm = Form.create({ name: 'form_in_modal' })(
   class extends React.Component {
@@ -71,11 +73,11 @@ class EditRoom extends React.Component {
         allItems[item] = this.state[item]
       }
     })
+    this.props.editRoomThunk(id, allItems.name, allItems.type, allItems.description);
     this.setState({ visible: false});
   }
 
   render() {
-    console.log(this.props)
     return (
       <div className="edit-room-btn">
         <Button onClick={this.showModal} size="small" type="link">
@@ -95,4 +97,8 @@ class EditRoom extends React.Component {
   }
 }
 
-export default EditRoom;
+export const mapDispatchToProps = dispatch => ({
+  editRoomThunk: (id, name, address, description) => dispatch(editRoomThunk(id, name, address, description))
+})
+
+export default connect(null, mapDispatchToProps)(EditRoom);
