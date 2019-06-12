@@ -12,6 +12,7 @@ One of our project collaborators used to work at a small home builder in Denver,
 ### Tech Stack
 - React / Redux / Router
 - Jest & Enzyme for testing
+- ant.design library
 - Thunk middleware
 - GraphQL
 
