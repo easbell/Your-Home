@@ -4,8 +4,6 @@
 ### Background
 One of our project collaborators used to work at a small home builder in Denver, CO. One of her responsibilities was to put together a physical binder of all materials that went into any given home so that the homeowner would have all this information in one place. This process brought up two issues: 1. If the builder forgot an item / needed to adjust anything, there was no good way to go about giving the homeowner this new information. 2. If the homeowner misplaced this binder, the builder would have to reopen a closed account and regather all the information for the owner. This time consuming practice eats in to the builders budget on an already closed project. YourHome is here to fix these issues.
 
-### [See it Live](https://your-home.herokuapp.com)
-
 ### Future Iterations
 - Integrate OAuth for separate accounts.
 - Integrate the homeowner portal.
